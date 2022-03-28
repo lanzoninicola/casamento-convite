@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { hydrate } from 'react-dom';
-import { CacheProvider } from '@emotion/react';
-import { RemixBrowser } from 'remix';
+import * as React from "react";
+import { hydrate } from "react-dom";
+import { CacheProvider } from "@emotion/react";
+import { RemixBrowser } from "remix";
 
-import { ClientStyleContext } from './context';
-import { createEmotionCache } from './createEmotionCache';
+import { ClientStyleContext } from "./chackra-ui/context";
+import { createEmotionCache } from "./chackra-ui/createEmotionCache";
 
 interface ClientCacheProviderProps {
   children: React.ReactNode;

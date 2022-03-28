@@ -1,10 +1,10 @@
-import { Box, Heading, HStack, Link as ChakraLink } from '@chakra-ui/react';
-import { Link } from 'remix';
+import { Box, Heading, HStack, Link as ChakraLink } from "@chakra-ui/react";
+import { Link } from "remix";
 
 export default function Index() {
   return (
     <Box fontFamily="system-ui, sans-serif" lineHeight={1.4}>
-      <Heading as="h1" color="blue.400">
+      <Heading as="h1" color="blue.300" fontWeight="300" fontSize="2xl">
         Welcome to Remix with Chakra UI!
       </Heading>
       <HStack spacing={4}>

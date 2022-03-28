@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Links,
   LiveReload,
@@ -7,21 +7,23 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
-} from 'remix';
-import type { MetaFunction } from 'remix';
-import { VStack, Heading, ChakraProvider, Text } from '@chakra-ui/react';
-import { withEmotionCache } from '@emotion/react';
+  LinksFunction,
+} from "remix";
+import type { MetaFunction } from "remix";
+import { VStack, Heading, ChakraProvider, Text } from "@chakra-ui/react";
+import { withEmotionCache } from "@emotion/react";
 
-import { ServerStyleContext, ClientStyleContext } from './context';
+import { ServerStyleContext, ClientStyleContext } from "./chackra-ui/context";
+import { theme } from "./chackra-ui/theme/theme";
 
 export const meta: MetaFunction = () => {
-  return { title: 'Chakra UI Boilerplate' };
+  return { title: "Gustavo & Kelly - Casamento" };
 };
 
 export default function App() {
   return (
     <Document>
-      <ChakraProvider>
+      <ChakraProvider resetCSS theme={theme}>
         <Outlet />
       </ChakraProvider>
     </Document>
@@ -85,6 +87,19 @@ interface DocumentProps {
   children: React.ReactNode;
 }
 
+export const links: LinksFunction = () => {
+  return [
+    {
+      rel: "preconnect",
+      href: "https://fonts.googleapis.com",
+    },
+    {
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300;400;600&display=swap",
+    },
+  ];
+};
+
 const Document = withEmotionCache(
   ({ children }: DocumentProps, emotionCache) => {
     const serverSyleData = React.useContext(ServerStyleContext);
@@ -109,18 +124,18 @@ const Document = withEmotionCache(
         <head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width,initial-scale=1" />
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstaticom" />
-          <link
+           <link
             href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
             rel="stylesheet"
-          />
+          /> */}
           <Meta />
           <Links />
           {serverSyleData?.map(({ key, ids, css }) => (
             <style
               key={key}
-              data-emotion={`${key} ${ids.join(' ')}`}
+              data-emotion={`${key} ${ids.join(" ")}`}
               dangerouslySetInnerHTML={{ __html: css }}
             />
           ))}
@@ -129,7 +144,7 @@ const Document = withEmotionCache(
           {children}
           <ScrollRestoration />
           <Scripts />
-          {process.env.NODE_ENV === 'development' ? <LiveReload /> : null}
+          {process.env.NODE_ENV === "development" ? <LiveReload /> : null}
         </body>
       </html>
     );
