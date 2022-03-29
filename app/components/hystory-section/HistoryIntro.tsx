@@ -4,7 +4,6 @@ import EllipseDecorator from "../shared/EllipseDecorator";
 import BaseHeading from "../shared/Headings";
 import { HeadingWithLineDecoration } from "../shared/HeadingWithLineDecoration";
 import HistoryCardWrapper from "./HistoryCardWrapper";
-import NextChapterButton from "./NextChapterButton";
 
 export default function HistoryIntro() {
   return (

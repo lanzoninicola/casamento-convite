@@ -1,21 +1,21 @@
-interface Chapter {
+export interface Chapter {
   intro: ChapterIntro;
   content: ChapterContent;
 }
 
-interface ChapterIntro {
+export interface ChapterIntro {
   textMonth: string;
   textYear: string;
   title: string;
 }
 
-interface ChapterContent {
+export interface ChapterContent {
   title: string;
   image: string;
   text: string;
 }
 
-const chapters: Chapter[] = [
+export const chapters: Chapter[] = [
   {
     intro: {
       textMonth: "juhlo",
@@ -36,7 +36,7 @@ const chapters: Chapter[] = [
     },
     content: {
       title: `O novo normal`,
-      image: "history-content-chap0",
+      image: "history-content-chap1",
       text: `A distância e o fuso horário (Ele na Itália e Ela no Brasil) não podiam ser uma barreira. Correr para casa após o trabalho para se verem através de uma tela de computador ou telefone havia se tornado o novo "normal".`,
     },
   },
@@ -48,7 +48,7 @@ const chapters: Chapter[] = [
     },
     content: {
       title: `O momento estava chegando`,
-      image: "history-content-chap0",
+      image: "history-content-chap2",
       text: `Quarto tudo pronto e arrumado, um novo guarda-roupa, porque logo novas roupas ocupariam as gavetas. Todos no trabalho sabiam sobre o bendito príncipe que estava chegando e ela também…`,
     },
   },
@@ -60,7 +60,7 @@ const chapters: Chapter[] = [
     },
     content: {
       title: `O avião branco`,
-      image: "history-content-chap0",
+      image: "history-content-chap3",
       text: `O cavalo do bendito príncipe não era branco mas o avião que o acompanhou sim… Finalmente em Pato Branco, o estacionamento de ônibus (chegada com direito a), balões vermelhos, os corações pulando e batendo... Foi a primeira vez que nossos olhos se encontraram ao vivo.`,
     },
   },
@@ -72,7 +72,7 @@ const chapters: Chapter[] = [
     },
     content: {
       title: `È hora!!!`,
-      image: "history-content-chap0",
+      image: "history-content-chap4",
       text: `Já se passaram quase três anos e alguns kilos desde o nosso primeiro encontro. Muitas coisas mudaram, mas a paixão permaneceu forte além da adversidade e o amor cresce a cada dia. Mas não era suficiente, o nosso amor será eterno. Nós prometemos.`,
     },
   },
@@ -84,10 +84,8 @@ const chapters: Chapter[] = [
     },
     content: {
       title: `Casamento!!!`,
-      image: "history-content-chap0",
+      image: "history-content-chap5",
       text: `Nossa cerimonia será diferente do programado a alguns meses, íntimo e discreto, juntos as familhas. Mas queremos compartilhar esse momento tão importante para nós com você no almoço que será servido na Associação de Professores Municipais.`,
     },
   },
 ];
-
-export default chapters;

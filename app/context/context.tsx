@@ -2,11 +2,11 @@ import { useState } from "react";
 import { createContext } from "use-context-selector";
 
 export interface HistoryContextData {
-  showIntro: boolean;
+  isReadingStories: boolean;
   chapter: number;
   fragment: ChapterFragment;
   hasRead: boolean;
-  setShowIntro: (showIntro: boolean) => void;
+  setIsReadingStories: (isReadingStories: boolean) => void;
   setChapter: (chapter: number) => void;
   setFragment: (fragment: ChapterFragment) => void;
   setHasRead: (hasRead: boolean) => void;
@@ -14,22 +14,24 @@ export interface HistoryContextData {
 
 export type ChapterFragment = "intro" | "content";
 
-export const HistoryContext = createContext<HistoryContextData | null>(null);
+export const HistoryContext = createContext<HistoryContextData>(
+  {} as HistoryContextData
+);
 
 export function HistoryProvider({ children }: { children: React.ReactNode }) {
-  const [showIntro, setShowIntro] = useState(true);
-  const [chapter, setChapter] = useState(0);
+  const [isReadingStories, setIsReadingStories] = useState(false);
+  const [chapter, setChapter] = useState(-1);
   const [fragment, setFragment] = useState<ChapterFragment>("intro");
-  const [hasRead, setHasRead] = useState(false);
+  const [hasRead, setHasRead] = useState(true);
 
   return (
     <HistoryContext.Provider
       value={{
-        showIntro,
+        isReadingStories,
         chapter,
         fragment,
         hasRead,
-        setShowIntro,
+        setIsReadingStories,
         setChapter,
         setFragment,
         setHasRead,

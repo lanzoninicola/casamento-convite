@@ -4,8 +4,11 @@ import { useContext } from "react";
 import BaseHeading from "../shared/Headings";
 import { HeadingWithLineDecoration } from "../shared/HeadingWithLineDecoration";
 import HistoryCardWrapper from "./HistoryCardWrapper";
+import useStoryIntro from "./hooks/useStoryIntro";
 
 export default function HistoryChapterIntro() {
+  const { textMonth, textYear, title } = useStoryIntro();
+
   return (
     <>
       <HistoryCardWrapper>
@@ -25,7 +28,7 @@ export default function HistoryChapterIntro() {
               lineHeight="1"
               textAlign="center"
             >
-              blalbla
+              {textMonth}
             </Text>
             <Text
               color="text.500"
@@ -34,11 +37,11 @@ export default function HistoryChapterIntro() {
               lineHeight="1"
               textAlign="center"
             >
-              blalbla
+              {textYear}
             </Text>
           </Box>
           <BaseHeading as="h3" textAlign="center">
-            blalbla
+            {title}
           </BaseHeading>
         </Flex>
       </HistoryCardWrapper>

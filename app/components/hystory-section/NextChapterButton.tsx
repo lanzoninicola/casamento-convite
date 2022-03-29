@@ -1,16 +1,75 @@
 import { Box, Center, Flex, Image } from "@chakra-ui/react";
-import { useContext } from "react";
-import { HistoryContext } from "~/context/context";
+import useHistoryContext from "~/context/hooks/useHistoryContext";
+import useChapters from "./hooks/useChapters";
 
 export default function NextChapterButton() {
-  const currentHistory = useContext(HistoryContext);
+  const historyCtx = useHistoryContext();
+  const { chaptersQuantity } = useChapters();
+
+  const {
+    isReadingStories,
+    chapter,
+    fragment,
+    hasRead,
+    setHasRead,
+    setIsReadingStories,
+    setChapter,
+    setFragment,
+  } = historyCtx;
+
+  console.table({
+    isReadingStories,
+    chapter,
+    fragment,
+    hasRead,
+    chaptersQuantity,
+  });
 
   function handleClick() {
-    const nextHistory = { ...currentHistory };
-
-    if (nextHistory.chapter) {
-      nextHistory.chapter = nextHistory.chapter + 1;
+    if (!historyCtx) {
+      return;
     }
+
+    if (!isReadingStories) {
+      startReading();
+      nextChapter();
+    }
+
+    if (isReadingStories && chapter >= 0 && fragment === "intro") {
+      readingContent();
+    }
+
+    if (isReadingStories && chapter >= 0 && fragment === "content") {
+      nextChapter();
+    }
+
+    if (
+      isReadingStories &&
+      fragment === "content" &&
+      chapter >= chaptersQuantity - 1
+    ) {
+      endReading();
+    }
+  }
+
+  function startReading() {
+    setIsReadingStories(true);
+  }
+
+  function readingContent() {
+    setFragment("content");
+  }
+
+  function nextChapter() {
+    setChapter(chapter + 1);
+    setFragment("intro");
+  }
+
+  function endReading() {
+    setIsReadingStories(false);
+    setHasRead(true);
+    setChapter(-1);
+    setFragment("intro");
   }
 
   return (

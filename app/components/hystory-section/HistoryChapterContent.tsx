@@ -1,6 +1,7 @@
 import { Box, Flex, Image } from "@chakra-ui/react";
 
 import BaseHeading from "../shared/Headings";
+import useStoryContent from "./hooks/useStoryContent";
 import NextChapterButton from "./NextChapterButton";
 
 export default function HistoryChapterContent() {
@@ -31,16 +32,15 @@ export default function HistoryChapterContent() {
 }
 
 function Content() {
+  const { text, title } = useStoryContent();
+
   return (
     <Flex direction="column" gap="1.5rem" pl="1rem" pr="1rem">
       <BaseHeading as="h3" fontSize="36px" color="black">
-        O avião branco
+        {title}
       </BaseHeading>
       <BaseHeading as="p" fontSize="20px" lineHeight="130%" color="black">
-        O cavalo do bendito príncipe não era branco mas o avião que o acompanhou
-        sim… Finalmente em Pato Branco, o estacionamento de ônibus (chegada com
-        direito a), balões vermelhos, os corações pulando e batendo... Foi a
-        primeira vez que nossos olhos se encontraram ao vivo.
+        {text}
       </BaseHeading>
     </Flex>
   );
@@ -59,12 +59,11 @@ function Overlay() {
 }
 
 function BackgroundImage() {
+  const { title, image } = useStoryContent();
+
   return (
     <Box zIndex={0}>
-      <Image
-        src="/images/history-content-chap0.jpg"
-        alt="Gustavo e Kelly - Chapter 0"
-      />
+      <Image src={`/images/${image}.jpg`} alt={`${title}`} />
     </Box>
   );
 }
