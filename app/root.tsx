@@ -97,6 +97,10 @@ export const links: LinksFunction = () => {
       rel: "stylesheet",
       href: "https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300;400;600&display=swap",
     },
+    {
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Karla:wght@300;400;600&display=swap",
+    },
   ];
 };
 
@@ -124,12 +128,7 @@ const Document = withEmotionCache(
         <head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width,initial-scale=1" />
-          {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstaticom" />
-           <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-            rel="stylesheet"
-          /> */}
+
           <Meta />
           <Links />
           {serverSyleData?.map(({ key, ids, css }) => (
