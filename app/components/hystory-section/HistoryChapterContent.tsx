@@ -18,7 +18,6 @@ export default function HistoryChapterContent() {
         gap="6rem"
         pl="1rem"
         pr="1rem"
-        pb="2rem"
         position="absolute"
         top={0}
         left={0}

@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Image } from "@chakra-ui/react";
+import { Box, Center, Flex, Image, Text } from "@chakra-ui/react";
 import useHistoryContext from "~/context/hooks/useHistoryContext";
 import useChapters from "./hooks/useChapters";
 
@@ -10,8 +10,7 @@ export default function NextChapterButton() {
     isReadingStories,
     chapter,
     fragment,
-    hasRead,
-    setHasRead,
+
     setIsReadingStories,
     setChapter,
     setFragment,
@@ -21,7 +20,6 @@ export default function NextChapterButton() {
     isReadingStories,
     chapter,
     fragment,
-    hasRead,
     chaptersQuantity,
   });
 
@@ -67,15 +65,25 @@ export default function NextChapterButton() {
 
   function endReading() {
     setIsReadingStories(false);
-    setHasRead(true);
+
     setChapter(-1);
     setFragment("intro");
   }
 
   return (
-    <Flex w="100%" justify="flex-end" onClick={handleClick}>
-      <Box w="40px" h="40px" backgroundColor="primary.500" borderRadius="5px">
-        <Center h="100%">
+    <Flex w="100%" justify="flex-end" onClick={handleClick} pb="4rem">
+      <Box
+        w="max-content"
+        h="40px"
+        backgroundColor="primary.500"
+        borderRadius="5px"
+        pl="1rem"
+        pr="1rem"
+      >
+        <Center h="100%" gap="1rem">
+          <Text fontSize="16px" textTransform="uppercase">
+            CLIQUE AQUI
+          </Text>
           <Image src="/images/arrow-right.svg" />
         </Center>
       </Box>

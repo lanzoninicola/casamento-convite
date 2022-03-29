@@ -14,7 +14,6 @@ export default function HistorySection() {
     (ctx) => ctx.isReadingStories
   );
   const fragment = useContextSelector(HistoryContext, (ctx) => ctx.fragment);
-  const hasRead = useContextSelector(HistoryContext, (ctx) => ctx.hasRead);
 
   return (
     <>
@@ -23,7 +22,7 @@ export default function HistorySection() {
           <HistoryIntro />
         </Section>
       )}
-      {isReadingStories && !hasRead && (
+      {isReadingStories && (
         <>
           {fragment === "intro" && (
             <Section>

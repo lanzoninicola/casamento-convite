@@ -16,41 +16,37 @@ import Section from "../shared/Section";
 import { SiGooglemaps, SiWaze } from "react-icons/si";
 
 export default function PlaceSection() {
-  const hasRead = useContextSelector(HistoryContext, (ctx) => ctx.hasRead);
-
   const address =
     "Chacara Zanin, Linha São Braz São, Estr. Mun. Lisando São Braz, Pato Branco - PR, 85504-000";
 
   return (
     <>
-      {hasRead && (
-        <Section>
-          <Center h="100%">
-            <Flex direction="column" gap="1rem">
-              <BaseHeading as="h2" fontSize="38px" fontWeight="700" mb=".5rem">
-                Almoçamos <br />
-                juntos
-              </BaseHeading>
-              <Box>
-                <Text fontSize="24px" fontWeight="600" color="primary.500">
-                  Chacara Zanin
-                </Text>
-                <Text fontSize="18px">
-                  Linha São Braz São, <br />
-                  Estr. Mun. Lisando São Braz, <br />
-                  Pato Branco - PR, 85504-000
-                </Text>
-              </Box>
-              <HStack>
-                <GoogleMapsButton address={address} />
-                <WazeButton address={address} />
-              </HStack>
+      <Section>
+        <Center h="100%">
+          <Flex direction="column" gap="1rem">
+            <BaseHeading as="h2" fontSize="38px" fontWeight="700" mb=".5rem">
+              Almoçamos <br />
+              juntos
+            </BaseHeading>
+            <Box>
+              <Text fontSize="24px" fontWeight="600" color="primary.500">
+                Chacara Zanin
+              </Text>
+              <Text fontSize="18px" lineHeight={1.1}>
+                Linha São Braz São, <br />
+                Estr. Mun. Lisando São Braz, <br />
+                Pato Branco - PR, 85504-000
+              </Text>
+            </Box>
+            <HStack>
+              <GoogleMapsButton address={address} />
+              <WazeButton address={address} />
+            </HStack>
 
-              <MapFrame />
-            </Flex>
-          </Center>
-        </Section>
-      )}
+            <MapFrame />
+          </Flex>
+        </Center>
+      </Section>
     </>
   );
 }

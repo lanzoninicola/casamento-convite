@@ -85,7 +85,7 @@ export const chapters: Chapter[] = [
     content: {
       title: `Casamento!!!`,
       image: "history-content-chap5",
-      text: `Nossa cerimonia será diferente do programado a alguns meses, íntimo e discreto, juntos as familhas. Mas queremos compartilhar esse momento tão importante para nós com você no almoço que será servido na Associação de Professores Municipais.`,
+      text: `Nossa cerimonia será diferente do programado a alguns meses, íntimo e discreto, juntos as familhas. Mas queremos compartilhar esse momento tão importante para nós com você no almoço que será servido na Chacara Zanin.`,
     },
   },
 ];
