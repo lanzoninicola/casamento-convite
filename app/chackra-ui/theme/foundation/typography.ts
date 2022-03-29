@@ -9,9 +9,8 @@ const typography = {
   },
   fonts: {
     ...chakraTheme.fonts,
-    heading:
-      'Source Serif Pro, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-    body: 'Source Serif Pro, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+    heading: `Source Serif Pro, ${chakraTheme.fonts.heading}`,
+    body: `Karla, ${chakraTheme.fonts.body}`,
   },
 };
 
