@@ -1,4 +1,4 @@
-import { Center, Flex, Image } from "@chakra-ui/react";
+import { Box, Center, Flex, Image } from "@chakra-ui/react";
 
 export default function BottomBackgroundPattern() {
   return (
@@ -13,7 +13,9 @@ export default function BottomBackgroundPattern() {
       zIndex="-1"
     >
       <Center>
-        <Image src="/images/bottom-bg-pattern.svg" />
+        <Box>
+          <Image src="/images/bottom-bg-pattern.svg" w="100vw" />
+        </Box>
       </Center>
     </Flex>
   );

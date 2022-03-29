@@ -11,7 +11,7 @@ export default function Index() {
       <HistoryProvider>
         <HeroSection />
         <HistorySection />
-        <Gallery />
+        {/* <Gallery /> */}
         <PlaceSection />
         <InvitationSection />
       </HistoryProvider>

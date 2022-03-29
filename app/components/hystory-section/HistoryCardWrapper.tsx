@@ -8,7 +8,12 @@ export default function HistoryCardWrapper({
   children: React.ReactNode;
 }) {
   return (
-    <Flex id="history-wrapper" minH="100vh" direction="column">
+    <Flex
+      id="history-wrapper"
+      minH="100vh"
+      direction="column"
+      paddingInline="1rem"
+    >
       <Center flex={1}>{children}</Center>
       <NextChapterButton />
     </Flex>

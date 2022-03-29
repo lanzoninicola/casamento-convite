@@ -1,4 +1,4 @@
-import { Box, Flex, Image } from "@chakra-ui/react";
+import { AspectRatio, Box, Flex, Image } from "@chakra-ui/react";
 
 import BaseHeading from "../shared/Headings";
 import useStoryContent from "./hooks/useStoryContent";
@@ -62,7 +62,7 @@ function BackgroundImage() {
 
   return (
     <Box zIndex={0}>
-      <Image src={`/images/${image}.jpg`} alt={`${title}`} />
+      <Image src={`/images/${image}.jpg`} alt={`${title}`} w="100vw" />
     </Box>
   );
 }
