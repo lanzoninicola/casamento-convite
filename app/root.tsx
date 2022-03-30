@@ -1,24 +1,19 @@
+import { ChakraProvider, Heading, Text, VStack } from "@chakra-ui/react";
+import { withEmotionCache } from "@emotion/react";
 import React from "react";
 import {
   Links,
+  LinksFunction,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
   useCatch,
-  LinksFunction,
 } from "remix";
-import type { MetaFunction } from "remix";
-import { VStack, Heading, ChakraProvider, Text } from "@chakra-ui/react";
-import { withEmotionCache } from "@emotion/react";
 
-import { ServerStyleContext, ClientStyleContext } from "./chackra-ui/context";
+import { ClientStyleContext, ServerStyleContext } from "./chackra-ui/context";
 import { theme } from "./chackra-ui/theme/theme";
-
-export const meta: MetaFunction = () => {
-  return { title: "Gustavo & Kelly - Casamento" };
-};
 
 export default function App() {
   return (
