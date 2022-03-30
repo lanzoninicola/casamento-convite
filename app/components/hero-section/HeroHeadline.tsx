@@ -10,16 +10,18 @@ export default function HeroHeadline() {
           fontSize="80px"
           letterSpacing="-0.05em"
           textAlign="center"
+          fontWeight="700"
         >
           È hora!
         </BaseHeading>
 
         <Text
           color="text.500"
-          fontSize="20px"
+          fontSize="18px"
           letterSpacing="0.125em"
           lineHeight="1"
           textAlign="center"
+          fontWeight="700"
         >
           21.05.22
         </Text>
