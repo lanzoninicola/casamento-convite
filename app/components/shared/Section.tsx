@@ -15,6 +15,7 @@ export default function Section({
       position="relative"
       {...props}
       paddingInline="0"
+      scrollSnapAlign="start"
     >
       {children}
     </Container>

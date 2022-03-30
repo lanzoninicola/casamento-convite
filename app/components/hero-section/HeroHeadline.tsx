@@ -21,7 +21,7 @@ export default function HeroHeadline() {
           lineHeight="1"
           textAlign="center"
         >
-          21.04.22
+          21.05.22
         </Text>
       </Flex>
     </>

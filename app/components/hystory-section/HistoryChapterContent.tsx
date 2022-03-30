@@ -35,7 +35,7 @@ function Content() {
 
   return (
     <Flex direction="column" gap="1.5rem" pl="1rem" pr="1rem">
-      <BaseHeading as="h3" fontSize="36px" color="black">
+      <BaseHeading as="h3" fontSize="36px" color="black" fontWeight="700">
         {title}
       </BaseHeading>
       <BaseHeading as="p" fontSize="20px" lineHeight="130%" color="black">

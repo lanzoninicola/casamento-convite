@@ -1,4 +1,4 @@
-import { Box, Image, Flex } from "@chakra-ui/react";
+import { Box, Image, Flex, Text } from "@chakra-ui/react";
 import BaseHeading from "./Headings";
 
 export function HeadingWithLineDecoration({
@@ -15,6 +15,24 @@ export function HeadingWithLineDecoration({
         <BaseHeading as="h3" fontSize="24px" {...props}>
           {children}
         </BaseHeading>
+        <TextLineDecoration />
+      </Flex>
+    </>
+  );
+}
+
+export function TextWithLineDecoration({
+  children,
+  ...props
+}: {
+  children: React.ReactNode;
+  [x: string]: any;
+}) {
+  return (
+    <>
+      <Flex direction="row" gap=".5rem">
+        <TextLineDecoration />
+        <Text {...props}>{children} </Text>
         <TextLineDecoration />
       </Flex>
     </>

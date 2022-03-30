@@ -3,6 +3,7 @@ import { useContext } from "react";
 
 import BaseHeading from "../shared/Headings";
 import { HeadingWithLineDecoration } from "../shared/HeadingWithLineDecoration";
+import { TextDecorated } from "../shared/TextDecorated";
 import HistoryCardWrapper from "./HistoryCardWrapper";
 import useStoryIntro from "./hooks/useStoryIntro";
 
@@ -19,7 +20,7 @@ export default function HistoryChapterIntro() {
           gap="4rem"
           h="100%"
         >
-          <HeadingWithLineDecoration>Nossa historia</HeadingWithLineDecoration>
+          <TextDecorated>Nossa Historia</TextDecorated>
           <Box>
             <Text
               color="text.500"

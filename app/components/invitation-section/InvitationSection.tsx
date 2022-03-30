@@ -1,19 +1,11 @@
-import {
-  Box,
-  Button,
-  ButtonSpinner,
-  Flex,
-  Text,
-  Center,
-} from "@chakra-ui/react";
+import { Box, Center, Flex, Text } from "@chakra-ui/react";
 import { Link } from "remix";
-import { useContextSelector } from "use-context-selector";
-import { HistoryContext } from "~/context/context";
+
 import BaseHeading from "../shared/Headings";
 import Section from "../shared/Section";
 
 export default function InvitationSection() {
-  const eventDate = "2022-04-21";
+  const eventDate = "2022-05-21";
 
   // difference in days between now and event date
   const daysUntilEvent = Math.floor(
@@ -21,59 +13,57 @@ export default function InvitationSection() {
   );
 
   return (
-    <>
-      <Section backgroundColor="secondary.500">
-        <Center h="100%">
-          <Flex direction="column" pl="1rem" pr="1rem" gap="7rem">
-            <Flex direction="column" gap="1rem">
-              <BaseHeading as="h2" fontSize="38px" fontWeight="700">
-                Confirme sua presença
-              </BaseHeading>
-              <Text
-                fontSize="24px"
-                fontWeight="400"
-                color="text.500"
-                lineHeight="1"
-              >
-                Por favor, reserve um momento e <br />
-                responda ao nosso <br />
-                convite
-              </Text>
-            </Flex>
-            <Flex direction="column" gap="1rem">
-              <Link to="/invitation">
-                <Box w="300px" h="65px" position="relative">
-                  <ButtonShadow />
-                  <ButtonInvitation />
-                </Box>
-              </Link>
-              <Text color="text.500" lineHeight={1.2} textAlign="center">
-                Podemos aceitar confirmações <br /> até{" "}
-                <Text as="span" fontWeight={600}>
-                  15 de Abril 2022
-                </Text>
-              </Text>
-            </Flex>
+    <Section backgroundColor="secondary.500">
+      <Center h="100%">
+        <Flex direction="column" pl="1rem" pr="1rem" gap="7rem">
+          <Flex direction="column" gap="1rem">
+            <BaseHeading as="h2" fontSize="38px" fontWeight="700">
+              Confirme sua presença
+            </BaseHeading>
             <Text
-              fontSize="20px"
+              fontSize="24px"
               fontWeight="400"
               color="text.500"
               lineHeight="1"
-              textAlign="center"
             >
-              Faltam{" "}
-              <Text
-                as="span"
-                fontWeight={600}
-                fontSize="110%"
-                color="black"
-              >{`${daysUntilEvent} dias`}</Text>{" "}
-              para o evento
+              Por favor, reserve um momento e <br />
+              responda ao nosso <br />
+              convite
             </Text>
           </Flex>
-        </Center>
-      </Section>
-    </>
+          <Flex direction="column" gap="1rem">
+            <Link to="/invitation">
+              <Box w="300px" h="65px" position="relative">
+                <ButtonShadow />
+                <ButtonInvitation />
+              </Box>
+            </Link>
+            <Text color="text.500" lineHeight={1.2} textAlign="center">
+              Podemos aceitar confirmações <br /> até{" "}
+              <Text as="span" fontWeight={600}>
+                30 de Maio 2022
+              </Text>
+            </Text>
+          </Flex>
+          <Text
+            fontSize="20px"
+            fontWeight="400"
+            color="text.500"
+            lineHeight="1"
+            textAlign="center"
+          >
+            Faltam{" "}
+            <Text
+              as="span"
+              fontWeight={600}
+              fontSize="110%"
+              color="black"
+            >{`${daysUntilEvent} dias`}</Text>{" "}
+            para o evento
+          </Text>
+        </Flex>
+      </Center>
+    </Section>
   );
 }
 

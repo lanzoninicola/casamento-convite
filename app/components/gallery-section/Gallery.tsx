@@ -1,22 +1,13 @@
-import { AspectRatio, Box, Grid, Image } from "@chakra-ui/react";
-import { useContextSelector } from "use-context-selector";
-import { HistoryContext } from "~/context/context";
+import { AspectRatio, Image } from "@chakra-ui/react";
+
+import HorizontalScroll from "../shared/HorizontalScroll";
 
 export default function Gallery() {
   const photos = Array.from({ length: 31 });
 
   return (
     <>
-      <Grid
-        w="100vw"
-        h="200px"
-        bg="primary.500"
-        gridAutoFlow="column"
-        gridAutoColumns="36%"
-        gap={2}
-        overflowX="auto"
-        overscrollBehaviorX="contain"
-      >
+      <HorizontalScroll gap={2} columnSize="36%">
         {photos.map((_, i) => {
           return (
             <AspectRatio key={i} ratio={1}>
@@ -28,7 +19,7 @@ export default function Gallery() {
             </AspectRatio>
           );
         })}
-      </Grid>
+      </HorizontalScroll>
     </>
   );
 }
