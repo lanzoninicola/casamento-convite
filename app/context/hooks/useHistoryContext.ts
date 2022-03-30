@@ -21,6 +21,12 @@ export default function useHistoryContext(): HistoryContextData {
     (ctx) => ctx?.setFragment
   );
 
+  const hasRead = useContextSelector(HistoryContext, (ctx) => ctx?.hasRead);
+  const setHasRead = useContextSelector(
+    HistoryContext,
+    (ctx) => ctx?.setHasRead
+  );
+
   return {
     isReadingStories,
     setIsReadingStories,
@@ -28,5 +34,7 @@ export default function useHistoryContext(): HistoryContextData {
     setChapter,
     fragment,
     setFragment,
+    hasRead,
+    setHasRead,
   };
 }
