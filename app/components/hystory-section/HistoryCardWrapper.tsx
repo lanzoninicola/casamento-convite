@@ -4,18 +4,19 @@ import NextChapterButton from "./NextChapterButton";
 
 export default function HistoryCardWrapper({
   children,
+  ...props
 }: {
   children: React.ReactNode;
+  [x: string]: any;
 }) {
   return (
     <Flex
       id="history-wrapper"
-      minH="100vh"
       direction="column"
       paddingInline="1rem"
+      {...props}
     >
-      <Center flex={1}>{children}</Center>
-      <NextChapterButton />
+      {children}
     </Flex>
   );
 }

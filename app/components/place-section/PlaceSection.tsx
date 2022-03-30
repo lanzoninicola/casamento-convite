@@ -39,7 +39,7 @@ export default function PlaceSection() {
             <WazeButton address={address} />
           </HStack>
 
-          <MapFrame />
+          {/* <MapFrame /> */}
         </Flex>
       </Center>
     </Section>
