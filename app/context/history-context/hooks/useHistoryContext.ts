@@ -1,5 +1,5 @@
 import { useContextSelector } from "use-context-selector";
-import { HistoryContext, HistoryContextData } from "../context";
+import { HistoryContext, HistoryContextData } from "..";
 
 export default function useHistoryContext(): HistoryContextData {
   const isReadingStories = useContextSelector(

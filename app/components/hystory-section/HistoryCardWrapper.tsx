@@ -1,6 +1,4 @@
-import { Center, Flex } from "@chakra-ui/react";
-
-import NextChapterButton from "./NextChapterButton";
+import { Flex } from "@chakra-ui/react";
 
 export default function HistoryCardWrapper({
   children,

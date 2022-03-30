@@ -1,7 +1,8 @@
 import { Flex, Box, Text, Center, Stack, HStack } from "@chakra-ui/react";
 import { useContextSelector } from "use-context-selector";
-import { HistoryContext } from "~/context/context";
-import useHistoryContext from "~/context/hooks/useHistoryContext";
+import { HistoryContext } from "~/context/history-context";
+
+import useHistoryContext from "~/context/history-context/hooks/useHistoryContext";
 
 import BottomBackgroundPattern from "../shared/BottomBackgroundPattern";
 import HorizontalScroll from "../shared/HorizontalScroll";

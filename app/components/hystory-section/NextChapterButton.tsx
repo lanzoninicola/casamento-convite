@@ -1,5 +1,6 @@
-import { Box, Center, Flex, Image, Text } from "@chakra-ui/react";
-import useHistoryContext from "~/context/hooks/useHistoryContext";
+import { Image } from "@chakra-ui/react";
+import useHistoryContext from "~/context/history-context/hooks/useHistoryContext";
+
 import BaseChapterButton from "./BaseChapterButton";
 import useChapters from "./hooks/useChapters";
 
@@ -34,3 +35,13 @@ export default function NextChapterButton() {
     </BaseChapterButton>
   );
 }
+
+// const SelectContainer = styled(Box)`
+//   &:focus-within {
+//     border-color: black;
+//     box-shadow: 0 0 0 3px #2bbaa4;
+//   }
+//   & select {
+//     font-weight: bold;
+//   }
+// `;

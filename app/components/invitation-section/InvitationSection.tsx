@@ -15,7 +15,7 @@ export default function InvitationSection() {
   return (
     <Section backgroundColor="secondary.500">
       <Center h="100%">
-        <Flex direction="column" pl="1rem" pr="1rem" gap="7rem">
+        <Flex direction="column" pl="2rem" pr="2rem" gap="7rem">
           <Flex direction="column" gap="1rem">
             <BaseHeading as="h2" fontSize="38px" fontWeight="700">
               Confirme sua presença
@@ -26,12 +26,12 @@ export default function InvitationSection() {
               color="text.500"
               lineHeight="1"
             >
-              Por favor, reserve um momento e <br />
-              responda ao nosso <br />
-              convite
+              Por favor, reserve <br />
+              um momento e responda <br />
+              ao nosso convite
             </Text>
           </Flex>
-          <Flex direction="column" gap="1rem">
+          <Flex direction="column" gap="1rem" align="center">
             <Link to="/invitation">
               <Box w="300px" h="65px" position="relative">
                 <ButtonShadow />
