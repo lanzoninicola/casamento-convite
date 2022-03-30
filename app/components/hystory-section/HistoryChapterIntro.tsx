@@ -1,7 +1,9 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
+import BottomBackgroundPattern from "../shared/BottomBackgroundPattern";
 
 import BaseHeading from "../shared/Headings";
 import { TextDecorated } from "../shared/TextDecorated";
+import TopBackgroundPattern from "../shared/TopBackgroundPattern";
 import HistoryCardWrapper from "./HistoryCardWrapper";
 import useStoryIntro from "./hooks/useStoryIntro";
 
@@ -11,6 +13,7 @@ export default function HistoryChapterIntro() {
   return (
     <>
       <HistoryCardWrapper>
+        <TopBackgroundPattern />
         <Flex
           direction="column"
           justify="center"
@@ -39,7 +42,7 @@ export default function HistoryChapterIntro() {
               {textYear}
             </Text>
           </Box>
-          <BaseHeading as="h3" textAlign="center">
+          <BaseHeading as="h3" textAlign="center" fontWeigh="700">
             {title}
           </BaseHeading>
         </Flex>

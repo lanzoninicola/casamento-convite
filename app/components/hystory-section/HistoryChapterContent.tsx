@@ -1,7 +1,8 @@
-import { Box, Flex, Image } from "@chakra-ui/react";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
 
 import BaseHeading from "../shared/Headings";
 import useStoryContent from "./hooks/useStoryContent";
+import Typewriter from "typewriter-effect";
 
 export default function HistoryChapterContent() {
   return (
@@ -14,13 +15,13 @@ export default function HistoryChapterContent() {
         h="100vh"
         direction="column"
         justify="center"
-        gap="6rem"
         pl="1rem"
         pr="1rem"
         position="absolute"
         top={0}
         left={0}
         zIndex={2}
+        transition="all 0.5s ease-in-out"
       >
         <Content />
       </Flex>
@@ -36,9 +37,16 @@ function Content() {
       <BaseHeading as="h3" fontSize="36px" color="black" fontWeight="700">
         {title}
       </BaseHeading>
-      <BaseHeading as="p" fontSize="20px" lineHeight="130%" color="black">
-        {text}
-      </BaseHeading>
+      <Text fontSize="20px" lineHeight="130%" color="black">
+        <Typewriter
+          onInit={(typewriter) => {
+            typewriter.typeString(text).start();
+          }}
+          options={{
+            delay: 90,
+          }}
+        />
+      </Text>
     </Flex>
   );
 }

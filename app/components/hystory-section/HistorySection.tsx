@@ -25,8 +25,8 @@ export default function HistorySection() {
         {fragment === "cover" && <HistoryIntro />}
         {fragment === "intro" && <HistoryChapterIntro />}
         {fragment === "content" && <HistoryChapterContent />}
-        <Box position="absolute" bottom="3rem" zIndex={999}>
-          <Flex direction="row" justify="center" gap="1rem" mb="1rem">
+        <Box position="absolute" bottom="4rem" zIndex={999}>
+          <Flex direction="row" justify="center" gap="1rem" mb="3rem">
             {chapterIdx > 0 && <PrevChapterButton />}
             <NextChapterButton />
           </Flex>
