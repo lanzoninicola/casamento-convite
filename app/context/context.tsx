@@ -12,7 +12,7 @@ export interface HistoryContextData {
   setHasRead: (hasRead: boolean) => void;
 }
 
-export type ChapterFragment = "intro" | "content";
+export type ChapterFragment = "cover" | "intro" | "content";
 
 export const HistoryContext = createContext<HistoryContextData>(
   {} as HistoryContextData
@@ -20,8 +20,8 @@ export const HistoryContext = createContext<HistoryContextData>(
 
 export function HistoryProvider({ children }: { children: React.ReactNode }) {
   const [isReadingStories, setIsReadingStories] = useState(false);
-  const [chapter, setChapter] = useState(-1);
-  const [fragment, setFragment] = useState<ChapterFragment>("intro");
+  const [chapter, setChapter] = useState(0);
+  const [fragment, setFragment] = useState<ChapterFragment>("cover");
   const [hasRead, setHasRead] = useState(false);
 
   return (

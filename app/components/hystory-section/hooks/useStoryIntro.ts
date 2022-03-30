@@ -1,19 +1,22 @@
 import { useContextSelector } from "use-context-selector";
 import { HistoryContext } from "~/context/context";
 
-import { chapters, ChapterIntro } from "../chapters";
+import { ChapterIntro } from "../chapters";
+import useChapters from "./useChapters";
 
 export default function useStoryIntro(): ChapterIntro {
-  const chapter = useContextSelector(HistoryContext, (ctx) => ctx.chapter);
-  const fragment = useContextSelector(HistoryContext, (ctx) => ctx.fragment);
+  const { chapters } = useChapters();
+  const chapterIdx = useContextSelector(HistoryContext, (ctx) => ctx.chapter);
+  const chapterType = chapters[chapterIdx].type;
 
-  if (fragment === "intro") {
-    const intro = chapters[chapter]?.intro;
+  if (chapterType === "intro") {
+    const intro = chapters[chapterIdx] as ChapterIntro;
 
     if (intro) {
       const { textMonth, textYear, title } = intro;
 
       return {
+        type: chapterType,
         textMonth,
         textYear,
         title,
@@ -22,6 +25,7 @@ export default function useStoryIntro(): ChapterIntro {
   }
 
   return {
+    type: "intro",
     textMonth: "",
     textYear: "",
     title: "",

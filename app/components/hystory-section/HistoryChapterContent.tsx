@@ -1,8 +1,7 @@
-import { AspectRatio, Box, Flex, Image } from "@chakra-ui/react";
+import { Box, Flex, Image } from "@chakra-ui/react";
 
 import BaseHeading from "../shared/Headings";
 import useStoryContent from "./hooks/useStoryContent";
-import NextChapterButton from "./NextChapterButton";
 
 export default function HistoryChapterContent() {
   return (
@@ -12,9 +11,9 @@ export default function HistoryChapterContent() {
 
       <Flex
         w="100%"
-        h="100%"
+        h="100vh"
         direction="column"
-        justify="flex-end"
+        justify="center"
         gap="6rem"
         pl="1rem"
         pr="1rem"
@@ -24,7 +23,6 @@ export default function HistoryChapterContent() {
         zIndex={2}
       >
         <Content />
-        <NextChapterButton />
       </Flex>
     </>
   );

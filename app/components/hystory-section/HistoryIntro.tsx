@@ -2,18 +2,17 @@ import { Center, Flex } from "@chakra-ui/react";
 
 import EllipseDecorator from "../shared/EllipseDecorator";
 import BaseHeading from "../shared/Headings";
-import {
-  HeadingWithLineDecoration,
-  TextWithLineDecoration,
-} from "../shared/HeadingWithLineDecoration";
 import { TextDecorated } from "../shared/TextDecorated";
 import HistoryCardWrapper from "./HistoryCardWrapper";
 
 export default function HistoryIntro() {
   return (
     <>
-      <HistoryCardWrapper>
+      <HistoryCardWrapper pt="2rem">
         <Flex direction="column" gap="3rem">
+          <Center>
+            <TextDecorated>Nossa Historia</TextDecorated>
+          </Center>
           <Flex direction="column" gap="2rem">
             <EllipseDecorator bg="primary.500" diameter="50px" />
             <EllipseDecorator bg="secondary.500" diameter="300px">
@@ -36,11 +35,8 @@ export default function HistoryIntro() {
                 AMOR
               </BaseHeading>
             </EllipseDecorator>
-            <EllipseDecorator bg="primary.500" diameter="50px" />
+            {/* <EllipseDecorator bg="primary.500" diameter="50px" /> */}
           </Flex>
-          <Center>
-            <TextDecorated>Nossa Historia</TextDecorated>
-          </Center>
         </Flex>
       </HistoryCardWrapper>
     </>

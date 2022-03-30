@@ -1,92 +1,36 @@
 import { Box, Center, Flex, Image, Text } from "@chakra-ui/react";
 import useHistoryContext from "~/context/hooks/useHistoryContext";
+import BaseChapterButton from "./BaseChapterButton";
 import useChapters from "./hooks/useChapters";
 
 export default function NextChapterButton() {
   const historyCtx = useHistoryContext();
   const { chaptersQuantity } = useChapters();
 
-  const {
-    isReadingStories,
-    chapter,
-    fragment,
-
-    setIsReadingStories,
-    setChapter,
-    setFragment,
-  } = historyCtx;
-
-  console.table({
-    isReadingStories,
-    chapter,
-    fragment,
-    chaptersQuantity,
-  });
+  const { chapter, setChapter } = historyCtx;
 
   function handleClick() {
     if (!historyCtx) {
       return;
     }
 
-    if (!isReadingStories) {
-      startReading();
-      nextChapter();
-    }
-
-    if (isReadingStories && chapter >= 0 && fragment === "intro") {
-      readingContent();
-    }
-
-    if (isReadingStories && chapter >= 0 && fragment === "content") {
-      nextChapter();
-    }
-
-    if (
-      isReadingStories &&
-      fragment === "content" &&
-      chapter >= chaptersQuantity - 1
-    ) {
-      endReading();
-    }
-  }
-
-  function startReading() {
-    setIsReadingStories(true);
-  }
-
-  function readingContent() {
-    setFragment("content");
+    nextChapter();
   }
 
   function nextChapter() {
-    setChapter(chapter + 1);
-    setFragment("intro");
-  }
+    const nextChapter = chapter + 1;
 
-  function endReading() {
-    setIsReadingStories(false);
+    if (nextChapter > chaptersQuantity - 1) {
+      setChapter(0);
+      return;
+    }
 
-    setChapter(-1);
-    setFragment("intro");
+    setChapter(nextChapter);
   }
 
   return (
-    <Flex w="100%" justify="flex-end" onClick={handleClick} pb="4rem">
-      <Box
-        w="max-content"
-        h="40px"
-        backgroundColor="primary.500"
-        borderRadius="5px"
-        pl="1rem"
-        pr="1rem"
-      >
-        <Center h="100%" gap="1rem">
-          <Text fontSize="16px" textTransform="uppercase">
-            CLIQUE AQUI
-          </Text>
-          <Image src="/images/arrow-right.svg" />
-        </Center>
-      </Box>
-    </Flex>
+    <BaseChapterButton onClick={handleClick}>
+      <Image src="/images/arrow-right.svg" />
+    </BaseChapterButton>
   );
 }
