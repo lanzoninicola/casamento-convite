@@ -7,6 +7,7 @@ import InvitationSection from "~/components/index-page/invitation-section/Invita
 import PlaceSection from "~/components/index-page/place-section/PlaceSection";
 import FullPageVerticallyScroll from "~/components/shared/FullPageVerticallyScroll";
 import { HistoryProvider } from "~/context/history-context";
+import { PhotoGalleryProvider } from "~/context/photo-gallery-context";
 
 export const meta: MetaFunction = () => {
   return {
@@ -22,7 +23,9 @@ export default function Index() {
         <FullPageVerticallyScroll>
           <HeroSection />
           <HistorySection />
-          {/* <Gallery /> */}
+          <PhotoGalleryProvider>
+            <Gallery />
+          </PhotoGalleryProvider>
           <PlaceSection />
           <InvitationSection />
         </FullPageVerticallyScroll>
