@@ -13,6 +13,8 @@ export const meta: MetaFunction = () => {
   return {
     title: "Gustavo & Kelly",
     description: "Convite de casamento",
+    "og:title": "Gustavo & Kelly",
+    "og:description": "Convite de casamento",
     "og:image": "/images/gustavo-kelly.png",
   };
 };
