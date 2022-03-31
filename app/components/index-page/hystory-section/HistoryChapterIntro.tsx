@@ -40,7 +40,7 @@ export default function HistoryChapterIntro() {
               {textYear}
             </Text>
           </Box>
-          <BaseHeading as="h3" textAlign="center" fontWeigh="700">
+          <BaseHeading as="h3" textAlign="center" fontWeight="700">
             {title}
           </BaseHeading>
         </Flex>

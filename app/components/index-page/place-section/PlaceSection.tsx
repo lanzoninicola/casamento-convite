@@ -17,7 +17,7 @@ export default function PlaceSection() {
     "Chacara Zanin, Linha São Braz São, Estr. Mun. Lisando São Braz, Pato Branco - PR, 85504-000";
 
   return (
-    <Section>
+    <Section id="lunch-place">
       <Center h="100%">
         <Flex direction="column" gap="1rem">
           <BaseHeading as="h2" fontSize="38px" fontWeight="700" mb=".5rem">

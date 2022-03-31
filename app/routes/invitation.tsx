@@ -5,7 +5,6 @@ import {
   useActionData,
   useLoaderData,
   useTransition,
-  json,
 } from "remix";
 import InvitationFormSection from "~/components/invitation-page/invitation-section";
 import Section from "~/components/shared/Section";

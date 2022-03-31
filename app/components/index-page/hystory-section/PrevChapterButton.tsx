@@ -1,32 +1,13 @@
 import { Image } from "@chakra-ui/react";
-import { useContextSelector } from "use-context-selector";
-import { HistoryContext } from "~/context/history-context";
-
-import useHistoryContext from "~/context/history-context/hooks/useHistoryContext";
 
 import BaseChapterButton from "./BaseChapterButton";
+import useChaptersNavigation from "./hooks/useChaptersNavigation";
 
 export default function PrevChapterButton() {
-  const historyCtx = useHistoryContext();
-
-  const chapter = useContextSelector(HistoryContext, (ctx) => ctx.chapter);
-  const setChapter = useContextSelector(
-    HistoryContext,
-    (ctx) => ctx.setChapter
-  );
+  const { prevChapter } = useChaptersNavigation();
 
   function handleClick() {
-    if (!historyCtx) {
-      return;
-    }
-
     prevChapter();
-  }
-
-  function prevChapter() {
-    const prevChapter = chapter - 1;
-
-    setChapter(prevChapter);
   }
 
   return (
