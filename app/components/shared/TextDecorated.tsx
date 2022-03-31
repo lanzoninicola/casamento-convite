@@ -1,6 +1,12 @@
 import { TextWithLineDecoration } from "./HeadingWithLineDecoration";
 
-export function TextDecorated({ children }: { children: React.ReactNode }) {
+export function TextDecorated({
+  children,
+  ...props
+}: {
+  children: React.ReactNode;
+  [key: string]: any;
+}) {
   return (
     <TextWithLineDecoration
       fontSize="16px"
