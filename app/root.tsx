@@ -14,12 +14,15 @@ import {
 
 import { ClientStyleContext, ServerStyleContext } from "./chackra-ui/context";
 import { theme } from "./chackra-ui/theme/theme";
+import { InvitationFormProvider } from "./context/invitation-context";
 
 export default function App() {
   return (
     <Document>
       <ChakraProvider resetCSS theme={theme}>
-        <Outlet />
+        <InvitationFormProvider>
+          <Outlet />
+        </InvitationFormProvider>
       </ChakraProvider>
     </Document>
   );
