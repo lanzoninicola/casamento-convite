@@ -11,8 +11,9 @@ import { PhotoGalleryProvider } from "~/context/photo-gallery-context";
 
 export const meta: MetaFunction = () => {
   return {
-    title: "Gustavo & Kelly - Convite",
-    description: "Convite para casamento de Gustavo e Kelly",
+    title: "Gustavo & Kelly",
+    description: "Convite de casamento",
+    "og:image": "/images/gustavo-kelly.png",
   };
 };
 

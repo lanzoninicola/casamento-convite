@@ -2,13 +2,13 @@ import { Center } from "@chakra-ui/react";
 import {
   ActionFunction,
   LoaderFunction,
+  MetaFunction,
   redirect,
   useActionData,
   useLoaderData,
   useTransition,
 } from "remix";
 import InvitationFormSection from "~/components/invitation-page/invitation-section";
-import { InvitationFormProvider } from "~/context/invitation-context";
 import { firestoreService } from "~/lib/firebase/db.server";
 import { FirestoreDocumentId } from "~/lib/firebase/firestore.interfaces";
 import { InvitationFormResponse } from "~/modules/invitations/models/invitation.model";
@@ -16,6 +16,13 @@ import InvitationService from "~/modules/invitations/services/invitation.service
 import InvitationFormDeserializer from "~/modules/invitations/services/InvitationFormDeserializer";
 import SessionService from "~/modules/sessions/services/SessionService";
 import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";
+
+export const meta: MetaFunction = () => {
+  return {
+    title: "Gustavo & Kelly",
+    description: "Convite de casamento",
+  };
+};
 
 export interface LoaderData {
   ok: boolean;
