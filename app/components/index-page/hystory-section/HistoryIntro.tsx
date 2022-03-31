@@ -15,7 +15,7 @@ export default function HistoryIntro() {
           </Center>
           <Flex direction="column" gap="2rem">
             <EllipseDecorator bg="primary.500" diameter="50px" />
-            <EllipseDecorator bg="secondary.500" diameter="300px">
+            <EllipseDecorator bg="secondary.500" diameter="270px">
               <BaseHeading
                 as="h2"
                 fontSize="36px"

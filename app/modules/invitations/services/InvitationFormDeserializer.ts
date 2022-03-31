@@ -28,9 +28,12 @@ export default class InvitationFormDeserializer {
     if (formWillAttend === null) {
       return false;
     }
-    const willAttend = Boolean(formWillAttend);
 
-    return willAttend;
+    if (formWillAttend === "true") {
+      return true;
+    }
+
+    return false;
   }
 
   private _guests(formGuests: FormDataEntryValue | null): number {

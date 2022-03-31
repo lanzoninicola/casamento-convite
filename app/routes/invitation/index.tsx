@@ -51,7 +51,7 @@ export let action: ActionFunction = async ({
   const formGuests = formData.get("guests");
   const formMealPreference = formData.get("mealPreference");
 
-  if (!formGuestName || !formWillAttend || !formGuests || !formMealPreference) {
+  if (!formGuestName || !formWillAttend) {
     return {
       ok: false,
       error: "Alguns campos não foram preenchidos",

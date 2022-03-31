@@ -4,6 +4,16 @@ import useWillAttendFormData from "~/context/invitation-context/hooks/useWillAtt
 export default function FormSelectWillAttend() {
   const { setWillAttend } = useWillAttendFormData();
 
+  function onWillAttendChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    if (e.target.value === "true") {
+      setWillAttend(true);
+    }
+
+    if (e.target.value === "false") {
+      setWillAttend(false);
+    }
+  }
+
   return (
     <FormControl isRequired variant="floating">
       <Select
@@ -14,7 +24,8 @@ export default function FormSelectWillAttend() {
         title="Confirma sua presença"
         data-title="Confirma sua presença"
         size="lg"
-        onChange={(e) => setWillAttend(Boolean(e.target.value))}
+        onChange={onWillAttendChange}
+        minW="300px"
       >
         <option value="true">Eu estarei lá</option>
         <option value="false">Desculpe, eu não posso ir</option>

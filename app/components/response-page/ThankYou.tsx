@@ -34,7 +34,7 @@ export default function ThankYou() {
         )}
       </Flex>
       <Flex direction="column" gap=".25rem" justify="center" align="center">
-        <Text>{certStatement}</Text>
+        <Text textAlign="center">{certStatement}</Text>
         <BaseHeading
           fontSize="24px"
           fontWeight="700"
@@ -44,14 +44,20 @@ export default function ThankYou() {
           {certRole}
         </BaseHeading>
       </Flex>
-      <Flex direction="column" gap="1rem" justify="center" align="center">
+      <Flex
+        direction="column"
+        gap="1rem"
+        justify="center"
+        align="center"
+        paddingInline="1rem"
+      >
         <Text textAlign="center">
-          Somos muito gratos por estarmos na companhia de{" "}
+          Será um prazer estar na companhia de{" "}
           <Text as="span" fontWeight={700}>
             {guests > 1 ? "vocês" : "você"}
           </Text>
           {", "}
-          juntos com amigos e familiares no dia mais feliz de nossa nova vida.
+          no dia mais feliz de nossas nova vidas.
         </Text>
       </Flex>
       <Flex direction="column" gap="1rem" justify="center" align="center">

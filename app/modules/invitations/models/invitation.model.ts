@@ -1,8 +1,8 @@
 export interface InvitationModel {
   guestName: string;
   willAttend: boolean;
-  guests: number;
-  mealPreference: string;
+  guests?: number;
+  mealPreference?: string;
 }
 
 export interface InvitationFormResponse {

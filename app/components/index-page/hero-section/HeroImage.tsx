@@ -1,4 +1,5 @@
 import { Center, Flex, Image } from "@chakra-ui/react";
+import useViewportInfo from "~/components/shared/hooks/UseViewPortInfo";
 
 export default function HeroImage() {
   return (
@@ -12,7 +13,7 @@ export default function HeroImage() {
       left="0"
     >
       <Center>
-        <Image src="/images/hero-bg.png" alt="Hero background" />
+        <Image src="/images/hero-bg.png" alt="Hero background" h="70vh" />
       </Center>
     </Flex>
   );

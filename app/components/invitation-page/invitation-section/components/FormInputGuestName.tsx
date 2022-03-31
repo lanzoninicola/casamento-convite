@@ -12,6 +12,7 @@ export default function FormInputGuestName() {
         size="lg"
         _placeholder={{ color: "text.500" }}
         onChange={(e) => setGuestName(e.target.value)}
+        minW="300px"
       />
       {/* <FormLabel htmlFor="name">Teu nome</FormLabel> */}
     </FormControl>

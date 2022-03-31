@@ -60,7 +60,7 @@ function PhotoGallery({
     <HorizontalScroll
       gap={2}
       columnSize="36%"
-      h="300px"
+      h="270px"
       bg="text.500"
       paddingBlock="0.5rem"
     >
