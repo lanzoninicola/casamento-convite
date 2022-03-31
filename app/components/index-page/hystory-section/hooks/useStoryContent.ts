@@ -1,16 +1,19 @@
 import { useContextSelector } from "use-context-selector";
 import { HistoryContext } from "~/context/history-context";
+import { ChapterContent } from "../chapters";
 
-import { ChapterContent } from "../../../hystory-section/chapters";
 import useChapters from "./useChapters";
 
 export default function useStoryContent(): ChapterContent {
   const { chapters } = useChapters();
-  const chapterIdx = useContextSelector(HistoryContext, (ctx) => ctx.chapter);
-  const chapterType = chapters[chapterIdx].type;
+  const currentChapter = useContextSelector(
+    HistoryContext,
+    (ctx) => ctx.currentChapter
+  );
+  const chapterType = chapters[currentChapter].type;
 
   if (chapterType === "content") {
-    const content = chapters[chapterIdx] as ChapterContent;
+    const content = chapters[currentChapter] as ChapterContent;
 
     if (content) {
       const { title, text, image } = content;

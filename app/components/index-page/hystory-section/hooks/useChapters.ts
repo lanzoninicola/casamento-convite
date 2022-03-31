@@ -1,13 +1,13 @@
 import { Chapter, chapters } from "../chapters";
 
 export default function useChapters(): {
-  chaptersQuantity: number;
+  chaptersLength: number;
   chapters: Chapter[];
 } {
-  const chaptersQuantity = chapters.length;
+  const chaptersLength = chapters.length;
 
   return {
-    chaptersQuantity,
+    chaptersLength,
     chapters,
   };
 }

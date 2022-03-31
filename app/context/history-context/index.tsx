@@ -3,11 +3,11 @@ import { createContext } from "use-context-selector";
 
 export interface HistoryContextData {
   isReadingStories: boolean;
-  chapter: number;
+  currentChapter: number;
   fragment: ChapterFragment;
   hasRead: boolean;
   setIsReadingStories: (isReadingStories: boolean) => void;
-  setChapter: (chapter: number) => void;
+  setCurrentChapter: (currentChapter: number) => void;
   setFragment: (fragment: ChapterFragment) => void;
   setHasRead: (hasRead: boolean) => void;
 }
@@ -20,7 +20,7 @@ export const HistoryContext = createContext<HistoryContextData>(
 
 export function HistoryProvider({ children }: { children: React.ReactNode }) {
   const [isReadingStories, setIsReadingStories] = useState(false);
-  const [chapter, setChapter] = useState(0);
+  const [currentChapter, setCurrentChapter] = useState(0);
   const [fragment, setFragment] = useState<ChapterFragment>("cover");
   const [hasRead, setHasRead] = useState(false);
 
@@ -28,11 +28,11 @@ export function HistoryProvider({ children }: { children: React.ReactNode }) {
     <HistoryContext.Provider
       value={{
         isReadingStories,
-        chapter,
+        currentChapter,
         fragment,
         hasRead,
         setIsReadingStories,
-        setChapter,
+        setCurrentChapter,
         setFragment,
         setHasRead,
       }}

@@ -10,10 +10,13 @@ export default function useHistoryContext(): HistoryContextData {
     HistoryContext,
     (ctx) => ctx?.setIsReadingStories
   );
-  const chapter = useContextSelector(HistoryContext, (ctx) => ctx?.chapter);
-  const setChapter = useContextSelector(
+  const currentChapter = useContextSelector(
     HistoryContext,
-    (ctx) => ctx?.setChapter
+    (ctx) => ctx?.currentChapter
+  );
+  const setCurrentChapter = useContextSelector(
+    HistoryContext,
+    (ctx) => ctx?.setCurrentChapter
   );
   const fragment = useContextSelector(HistoryContext, (ctx) => ctx?.fragment);
   const setFragment = useContextSelector(
@@ -30,8 +33,8 @@ export default function useHistoryContext(): HistoryContextData {
   return {
     isReadingStories,
     setIsReadingStories,
-    chapter,
-    setChapter,
+    currentChapter,
+    setCurrentChapter,
     fragment,
     setFragment,
     hasRead,

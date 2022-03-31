@@ -6,11 +6,14 @@ import useChapters from "./useChapters";
 
 export default function useStoryIntro(): ChapterIntro {
   const { chapters } = useChapters();
-  const chapterIdx = useContextSelector(HistoryContext, (ctx) => ctx.chapter);
-  const chapterType = chapters[chapterIdx].type;
+  const currentChapter = useContextSelector(
+    HistoryContext,
+    (ctx) => ctx.currentChapter
+  );
+  const chapterType = chapters[currentChapter].type;
 
   if (chapterType === "intro") {
-    const intro = chapters[chapterIdx] as ChapterIntro;
+    const intro = chapters[currentChapter] as ChapterIntro;
 
     if (intro) {
       const { textMonth, textYear, title } = intro;
