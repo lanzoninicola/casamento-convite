@@ -94,8 +94,6 @@ export default function Invitation() {
     ? "error"
     : "idle";
 
-  console.log("loaderData", loaderData);
-
   const uid = loaderData.ok ? loaderData.payload : "";
 
   return (
