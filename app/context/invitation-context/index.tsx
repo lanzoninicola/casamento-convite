@@ -6,10 +6,12 @@ export interface InvitationFormContextData {
   willAttend: boolean;
   guests: number;
   mealPreference: string;
+  successResponse: boolean;
   setGuestName: (guestName: string) => void;
   setWillAttend: (willAttend: boolean) => void;
   setGuests: (guests: number) => void;
   setMealPreference: (mealPreference: string) => void;
+  setSuccessResponse: (successResponse: boolean) => void;
 }
 
 export const InvitationFormContextData =
@@ -24,6 +26,7 @@ export function InvitationFormProvider({
   const [willAttend, setWillAttend] = useState(false);
   const [guests, setGuests] = useState(0);
   const [mealPreference, setMealPreference] = useState("");
+  const [successResponse, setSuccessResponse] = useState(false);
 
   return (
     <InvitationFormContextData.Provider
@@ -32,10 +35,12 @@ export function InvitationFormProvider({
         willAttend,
         guests,
         mealPreference,
+        successResponse,
         setGuestName,
         setWillAttend,
         setGuests,
         setMealPreference,
+        setSuccessResponse,
       }}
     >
       {children}
