@@ -1,7 +1,7 @@
 import { useContextSelector } from "use-context-selector";
 import { InvitationFormContextData } from "..";
 
-export default function useGuestsFormData() {
+export default function useGuestNameFormData() {
   const guestName = useContextSelector(
     InvitationFormContextData,
     (ctx) => ctx?.guestName

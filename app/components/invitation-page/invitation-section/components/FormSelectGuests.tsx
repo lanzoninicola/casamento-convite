@@ -1,6 +1,9 @@
 import { FormControl, Select } from "@chakra-ui/react";
+import useGuestsFormData from "~/context/invitation-context/hooks/useGuestsFormData";
 
 export default function FormSelectGuests() {
+  const { setGuests } = useGuestsFormData();
+
   return (
     <FormControl isRequired>
       <Select
@@ -11,6 +14,7 @@ export default function FormSelectGuests() {
         title="Número de convidados, incluindo você"
         data-title="Número de convidados, incluindo você"
         size="lg"
+        onChange={(e) => setGuests(parseInt(e.target.value, 10))}
       >
         <option value="1">1</option>
         <option value="2">2</option>
