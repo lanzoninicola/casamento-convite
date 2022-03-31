@@ -11,8 +11,22 @@ export interface FirestoreCollectionResponse {
 
 export interface FirestoreDocumentResponse {
   ok: boolean;
-  payload?: FirestoreDocument | FirestoreDocumentId | null;
+  payload?: FirestoreDocument | null;
   error?: any;
+}
+
+export interface FirestoreAdditionSuccessResponse {
+  ok: true;
+  payload: FirestoreDocumentId;
+}
+
+export interface FirestoreSuccessResponse {
+  ok: true;
+}
+
+export interface FirestoreErrorResponse {
+  ok: false;
+  error: any;
 }
 
 export interface FirestoreCRUDService {
@@ -24,15 +38,15 @@ export interface FirestoreCRUDService {
   add(
     collectionName: string,
     data: { [key: string]: any }
-  ): Promise<FirestoreDocumentResponse>;
+  ): Promise<FirestoreAdditionSuccessResponse | FirestoreErrorResponse>;
   update(
     collectionName: string,
     documentId: string,
     updatedData: any
-  ): Promise<FirestoreDocumentResponse>;
+  ): Promise<FirestoreSuccessResponse | FirestoreErrorResponse>;
   delete(
     collectionName: string,
     documentId: string
-  ): Promise<FirestoreDocumentResponse>;
+  ): Promise<FirestoreSuccessResponse | FirestoreErrorResponse>;
   deleteAll(collectionName: string): Promise<FirestoreDocumentResponse>;
 }
