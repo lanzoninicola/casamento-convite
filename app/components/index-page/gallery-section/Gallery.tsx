@@ -1,6 +1,6 @@
 import { AspectRatio, Image } from "@chakra-ui/react";
 
-import HorizontalScroll from "../shared/HorizontalScroll";
+import HorizontalScroll from "../../shared/HorizontalScroll";
 
 export default function Gallery() {
   const photos = Array.from({ length: 31 });

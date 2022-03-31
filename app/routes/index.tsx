@@ -1,9 +1,10 @@
 import { MetaFunction } from "remix";
-import Gallery from "~/components/gallery-section/Gallery";
-import HeroSection from "~/components/hero-section/HeroSection";
-import HistorySection from "~/components/hystory-section/HistorySection";
-import InvitationSection from "~/components/invitation-section/InvitationSection";
-import PlaceSection from "~/components/place-section/PlaceSection";
+import Gallery from "~/components/index-page/gallery-section/Gallery";
+import HeroSection from "~/components/index-page/hero-section/HeroSection";
+import HistorySection from "~/components/index-page/hystory-section/HistorySection";
+
+import InvitationSection from "~/components/index-page/invitation-section/InvitationSection";
+import PlaceSection from "~/components/index-page/place-section/PlaceSection";
 import FullPageVerticallyScroll from "~/components/shared/FullPageVerticallyScroll";
 import { HistoryProvider } from "~/context/history-context";
 

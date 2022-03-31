@@ -1,8 +1,8 @@
 import { Box, Center, Flex, Text } from "@chakra-ui/react";
 import { Link } from "remix";
 
-import BaseHeading from "../shared/Headings";
-import Section from "../shared/Section";
+import BaseHeading from "../../shared/Headings";
+import Section from "../../shared/Section";
 
 export default function InvitationSection() {
   const eventDate = "2022-05-21";

@@ -1,7 +1,7 @@
 import { useContextSelector } from "use-context-selector";
 import { HistoryContext } from "~/context/history-context";
 
-import { ChapterContent } from "../chapters";
+import { ChapterContent } from "../../../hystory-section/chapters";
 import useChapters from "./useChapters";
 
 export default function useStoryContent(): ChapterContent {

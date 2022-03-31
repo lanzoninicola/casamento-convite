@@ -5,11 +5,11 @@ export default function FormInputGuestName() {
     <FormControl isRequired variant="floating">
       <Input
         name="guestName"
-        placeholder=" "
-        size="md"
+        placeholder="Teu nome"
+        size="lg"
         _placeholder={{ color: "text.500" }}
       />
-      <FormLabel htmlFor="name">Teu nome</FormLabel>
+      {/* <FormLabel htmlFor="name">Teu nome</FormLabel> */}
     </FormControl>
   );
 }

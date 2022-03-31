@@ -4,11 +4,11 @@ import FirestoreService from "./firestore.service";
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: "casamento-gustavo.firebaseapp.com",
-  projectId: "casamento-gustavo",
-  storageBucket: "casamento-gustavo.appspot.com",
-  messagingSenderId: "388143158433",
-  appId: "1:388143158433:web:9b5f41ce85df18d11a0ce0",
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
 };
 
 // Initialize Firebase

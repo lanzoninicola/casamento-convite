@@ -1,36 +1,58 @@
 import { Box } from "@chakra-ui/react";
-
-import { collection, addDoc } from "firebase/firestore";
-
-import { ActionFunction, useActionData, useTransition } from "remix";
+import {
+  ActionFunction,
+  LoaderFunction,
+  useActionData,
+  useLoaderData,
+  useTransition,
+  json,
+} from "remix";
 import InvitationFormSection from "~/components/invitation-page/invitation-section";
 import Section from "~/components/shared/Section";
 import { InvitationFormProvider } from "~/context/invitation-context";
-
-import InvitationService from "~/modules/invitations/services/InvitationService";
-
 import { firestoreService } from "~/lib/firebase/db.server";
-import {
-  InvitationFormResponse,
-  InvitationModel,
-} from "~/modules/invitations/models/invitation.model";
+import { InvitationFormResponse } from "~/modules/invitations/models/invitation.model";
 import InvitationFormDeserializer from "~/modules/invitations/services/InvitationFormDeserializer";
-import { useEffect, useRef } from "react";
+import InvitationService from "~/modules/invitations/services/InvitationService";
 import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";
+import SessionService from "~/modules/sessions/services/SessionService";
+import { FirestoreDocumentId } from "~/lib/firebase/firestore.interfaces";
+
+export interface LoaderData {
+  ok: boolean;
+  payload: FirestoreDocumentId;
+}
+
+export const loader: LoaderFunction = async () => {
+  const session = new SessionService(firestoreService);
+
+  const sessionResponse = await session.add({ date: new Date() });
+  return sessionResponse;
+};
 
 export let action: ActionFunction = async ({
   request,
 }): Promise<InvitationFormResponse> => {
-  const invitation = new InvitationService(firestoreService);
-
   const formData = await request.formData();
+  const formUID = formData.get("uid") as string;
+
+  console.log("formUID", formUID);
+
+  const session = new SessionService(firestoreService);
+  const sessionResponse = await session.getById(formUID);
+
+  if (sessionResponse.ok === false) {
+    return { ok: false, error: "Oops! Ocorreu um erro" };
+  }
+
+  await session.delete(formUID);
+
+  const invitation = new InvitationService(firestoreService);
 
   const formGuestName = formData.get("guestName");
   const formWillAttend = formData.get("willAttend");
   const formGuests = formData.get("guests");
   const formMealPreference = formData.get("mealPreference");
-
-  // Nicola true [ '4' ] carne
 
   if (!formGuestName || !formWillAttend || !formGuests || !formMealPreference) {
     return {
@@ -60,6 +82,7 @@ export let action: ActionFunction = async ({
 };
 
 export default function Invitation() {
+  const loaderData: LoaderData = useLoaderData();
   const actionData = useActionData();
   const transition = useTransition();
   const state: RemixFormState = transition.submission
@@ -70,6 +93,8 @@ export default function Invitation() {
     ? "error"
     : "idle";
 
+  const uid = loaderData.ok ? loaderData.payload : "";
+
   return (
     <>
       <InvitationFormProvider>
@@ -77,8 +102,13 @@ export default function Invitation() {
           <Box>
             <p>box for an image</p>
           </Box>
+
+          <InvitationFormSection
+            actionData={actionData}
+            formState={state}
+            uid={uid}
+          />
         </Section>
-        <InvitationFormSection actionData={actionData} formState={state} />
       </InvitationFormProvider>
     </>
   );

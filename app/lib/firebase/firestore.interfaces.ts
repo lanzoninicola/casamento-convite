@@ -1,5 +1,5 @@
-type FirestoreDocumentId = string;
-type FirestoreDocument = {};
+export type FirestoreDocumentId = string;
+export type FirestoreDocument = {};
 
 export interface FirestoreCollectionResponse {
   ok: boolean;
@@ -25,8 +25,14 @@ export interface FirestoreCRUDService {
     collectionName: string,
     data: { [key: string]: any }
   ): Promise<FirestoreDocumentResponse>;
+  update(
+    collectionName: string,
+    documentId: string,
+    updatedData: any
+  ): Promise<FirestoreDocumentResponse>;
   delete(
     collectionName: string,
     documentId: string
   ): Promise<FirestoreDocumentResponse>;
+  deleteAll(collectionName: string): Promise<FirestoreDocumentResponse>;
 }

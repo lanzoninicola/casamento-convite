@@ -1,5 +1,8 @@
 import { FirestoreCRUDService } from "~/lib/firebase/firestore.interfaces";
-import { InvitationModel } from "../models/invitation.model";
+import {
+  InvitationModel,
+  InvitationModelOnUpdate,
+} from "../models/invitation.model";
 
 const FIRESTORE_COLLECTION_NAME = "invitations";
 
@@ -27,6 +30,16 @@ export default class Invitation {
     const response = await this.firestoreService.getById(
       this.collectionName,
       invitationId
+    );
+
+    return response;
+  }
+
+  async update(invitationId: string, invitation: InvitationModelOnUpdate) {
+    const response = await this.firestoreService.update(
+      this.collectionName,
+      invitationId,
+      invitation
     );
 
     return response;

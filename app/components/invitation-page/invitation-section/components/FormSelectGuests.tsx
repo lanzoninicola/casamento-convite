@@ -10,6 +10,7 @@ export default function FormSelectGuests() {
         aria-label="Número de convidados, incluindo você"
         title="Número de convidados, incluindo você"
         data-title="Número de convidados, incluindo você"
+        size="lg"
       >
         <option value="1">1</option>
         <option value="2">2</option>

@@ -9,8 +9,8 @@ import {
 } from "@chakra-ui/react";
 import { SiGooglemaps, SiWaze } from "react-icons/si";
 
-import BaseHeading from "../shared/Headings";
-import Section from "../shared/Section";
+import BaseHeading from "../../shared/Headings";
+import Section from "../../shared/Section";
 
 export default function PlaceSection() {
   const address =

@@ -6,6 +6,7 @@ import {
   getDocs,
   getDoc,
   deleteDoc,
+  updateDoc,
 } from "firebase/firestore";
 import {
   FirestoreCollectionResponse,
@@ -69,12 +70,55 @@ export default class FirestoreService implements FirestoreCRUDService {
     }
   }
 
+  async update(
+    collectionName: string,
+    documentId: string,
+    updatedData: any
+  ): Promise<FirestoreDocumentResponse> {
+    try {
+      const docRef = doc(this.db, collectionName, documentId);
+
+      await updateDoc(docRef, {
+        ...updatedData,
+      });
+
+      return {
+        ok: true,
+      };
+    } catch (e) {
+      return {
+        ok: false,
+        payload: null,
+        error: e,
+      };
+    }
+  }
+
   async delete(
     collectionName: string,
     documentId: string
   ): Promise<FirestoreDocumentResponse> {
     try {
       await deleteDoc(doc(this.db, collectionName, documentId));
+      return {
+        ok: true,
+      };
+    } catch (e) {
+      return {
+        ok: false,
+        error: e,
+      };
+    }
+  }
+
+  async deleteAll(collectionName: string): Promise<FirestoreDocumentResponse> {
+    try {
+      const querySnapshot = await getDocs(collection(this.db, collectionName));
+
+      querySnapshot.forEach(async (document) => {
+        await deleteDoc(doc(this.db, collectionName, document.id));
+      });
+
       return {
         ok: true,
       };

@@ -1,8 +1,8 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 
-import BaseHeading from "../shared/Headings";
-import useStoryContent from "./hooks/useStoryContent";
 import Typewriter from "typewriter-effect";
+import BaseHeading from "~/components/shared/Headings";
+import useStoryContent from "./hooks/useStoryContent";
 
 export default function HistoryChapterContent() {
   return (

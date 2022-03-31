@@ -9,6 +9,7 @@ export default function FormSelectMealPreference() {
         color="text.500"
         aria-label="Preferençia comida"
         title="Preferençia comida"
+        size="lg"
       >
         <option value="carne">Carne</option>
         <option value="vegetariano">Vegetariano</option>

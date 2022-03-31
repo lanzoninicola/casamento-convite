@@ -10,3 +10,10 @@ export interface InvitationFormResponse {
   payload?: any;
   error?: any;
 }
+
+export interface InvitationModelOnUpdate {
+  guestName?: string;
+  willAttend?: boolean;
+  guests?: number;
+  mealPreference?: string;
+}

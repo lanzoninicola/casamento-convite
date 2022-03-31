@@ -1,9 +1,7 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
-import BottomBackgroundPattern from "../shared/BottomBackgroundPattern";
-
-import BaseHeading from "../shared/Headings";
-import { TextDecorated } from "../shared/TextDecorated";
-import TopBackgroundPattern from "../shared/TopBackgroundPattern";
+import BaseHeading from "~/components/shared/Headings";
+import { TextDecorated } from "~/components/shared/TextDecorated";
+import TopBackgroundPattern from "~/components/shared/TopBackgroundPattern";
 import HistoryCardWrapper from "./HistoryCardWrapper";
 import useStoryIntro from "./hooks/useStoryIntro";
 

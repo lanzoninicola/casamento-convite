@@ -1,16 +1,13 @@
 import { Flex, Box, Text, Center, Stack, HStack } from "@chakra-ui/react";
 import { useContextSelector } from "use-context-selector";
+import Section from "~/components/shared/Section";
 import { HistoryContext } from "~/context/history-context";
 
-import useHistoryContext from "~/context/history-context/hooks/useHistoryContext";
-
-import BottomBackgroundPattern from "../shared/BottomBackgroundPattern";
-import HorizontalScroll from "../shared/HorizontalScroll";
-import Section from "../shared/Section";
 import HistoryChapterContent from "./HistoryChapterContent";
 import HistoryChapterIntro from "./HistoryChapterIntro";
 import HistoryIntro from "./HistoryIntro";
 import useChapters from "./hooks/useChapters";
+
 import NextChapterButton from "./NextChapterButton";
 import PrevChapterButton from "./PrevChapterButton";
 

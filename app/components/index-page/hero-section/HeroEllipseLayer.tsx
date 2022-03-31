@@ -1,5 +1,5 @@
 import { Box, Text, Flex } from "@chakra-ui/react";
-import EllipseDecorator from "../shared/EllipseDecorator";
+import EllipseDecorator from "../../shared/EllipseDecorator";
 import HeroHeadline from "./HeroHeadline";
 
 export default function HeroEllipseLayer() {

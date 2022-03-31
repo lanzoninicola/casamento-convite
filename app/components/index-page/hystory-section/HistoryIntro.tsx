@@ -1,8 +1,8 @@
 import { Center, Flex } from "@chakra-ui/react";
+import EllipseDecorator from "~/components/shared/EllipseDecorator";
+import BaseHeading from "~/components/shared/Headings";
+import { TextDecorated } from "~/components/shared/TextDecorated";
 
-import EllipseDecorator from "../shared/EllipseDecorator";
-import BaseHeading from "../shared/Headings";
-import { TextDecorated } from "../shared/TextDecorated";
 import HistoryCardWrapper from "./HistoryCardWrapper";
 
 export default function HistoryIntro() {
