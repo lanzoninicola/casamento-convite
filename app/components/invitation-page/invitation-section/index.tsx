@@ -1,6 +1,16 @@
-import { Alert, AlertIcon, Box, Button, Stack } from "@chakra-ui/react";
+import {
+  Alert,
+  AlertIcon,
+  Button,
+  Center,
+  Flex,
+  Stack,
+} from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 import { Form } from "remix";
+import EllipseDecorator from "~/components/shared/EllipseDecorator";
+import BaseHeading from "~/components/shared/Headings";
+import { TextDecorated } from "~/components/shared/TextDecorated";
 import { InvitationFormResponse } from "~/modules/invitations/models/invitation.model";
 import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";
 
@@ -9,7 +19,6 @@ import FormInputGuestName from "./components/FormInputGuestName";
 import FormInputUID from "./components/FormInputUID";
 import FormSelectGuests from "./components/FormSelectGuests";
 import FormSelectMealPreference from "./components/FormSelectMealPreference";
-
 import FormSelectWillAttend from "./components/FormSelectWillAttend";
 
 export default function InvitationFormSection({
@@ -31,8 +40,15 @@ export default function InvitationFormSection({
 
   return (
     <>
-      <Section h="auto" id="invitation-form">
-        <Box paddingInline="2rem">
+      <Section id="invitation-form">
+        <Flex
+          paddingInline="2rem"
+          h="100%"
+          justify="center"
+          align="center"
+          direction="column"
+        >
+          <FormHeader />
           <Form method="post" ref={formRef}>
             <Stack direction="column" spacing={8}>
               <FormInputUID uid={uid} />
@@ -49,7 +65,7 @@ export default function InvitationFormSection({
                 type="submit"
                 isLoading={formState === "submitting"}
                 loadingText="Enviando..."
-                bg="secondary.500"
+                bg="primary.500"
                 disabled={formState === "success"}
               >
                 {formState === "success" ? "Enviado" : "Envia"}
@@ -61,10 +77,7 @@ export default function InvitationFormSection({
               message={"Erro! Por favor, tente novamente mais tarde"}
             />
           )}
-          {actionData?.ok === true && (
-            <SuccessMessage message={"Obrigado pela resposta"} />
-          )}
-        </Box>
+        </Flex>
       </Section>
     </>
   );
@@ -97,5 +110,26 @@ function SuccessMessage({
       <AlertIcon />
       {message}
     </Alert>
+  );
+}
+
+function FormHeader() {
+  return (
+    <Flex direction="column" gap=".5rem">
+      <Center>
+        <TextDecorated>Momentos mágicos</TextDecorated>
+      </Center>
+      <BaseHeading fontSize="38px" fontWeight="700" color="text.500">
+        Você vai estar presente em nosso dia especial?
+      </BaseHeading>
+      <Center w="100%" h="30px" gap="1rem">
+        <EllipseDecorator
+          diameter="8px"
+          repeat={3}
+          bg="primary.500"
+          gap="1rem"
+        />
+      </Center>
+    </Flex>
   );
 }

@@ -1,32 +1,31 @@
-import { Box } from "@chakra-ui/react";
+import { Center } from "@chakra-ui/react";
 import {
   ActionFunction,
   LoaderFunction,
+  redirect,
   useActionData,
   useLoaderData,
   useTransition,
 } from "remix";
 import InvitationFormSection from "~/components/invitation-page/invitation-section";
-import Section from "~/components/shared/Section";
 import { InvitationFormProvider } from "~/context/invitation-context";
 import { firestoreService } from "~/lib/firebase/db.server";
-import { InvitationFormResponse } from "~/modules/invitations/models/invitation.model";
-import InvitationFormDeserializer from "~/modules/invitations/services/InvitationFormDeserializer";
-import InvitationService from "~/modules/invitations/services/InvitationService";
-import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";
-import SessionService from "~/modules/sessions/services/SessionService";
 import { FirestoreDocumentId } from "~/lib/firebase/firestore.interfaces";
+import { InvitationFormResponse } from "~/modules/invitations/models/invitation.model";
+import InvitationService from "~/modules/invitations/services/invitation.service";
+import InvitationFormDeserializer from "~/modules/invitations/services/InvitationFormDeserializer";
+import SessionService from "~/modules/sessions/services/SessionService";
+import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";
 
 export interface LoaderData {
   ok: boolean;
   payload: FirestoreDocumentId;
+  error?: any;
 }
 
 export const loader: LoaderFunction = async () => {
   const session = new SessionService(firestoreService);
-
   const sessionResponse = await session.add({ date: new Date() });
-
   return sessionResponse;
 };
 
@@ -35,8 +34,6 @@ export let action: ActionFunction = async ({
 }): Promise<InvitationFormResponse> => {
   const formData = await request.formData();
   const formUID = formData.get("uid") as string;
-
-  console.log("formUID", formUID);
 
   const session = new SessionService(firestoreService);
   const sessionResponse = await session.getById(formUID);
@@ -57,28 +54,29 @@ export let action: ActionFunction = async ({
   if (!formGuestName || !formWillAttend || !formGuests || !formMealPreference) {
     return {
       ok: false,
-      payload: "Alguns campos não foram preenchidos",
+      error: "Alguns campos não foram preenchidos",
     };
   }
 
   const deserializer = new InvitationFormDeserializer();
 
-  const invitationModel = deserializer.deserialize({
+  const invitationDetails = deserializer.deserialize({
     formGuestName,
     formWillAttend,
     formGuests,
     formMealPreference,
   });
 
-  const invitationResponse = await invitation.add(invitationModel);
+  const invitationResponse = await invitation.add(invitationDetails);
 
-  const { ok, payload, error } = invitationResponse;
+  if (invitationResponse.ok === false) {
+    return {
+      ok: false,
+      error: "Oops! Ocorreu um erro",
+    };
+  }
 
-  return {
-    ok,
-    payload,
-    error,
-  };
+  return redirect(`/invitation/response?id=${invitationResponse.payload}`);
 };
 
 export default function Invitation() {
@@ -97,19 +95,13 @@ export default function Invitation() {
 
   return (
     <>
-      <InvitationFormProvider>
-        <Section h="auto">
-          <Box>
-            <p>box for an image</p>
-          </Box>
-
-          <InvitationFormSection
-            actionData={actionData}
-            formState={state}
-            uid={uid}
-          />
-        </Section>
-      </InvitationFormProvider>
+      <Center bg="gray.50">
+        <InvitationFormSection
+          actionData={actionData}
+          formState={state}
+          uid={uid}
+        />
+      </Center>
     </>
   );
 }
