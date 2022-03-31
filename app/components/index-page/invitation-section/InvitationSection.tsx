@@ -4,12 +4,12 @@ import { Link } from "remix";
 import BaseHeading from "../../shared/Headings";
 import Section from "../../shared/Section";
 
-export default function InvitationSection() {
-  const eventDate = "2022-05-21";
+import settings from "~/modules/settings";
 
+export default function InvitationSection() {
   // difference in days between now and event date
   const daysUntilEvent = Math.floor(
-    (new Date(eventDate).getTime() - new Date().getTime()) / 86400000
+    (new Date(settings.eventDate).getTime() - new Date().getTime()) / 86400000
   );
 
   return (
@@ -41,7 +41,7 @@ export default function InvitationSection() {
             <Text color="text.500" lineHeight={1.2} textAlign="center">
               Podemos aceitar confirmações <br /> até{" "}
               <Text as="span" fontWeight={600}>
-                30 de Maio 2022
+                {settings.invitationConfirmationWithin}
               </Text>
             </Text>
           </Flex>

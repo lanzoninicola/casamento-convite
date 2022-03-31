@@ -1,4 +1,5 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
+import settings from "~/modules/settings";
 import BaseHeading from "../../shared/Headings";
 
 export default function HeroHeadline() {
@@ -23,7 +24,7 @@ export default function HeroHeadline() {
           textAlign="center"
           fontWeight="700"
         >
-          21.05.22
+          {settings.eventDateHumanReadable}
         </Text>
       </Flex>
     </>
