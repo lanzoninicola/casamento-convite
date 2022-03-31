@@ -27,6 +27,7 @@ export const loader: LoaderFunction = async () => {
   const session = new SessionService(firestoreService);
 
   const sessionResponse = await session.add({ date: new Date() });
+
   return sessionResponse;
 };
 
@@ -92,6 +93,8 @@ export default function Invitation() {
     : actionData?.error
     ? "error"
     : "idle";
+
+  console.log("loaderData", loaderData);
 
   const uid = loaderData.ok ? loaderData.payload : "";
 
