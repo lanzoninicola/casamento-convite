@@ -38,7 +38,7 @@ export const loader: LoaderFunction = async () => {
 
 export let action: ActionFunction = async ({
   request,
-}): Promise<InvitationFormResponse> => {
+}): Promise<InvitationFormResponse | null> => {
   const formData = await request.formData();
   const formUID = formData.get("uid") as string;
 
@@ -83,7 +83,19 @@ export let action: ActionFunction = async ({
     };
   }
 
-  return redirect(`/invitation/response?id=${invitationResponse.payload}`);
+  if (invitationResponse.ok && formWillAttend === "true") {
+    return redirect(
+      `/invitation/response/thank-you?id=${invitationResponse.payload}`
+    );
+  }
+
+  if (invitationResponse.ok && formWillAttend === "false") {
+    return redirect(
+      `/invitation/response/gosh?id=${invitationResponse.payload}`
+    );
+  }
+
+  return null;
 };
 
 export default function Invitation() {

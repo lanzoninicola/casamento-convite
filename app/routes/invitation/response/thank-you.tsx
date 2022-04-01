@@ -1,9 +1,9 @@
 import { Center, Flex, Text } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import BaseHeading from "~/components/shared/Headings";
 import useGuestNameFormData from "~/context/invitation-context/hooks/useGuestNameFormData";
 import useGuestsFormData from "~/context/invitation-context/hooks/useGuestsFormData";
 import settings from "~/modules/settings";
-import BaseHeading from "../shared/Headings";
 
 export default function ThankYou() {
   const { guestName } = useGuestNameFormData();
