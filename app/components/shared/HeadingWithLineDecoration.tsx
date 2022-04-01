@@ -1,5 +1,5 @@
 import { Box, Image, Flex, Text } from "@chakra-ui/react";
-import BaseHeading from "./Headings";
+import BaseHeading from "./BaseHeadings";
 
 export function HeadingWithLineDecoration({
   children,

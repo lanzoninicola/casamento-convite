@@ -1,6 +1,6 @@
 import { Center, Flex } from "@chakra-ui/react";
 import EllipseDecorator from "~/components/shared/EllipseDecorator";
-import BaseHeading from "~/components/shared/Headings";
+import BaseHeading from "~/components/shared/BaseHeadings";
 import { TextDecorated } from "~/components/shared/TextDecorated";
 
 import HistoryCardWrapper from "./components/HistoryCardWrapper";
@@ -14,7 +14,7 @@ export default function HistoryIntro() {
             <TextDecorated>Nossa Historia</TextDecorated>
           </Center>
           <Flex direction="column" gap="2rem">
-            <EllipseDecorator bg="primary.500" diameter="50px" />
+            {/* <EllipseDecorator bg="primary.500" diameter="50px" /> */}
             <EllipseDecorator bg="secondary.500" diameter="270px">
               <BaseHeading
                 as="h2"

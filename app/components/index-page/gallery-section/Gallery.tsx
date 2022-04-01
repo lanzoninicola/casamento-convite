@@ -1,7 +1,7 @@
 import { AspectRatio, Box, Flex, IconButton, Image } from "@chakra-ui/react";
 import { useContext, useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
-import BaseHeading from "~/components/shared/Headings";
+import BaseHeading from "~/components/shared/BaseHeadings";
 import Section from "~/components/shared/Section";
 import { PhotoGalleryContext } from "~/context/photo-gallery-context";
 

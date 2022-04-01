@@ -9,7 +9,7 @@ import {
 import { useEffect, useRef } from "react";
 import { Form } from "remix";
 import EllipseDecorator from "~/components/shared/EllipseDecorator";
-import BaseHeading from "~/components/shared/Headings";
+import BaseHeading from "~/components/shared/BaseHeadings";
 import { TextDecorated } from "~/components/shared/TextDecorated";
 import { InvitationFormResponse } from "~/modules/invitations/models/invitation.model";
 import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";

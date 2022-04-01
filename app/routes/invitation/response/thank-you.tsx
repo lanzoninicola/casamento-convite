@@ -1,6 +1,6 @@
 import { Center, Flex, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import BaseHeading from "~/components/shared/Headings";
+import BaseHeading from "~/components/shared/BaseHeadings";
 import useGuestNameFormData from "~/context/invitation-context/hooks/useGuestNameFormData";
 import useGuestsFormData from "~/context/invitation-context/hooks/useGuestsFormData";
 import settings from "~/modules/settings";

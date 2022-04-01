@@ -5,7 +5,7 @@ import HeroHeadline from "./HeroHeadline";
 export default function HeroEllipseLayer() {
   return (
     <>
-      <Flex h="100%" pt="20vh">
+      <Flex h="100%" pt="8vh">
         <EllipseDecorator bg="secondary.500" diameter="300px">
           <Aside left="0">
             <AsideContent>

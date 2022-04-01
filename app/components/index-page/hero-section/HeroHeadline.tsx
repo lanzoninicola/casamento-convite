@@ -1,6 +1,6 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import settings from "~/modules/settings";
-import BaseHeading from "../../shared/Headings";
+import BaseHeading from "../../shared/BaseHeadings";
 
 export default function HeroHeadline() {
   return (

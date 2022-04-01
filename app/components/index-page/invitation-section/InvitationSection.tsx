@@ -1,7 +1,7 @@
 import { Box, Center, Flex, Text } from "@chakra-ui/react";
 import { Link } from "remix";
 
-import BaseHeading from "../../shared/Headings";
+import BaseHeading from "../../shared/BaseHeadings";
 import Section from "../../shared/Section";
 
 import settings from "~/modules/settings";

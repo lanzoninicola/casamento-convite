@@ -1,11 +1,5 @@
 import { Center, Flex, Text } from "@chakra-ui/react";
-import {
-  ActionFunction,
-  LoaderFunction,
-  redirect,
-  useSearchParams,
-} from "remix";
-import BaseHeading from "~/components/shared/Headings";
+import BaseHeading from "~/components/shared/BaseHeadings";
 import settings from "~/modules/settings";
 
 // TODO: if miss the id param in the url, redirect to the home page
