@@ -34,7 +34,7 @@ export default function HistorySection() {
           <Box
             className="row"
             bg={fragment === "content" ? "secondary.500" : "white"}
-            pb="4rem"
+            pb="6rem"
           >
             {!hasRead && <HistoryNavigation />}
             {hasRead && (

@@ -58,7 +58,7 @@ function Overlay() {
       position="absolute"
       w="100%"
       h="100%"
-      background="linear-gradient(180deg, rgba(211, 171, 158, 0) 10.42%, rgba(211, 171, 158, 0.69) 34.9%, rgba(211, 171, 158, 1) 80%)"
+      background="linear-gradient(180deg, rgba(211, 171, 158, 0) 10.42%, rgba(211, 171, 158, 0.69) 34.9%, rgba(211, 171, 158, 1) 70%)"
     ></Box>
   );
 }
