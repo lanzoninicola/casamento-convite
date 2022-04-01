@@ -1,11 +1,9 @@
 export type FirestoreDocumentId = string;
-export type FirestoreDocument = {};
+export type FirestoreDocument = { [key: string]: any };
 
 export interface FirestoreCollectionResponse {
   ok: boolean;
-  payload?: {
-    [key: FirestoreDocumentId]: FirestoreDocument;
-  };
+  payload?: FirestoreDocument[];
   error?: any;
 }
 

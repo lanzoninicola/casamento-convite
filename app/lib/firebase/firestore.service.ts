@@ -13,6 +13,7 @@ import {
   FirestoreAdditionSuccessResponse,
   FirestoreCollectionResponse,
   FirestoreCRUDService,
+  FirestoreDocument,
   FirestoreDocumentResponse,
   FirestoreErrorResponse,
   FirestoreSuccessResponse,
@@ -42,11 +43,12 @@ export default class FirestoreService implements FirestoreCRUDService {
    * }
    */
   async getAll(collectionName: string): Promise<FirestoreCollectionResponse> {
-    let result = {};
+    let result: FirestoreDocument[] = [];
 
     const querySnapshot = await getDocs(collection(this.db, collectionName));
     querySnapshot.forEach((doc) => {
-      result = { ...result, [doc.id]: doc.data() };
+      const data = doc.data();
+      result = [...result, data];
     });
 
     return {

@@ -1,4 +1,5 @@
 import { FirestoreCRUDService } from "~/lib/firebase/firestore.interfaces";
+import { InvitationCollectionResponse } from "../interfaces/invitation.interface";
 import {
   InvitationModel,
   InvitationModelOnUpdate,
@@ -20,10 +21,29 @@ export default class Invitation {
     return response;
   }
 
-  async getAll() {
+  async getAll(): Promise<InvitationCollectionResponse> {
     const response = await this.firestoreService.getAll(this.collectionName);
 
-    return response;
+    const { ok, payload } = response;
+
+    let invitationsData: InvitationModel[] = [];
+
+    if (payload)
+      invitationsData = payload.map((invitation) => {
+        const { guestName, willAttend, guests, mealPreference } = invitation;
+
+        return {
+          guestName,
+          willAttend,
+          guests,
+          mealPreference,
+        };
+      });
+
+    return {
+      ok,
+      payload: invitationsData,
+    };
   }
 
   async getById(invitationId: string) {
