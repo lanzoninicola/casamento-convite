@@ -96,7 +96,7 @@ function CloseMenu() {
       size="lg"
       icon={<MdOutlineClose color="white" />}
       position="absolute"
-      bottom="3rem"
+      bottom="4rem"
       right="2rem"
       onClick={onCloseMenu}
     />

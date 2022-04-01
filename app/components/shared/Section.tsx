@@ -13,12 +13,13 @@ export default function Section({
       as="section"
       w="100vw"
       h="100vh"
+      maxHeight="100vh"
       position="relative"
       {...props}
       paddingInline="0"
       scrollSnapAlign="start"
     >
-      <SafeArea top={75}>{children}</SafeArea>
+      {children}
     </Container>
   );
 }

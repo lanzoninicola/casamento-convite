@@ -8,6 +8,7 @@ import InvitationSection from "~/components/index-page/invitation-section/Invita
 import PlaceSection from "~/components/index-page/place-section/PlaceSection";
 import NavigationMenu from "~/components/navigation/MobileNavigationMenu";
 import FullPageVerticallyScroll from "~/components/shared/FullPageVerticallyScroll";
+import WhatsAppWidget from "~/components/shared/WhatsAppWidget";
 import { HistoryProvider } from "~/context/history-context";
 import { NavigationProvider } from "~/context/navigation-context";
 import { PhotoGalleryProvider } from "~/context/photo-gallery-context";
@@ -39,6 +40,7 @@ export default function Index() {
           <PlaceSection />
           <InvitationSection />
         </FullPageVerticallyScroll>
+        <WhatsAppWidget />
       </HistoryProvider>
     </>
   );

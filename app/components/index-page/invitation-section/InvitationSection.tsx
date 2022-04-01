@@ -5,6 +5,7 @@ import BaseHeading from "../../shared/BaseHeadings";
 import Section from "../../shared/Section";
 
 import settings from "~/modules/settings";
+import SafeArea from "~/components/shared/SafeArea";
 
 export default function InvitationSection() {
   // difference in days between now and event date
@@ -14,55 +15,57 @@ export default function InvitationSection() {
 
   return (
     <Section id="invitation-claim" backgroundColor="secondary.500">
-      <Center h="100%">
-        <Flex direction="column" pl="2rem" pr="2rem" gap="7rem">
-          <Flex direction="column" gap="1rem">
-            <BaseHeading as="h2" fontSize="38px" fontWeight="700">
-              Confirme sua presença
-            </BaseHeading>
+      <SafeArea p={75}>
+        <Center h="100%">
+          <Flex direction="column" pl="2rem" pr="2rem" gap="7rem">
+            <Flex direction="column" gap="1rem">
+              <BaseHeading as="h2" fontSize="38px" fontWeight="700">
+                Confirme sua presença
+              </BaseHeading>
+              <Text
+                fontSize="24px"
+                fontWeight="400"
+                color="text.500"
+                lineHeight="1"
+              >
+                Por favor, reserve <br />
+                um momento e responda <br />
+                ao nosso convite
+              </Text>
+            </Flex>
+            <Flex direction="column" gap="1rem" align="center">
+              <Link to="/invitation">
+                <Box w="300px" h="65px" position="relative">
+                  <ButtonShadow />
+                  <ButtonInvitation />
+                </Box>
+              </Link>
+              <Text color="text.500" lineHeight={1.2} textAlign="center">
+                Podemos aceitar confirmações <br /> até{" "}
+                <Text as="span" fontWeight={600}>
+                  {settings.invitationConfirmationWithin}
+                </Text>
+              </Text>
+            </Flex>
             <Text
-              fontSize="24px"
+              fontSize="20px"
               fontWeight="400"
               color="text.500"
               lineHeight="1"
+              textAlign="center"
             >
-              Por favor, reserve <br />
-              um momento e responda <br />
-              ao nosso convite
+              Faltam{" "}
+              <Text
+                as="span"
+                fontWeight={600}
+                fontSize="110%"
+                color="black"
+              >{`${daysUntilEvent} dias`}</Text>{" "}
+              para o evento
             </Text>
           </Flex>
-          <Flex direction="column" gap="1rem" align="center">
-            <Link to="/invitation">
-              <Box w="300px" h="65px" position="relative">
-                <ButtonShadow />
-                <ButtonInvitation />
-              </Box>
-            </Link>
-            <Text color="text.500" lineHeight={1.2} textAlign="center">
-              Podemos aceitar confirmações <br /> até{" "}
-              <Text as="span" fontWeight={600}>
-                {settings.invitationConfirmationWithin}
-              </Text>
-            </Text>
-          </Flex>
-          <Text
-            fontSize="20px"
-            fontWeight="400"
-            color="text.500"
-            lineHeight="1"
-            textAlign="center"
-          >
-            Faltam{" "}
-            <Text
-              as="span"
-              fontWeight={600}
-              fontSize="110%"
-              color="black"
-            >{`${daysUntilEvent} dias`}</Text>{" "}
-            para o evento
-          </Text>
-        </Flex>
-      </Center>
+        </Center>
+      </SafeArea>
     </Section>
   );
 }
