@@ -88,9 +88,12 @@ export default function Statistics() {
           Preferência comida
         </Text>
       </Box>
+      <Box></Box>
     </Container>
   );
 }
+
+function ListRow() {}
 
 function NumberStat({
   label,
