@@ -19,7 +19,7 @@ export const meta: MetaFunction = () => {
     description: "Convite de casamento",
     "og:title": "Gustavo & Kelly",
     "og:description": "Convite de casamento",
-    "og:image": "/images/ogimage.png",
+    "og:image": "https://casamento-convite.vercel.app//images/ogimage.png",
   };
 };
 
