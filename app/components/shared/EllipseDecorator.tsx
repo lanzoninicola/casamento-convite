@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Center, Flex } from "@chakra-ui/react";
 
 export default function EllipseDecorator({
   children,
@@ -25,16 +25,19 @@ export default function EllipseDecorator({
             h={diameter || "100px"}
             position="relative"
           >
-            <Box
+            <Center
               id="ellipse-decorator"
               w="100%"
               h="100%"
+              flexDirection="column"
               borderRadius="50%"
               textAlign="center"
               bg="black"
+              gap="1.5rem"
               {...props}
-            ></Box>
-            {children}
+            >
+              {children}
+            </Center>
           </Box>
         );
       })}

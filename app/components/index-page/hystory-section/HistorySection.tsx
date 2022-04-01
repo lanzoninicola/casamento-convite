@@ -36,7 +36,7 @@ export default function HistorySection() {
             bg={fragment === "content" ? "secondary.500" : "white"}
             pb="6rem"
           >
-            {!hasRead && <HistoryNavigation />}
+            {!hasRead && fragment !== "cover" && <HistoryNavigation />}
             {hasRead && (
               <Center flexDirection="column" gap="1rem">
                 <ReadAgainHistoryNavigationButton />
