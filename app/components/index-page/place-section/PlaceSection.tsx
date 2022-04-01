@@ -8,8 +8,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { SiGooglemaps, SiWaze } from "react-icons/si";
+import MapFrame from "~/components/shared/MapFrame";
 
-import BaseHeading from "../../shared/Headings";
+import BaseHeading from "../../shared/BaseHeadings";
 import Section from "../../shared/Section";
 
 export default function PlaceSection() {
@@ -39,23 +40,14 @@ export default function PlaceSection() {
             <WazeButton address={address} />
           </HStack>
 
-          {/* <MapFrame /> */}
+          <MapFrame
+            w={350}
+            h={350}
+            gUrl="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14322.944517383236!2d-52.6759223!3d-26.1727218!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6596c3e5b0170224!2sCh%C3%A1cara%20Zanin!5e0!3m2!1spt-BR!2sbr!4v1648582944658!5m2!1spt-BR!2sbr"
+          />
         </Flex>
       </Center>
     </Section>
-  );
-}
-
-function MapFrame() {
-  return (
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14322.944517383236!2d-52.6759223!3d-26.1727218!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6596c3e5b0170224!2sCh%C3%A1cara%20Zanin!5e0!3m2!1spt-BR!2sbr!4v1648582944658!5m2!1spt-BR!2sbr"
-      width="350"
-      height="350"
-      style={{ border: 0 }}
-      loading="lazy"
-      referrerPolicy="no-referrer-when-downgrade"
-    ></iframe>
   );
 }
 
