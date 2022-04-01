@@ -1,4 +1,5 @@
 import { Container } from "@chakra-ui/react";
+import SafeArea from "./SafeArea";
 
 export default function Section({
   children,
@@ -17,7 +18,7 @@ export default function Section({
       paddingInline="0"
       scrollSnapAlign="start"
     >
-      {children}
+      <SafeArea top={75}>{children}</SafeArea>
     </Container>
   );
 }
