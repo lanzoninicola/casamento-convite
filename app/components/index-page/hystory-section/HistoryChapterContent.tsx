@@ -12,7 +12,7 @@ export default function HistoryChapterContent() {
 
       <Flex
         w="100%"
-        h="100vh"
+        h="100%"
         direction="column"
         justify="center"
         pl="1rem"
@@ -58,7 +58,7 @@ function Overlay() {
       position="absolute"
       w="100%"
       h="100%"
-      background="linear-gradient(180deg, rgba(197, 189, 177, 0) 10.42%, rgba(197, 189, 177, 0.69) 34.9%, #C5BDB1 58.33%);"
+      background="linear-gradient(180deg, rgba(197, 189, 177, 0) 10.42%, rgba(197, 189, 177, 0.69) 34.9%, #C5BDB1 80%);"
     ></Box>
   );
 }
@@ -68,7 +68,12 @@ function BackgroundImage() {
 
   return (
     <Box zIndex={0}>
-      <Image src={`/images/${image}.jpg`} alt={`${title}`} w="100vw" />
+      <Image
+        src={`/images/${image}.jpg`}
+        alt={`${title}`}
+        w="100vw"
+        maxH="500px"
+      />
     </Box>
   );
 }

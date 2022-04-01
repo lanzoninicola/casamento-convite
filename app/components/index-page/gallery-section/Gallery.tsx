@@ -2,6 +2,7 @@ import { AspectRatio, Box, Flex, IconButton, Image } from "@chakra-ui/react";
 import { useContext, useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
 import BaseHeading from "~/components/shared/BaseHeadings";
+import SafeArea from "~/components/shared/SafeArea";
 import Section from "~/components/shared/Section";
 import { PhotoGalleryContext } from "~/context/photo-gallery-context";
 
@@ -16,22 +17,29 @@ export default function Gallery() {
   return (
     <>
       <Section id="photo-gallery" bg="primary.500">
-        {!isPhotoZoomed && (
-          <Flex direction="column" gap="2rem" justify="center" h="100%">
-            <Box paddingInline="1rem">
-              <BaseHeading as="h2" fontSize="38px" fontWeight="700" mb=".5rem">
-                Galeria de fotos
-              </BaseHeading>
-            </Box>
-            <Box>
-              <PhotoGallery min={0} max={16} transform="translateX(-20px)" />
-              <PhotoGallery min={17} max={31} transform="translateX(-55px)" />
-            </Box>
-          </Flex>
-        )}
-        {isPhotoZoomed && (
-          <PhotoZoomed currentPhotoIdx={currentPhotoIdxZoomed} />
-        )}
+        <SafeArea top={75}>
+          {!isPhotoZoomed && (
+            <Flex direction="column" gap="2rem" justify="center" h="100%">
+              <Box paddingInline="1rem">
+                <BaseHeading
+                  as="h2"
+                  fontSize="38px"
+                  fontWeight="700"
+                  mb=".5rem"
+                >
+                  Galeria de fotos
+                </BaseHeading>
+              </Box>
+              <Box>
+                <PhotoGallery min={0} max={16} transform="translateX(-20px)" />
+                <PhotoGallery min={17} max={31} transform="translateX(-55px)" />
+              </Box>
+            </Flex>
+          )}
+          {isPhotoZoomed && (
+            <PhotoZoomed currentPhotoIdx={currentPhotoIdxZoomed} />
+          )}
+        </SafeArea>
       </Section>
     </>
   );

@@ -9,7 +9,7 @@ export default function HistoryNavigation() {
   const { currentChapter } = useChapterContext();
 
   return (
-    <Box position="absolute" bottom="5rem" zIndex={999}>
+    <Box>
       <Flex direction="row" justify="center" gap="1rem" mb="1.5rem">
         {currentChapter > 0 && <PrevChapterButton />}
         <NextChapterButton />

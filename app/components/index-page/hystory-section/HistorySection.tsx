@@ -1,4 +1,4 @@
-import { Box, Button, Center, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Center, Flex, Grid, Text } from "@chakra-ui/react";
 import { Link } from "remix";
 import ArrowDown from "~/components/shared/ArrowDown";
 import ArrowRight from "~/components/shared/ArrowRight";
@@ -25,18 +25,36 @@ export default function HistorySection() {
   return (
     <>
       <Section id="our-story">
-        {fragment === "cover" && <HistoryIntro />}
-        {fragment === "intro" && <HistoryChapterIntro />}
-        {fragment === "content" && <HistoryChapterContent />}
-        {!hasRead && <HistoryNavigation />}
-        {hasRead && (
-          <Center flexDirection="column" gap="1rem" mt="3rem">
-            <ReadAgainHistoryNavigationButton />
-            <ResumeWebsiteNavigationButton />
-          </Center>
-        )}
+        <HistoryContentWrapper>
+          <Box className="row" position="relative">
+            {fragment === "cover" && <HistoryIntro />}
+            {fragment === "intro" && <HistoryChapterIntro />}
+            {fragment === "content" && <HistoryChapterContent />}
+          </Box>
+          <Box
+            className="row"
+            bg={fragment === "content" ? "secondary.500" : "white"}
+            pb="4rem"
+          >
+            {!hasRead && <HistoryNavigation />}
+            {hasRead && (
+              <Center flexDirection="column" gap="1rem">
+                <ReadAgainHistoryNavigationButton />
+                <ResumeWebsiteNavigationButton />
+              </Center>
+            )}
+          </Box>
+        </HistoryContentWrapper>
       </Section>
     </>
+  );
+}
+
+function HistoryContentWrapper({ children }: { children: React.ReactNode }) {
+  return (
+    <Grid className="history-wrapper" h="100%" gridTemplateRows="1fr auto">
+      {children}
+    </Grid>
   );
 }
 

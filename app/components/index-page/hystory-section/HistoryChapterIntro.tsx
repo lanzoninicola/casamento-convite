@@ -1,10 +1,9 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Grid, Text, VStack } from "@chakra-ui/react";
 import Typewriter from "typewriter-effect";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import { TextDecorated } from "~/components/shared/TextDecorated";
 import TopBackgroundPattern from "~/components/shared/TopBackgroundPattern";
 
-import HistoryCardWrapper from "./components/HistoryCardWrapper";
 import useStoryIntro from "./hooks/useStoryIntro";
 
 export default function HistoryChapterIntro() {
@@ -12,23 +11,18 @@ export default function HistoryChapterIntro() {
 
   return (
     <>
-      <HistoryCardWrapper>
-        <TopBackgroundPattern />
-        <Flex
-          direction="column"
-          justify="center"
-          align="center"
-          gap="4rem"
-          h="100vh"
-        >
+      <TopBackgroundPattern />
+      <Grid h="100%" gridTemplateRows="auto auto auto" pb="2rem">
+        <Center>
           <TextDecorated>Nossa Historia</TextDecorated>
-          <Box>
+        </Center>
+        <Center>
+          <VStack>
             <Text
               color="text.500"
               fontSize="38px"
               letterSpacing="0.145em"
               lineHeight="1"
-              textAlign="center"
             >
               {textMonth}
             </Text>
@@ -37,12 +31,13 @@ export default function HistoryChapterIntro() {
               fontSize="60px"
               letterSpacing="-0.04em"
               lineHeight="1"
-              textAlign="center"
             >
               {textYear}
             </Text>
-          </Box>
-          <BaseHeading as="h3" textAlign="center" fontWeight="700">
+          </VStack>
+        </Center>
+        <Center>
+          <BaseHeading as="h3" fontWeight="700">
             <Typewriter
               onInit={(typewriter) => {
                 typewriter.typeString(title).start();
@@ -52,8 +47,8 @@ export default function HistoryChapterIntro() {
               }}
             />
           </BaseHeading>
-        </Flex>
-      </HistoryCardWrapper>
+        </Center>
+      </Grid>
     </>
   );
 }
