@@ -65,7 +65,7 @@ export default function InvitationFormSection({
                 type="submit"
                 isLoading={formState === "submitting"}
                 loadingText="Enviando..."
-                bg="primary.500"
+                bg="secondary.500"
                 disabled={formState === "success"}
               >
                 {formState === "success" ? "Enviado" : "Envia"}
@@ -115,7 +115,7 @@ function SuccessMessage({
 
 function FormHeader() {
   return (
-    <Flex direction="column" gap=".5rem">
+    <Flex direction="column" gap="1.5rem">
       <Center>
         <TextDecorated>Momentos mágicos</TextDecorated>
       </Center>

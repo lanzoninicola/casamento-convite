@@ -11,14 +11,14 @@ export default function HeroHeadline() {
           fontSize="80px"
           letterSpacing="-0.05em"
           textAlign="center"
-          fontWeight="700"
+          fontWeight="400"
         >
           È hora!
         </BaseHeading>
 
         <Text
           color="text.500"
-          fontSize="18px"
+          fontSize="16px"
           letterSpacing="0.125em"
           lineHeight="1"
           textAlign="center"
