@@ -9,6 +9,8 @@ import Section from "~/components/shared/Section";
 import useWillAttendFormData from "~/context/invitation-context/hooks/useWillAttendFormData";
 import settings from "~/modules/settings";
 
+// TODO: instead to use the condition below, use Outlet and split in route the two pages
+
 export const meta: MetaFunction = () => {
   return {
     title: "Gustavo & Kelly",

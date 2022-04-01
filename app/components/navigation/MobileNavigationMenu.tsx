@@ -5,10 +5,8 @@ import { RiHistoryLine } from "react-icons/ri";
 import { Link } from "remix";
 import useIsOpen from "~/context/navigation-context/hooks/useIsOpen";
 
-export default function NavigationMenu() {
+export default function MobileNavigationMenu() {
   const { isOpen } = useIsOpen();
-
-  console.log(isOpen);
 
   return (
     <>
