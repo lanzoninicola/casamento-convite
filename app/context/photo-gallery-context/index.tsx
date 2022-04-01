@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { useState } from "react";
+import { createContext } from "use-context-selector";
 
 export interface PhotoGalleryContextData {
   isPhotoZoomed: boolean;

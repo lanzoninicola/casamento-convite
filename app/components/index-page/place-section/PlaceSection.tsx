@@ -23,12 +23,18 @@ export default function PlaceSection() {
       <SafeArea p={75}>
         <Center h="100%">
           <Flex direction="column" gap="1rem">
-            <BaseHeading as="h2" fontSize="38px" fontWeight="700" mb=".5rem">
+            <BaseHeading
+              as="h2"
+              fontSize="38px"
+              fontWeight="400"
+              mb=".5rem"
+              letterSpacing="-1px"
+            >
               Almoçamos <br />
               juntos
             </BaseHeading>
             <Box>
-              <Text fontSize="20px" fontWeight="600" color="primary.500">
+              <Text fontSize="20px" fontWeight="600" color="text.500">
                 Chacara Zanin
               </Text>
               <Text fontSize="16px" lineHeight={1.1}>

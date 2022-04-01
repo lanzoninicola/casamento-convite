@@ -1,18 +1,26 @@
-import { AspectRatio, Box, Flex, IconButton, Image } from "@chakra-ui/react";
+import {
+  AspectRatio,
+  Box,
+  Flex,
+  IconButton,
+  Image,
+  Text,
+} from "@chakra-ui/react";
 import { useContext, useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import SafeArea from "~/components/shared/SafeArea";
 import Section from "~/components/shared/Section";
-import { PhotoGalleryContext } from "~/context/photo-gallery-context";
+import useCurrentPhotoZoomed from "~/context/photo-gallery-context/hooks/useCurrentPhotoZoomed";
+import useIsPhotoZoomed from "~/context/photo-gallery-context/hooks/useIsPhotoZoomed";
 
 import HorizontalScroll from "../../shared/HorizontalScroll";
 
 const MAX_PHOTOS_AVALIABLE = 31;
 
 export default function Gallery() {
-  const { isPhotoZoomed, currentPhotoIdxZoomed } =
-    useContext(PhotoGalleryContext);
+  const { isPhotoZoomed } = useIsPhotoZoomed();
+  const { currentPhotoIdxZoomed } = useCurrentPhotoZoomed();
 
   return (
     <>
@@ -24,11 +32,16 @@ export default function Gallery() {
                 <BaseHeading
                   as="h2"
                   fontSize="38px"
-                  fontWeight="700"
+                  fontWeight="400"
                   mb=".5rem"
+                  letterSpacing="-1px"
                 >
                   Galeria de fotos
                 </BaseHeading>
+                <Text fontSize="16px" lineHeight={1.1}>
+                  Momentos de lembrança, uma história <br />
+                  de amor e serenidade.
+                </Text>
               </Box>
               <Box>
                 <PhotoGallery min={0} max={16} transform="translateX(-20px)" />
@@ -54,8 +67,8 @@ function PhotoGallery({
   max: number;
   [x: string]: any;
 }) {
-  const { setIsPhotoZoomed, setCurrentPhotoIdxZoomed } =
-    useContext(PhotoGalleryContext);
+  const { setIsPhotoZoomed } = useIsPhotoZoomed();
+  const { setCurrentPhotoIdxZoomed } = useCurrentPhotoZoomed();
 
   const photos = Array.from({ length: MAX_PHOTOS_AVALIABLE });
 
@@ -65,13 +78,7 @@ function PhotoGallery({
   }
 
   return (
-    <HorizontalScroll
-      gap={2}
-      columnSize="36%"
-      h="270px"
-      bg="text.500"
-      paddingBlock="0.5rem"
-    >
+    <HorizontalScroll gap={2} columnSize="36%" h="270px" paddingBlock="0.5rem">
       {photos.map((_, i) => {
         if (i >= min && i <= max) {
           return (
@@ -80,6 +87,7 @@ function PhotoGallery({
               ratio={1}
               onClick={() => onPhotoZoomed(i)}
               {...props}
+              boxShadow="lg"
             >
               <Image
                 src={`/images/gallery/gustavo_kelly_gallery_${i}.jpeg`}
@@ -97,8 +105,8 @@ function PhotoGallery({
 }
 
 function PhotoZoomed({ currentPhotoIdx }: { currentPhotoIdx: number | null }) {
-  const { setIsPhotoZoomed, setCurrentPhotoIdxZoomed } =
-    useContext(PhotoGalleryContext);
+  const { setIsPhotoZoomed } = useIsPhotoZoomed();
+  const { setCurrentPhotoIdxZoomed } = useCurrentPhotoZoomed();
 
   function onClosePhotoZoomed() {
     setIsPhotoZoomed(false);
@@ -110,11 +118,17 @@ function PhotoZoomed({ currentPhotoIdx }: { currentPhotoIdx: number | null }) {
       <Flex
         justify="center"
         align="center"
-        h="100vh"
+        h="100%"
         w="100vw"
         position="relative"
       >
-        <AspectRatio key={currentPhotoIdx} ratio={9 / 16} h="100%" w="100%">
+        <AspectRatio
+          key={currentPhotoIdx}
+          ratio={9 / 16}
+          h="100%"
+          w="100%"
+          onClick={onClosePhotoZoomed}
+        >
           <Image
             src={`/images/gallery/gustavo_kelly_gallery_${currentPhotoIdx}.jpeg`}
             alt={`Gustavo e Kelly foto ${currentPhotoIdx}`}

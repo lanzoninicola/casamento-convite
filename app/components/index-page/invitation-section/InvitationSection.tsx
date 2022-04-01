@@ -83,7 +83,7 @@ function ButtonInvitation() {
       <Text
         fontSize="24px"
         lineHeight="1"
-        color="white"
+        color="text.500"
         textTransform="uppercase"
         textAlign="center"
         pt="1rem"

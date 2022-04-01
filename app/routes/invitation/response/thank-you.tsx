@@ -28,7 +28,7 @@ export default function ThankYou() {
           Obrigado
         </BaseHeading>
         {guestName !== "" && (
-          <BaseHeading fontSize="32px" fontWeight="400" color="primary.500">
+          <BaseHeading fontSize="32px" fontWeight="400" color="text.500">
             {guestName}
           </BaseHeading>
         )}

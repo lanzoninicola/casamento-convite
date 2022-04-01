@@ -8,9 +8,9 @@ import Section from "../../shared/Section";
 export default function HeroSection() {
   return (
     <>
-      <Section id="hero" bg="primary.500">
+      <Section id="hero" bg="gray.200">
         <SafeArea top={75}>
-          <HeroBackgroundPattern />
+          {/* <HeroBackgroundPattern /> */}
           <HeroEllipseLayer />
           <HeroImage />
         </SafeArea>

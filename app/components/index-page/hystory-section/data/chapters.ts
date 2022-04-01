@@ -68,7 +68,7 @@ export const chapters: Chapter[] = [
     type: "content",
     title: `O avião branco`,
     image: "history-content-chap3",
-    text: `O cavalo do bendito príncipe não era branco mas o avião que o acompanhou sim… Finalmente em Pato Branco, o estacionamento de ônibus (chegada com direito a), balões vermelhos, os corações pulando e batendo... Foi a primeira vez que nossos olhos se encontraram ao vivo.`,
+    text: `O cavalo do bendito príncipe não era branco mas o avião que o acompanhou sim… Finalmente em Pato Branco, chegada com direito a balões vermelhos, os corações pulando e batendo... Foi a primeira vez que nossos olhos se encontraram ao vivo.`,
   },
   {
     type: "intro",

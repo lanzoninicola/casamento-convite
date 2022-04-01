@@ -31,7 +31,7 @@ export default function Response() {
         <Outlet />
         <Center p="1.5rem">
           <Link to="/">
-            <Button bg="primary.500" rightIcon={<ArrowRight />}>
+            <Button bg="secondary.500" rightIcon={<ArrowRight />}>
               Voltar à página inicial
             </Button>
           </Link>

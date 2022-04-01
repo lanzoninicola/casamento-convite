@@ -27,20 +27,22 @@ export default function Index() {
   return (
     <>
       <HistoryProvider>
-        <FullPageVerticallyScroll>
-          <NavigationProvider>
-            <NavigationMenu />
-            <Header />
-          </NavigationProvider>
-          <HeroSection />
-          <HistorySection />
-          <PhotoGalleryProvider>
+        <PhotoGalleryProvider>
+          <FullPageVerticallyScroll>
+            <NavigationProvider>
+              <NavigationMenu />
+              <Header />
+            </NavigationProvider>
+            <HeroSection />
+            <HistorySection />
+
             <Gallery />
-          </PhotoGalleryProvider>
-          <PlaceSection />
-          <InvitationSection />
-        </FullPageVerticallyScroll>
-        <WhatsAppWidget />
+
+            <PlaceSection />
+            <InvitationSection />
+          </FullPageVerticallyScroll>
+          <WhatsAppWidget />
+        </PhotoGalleryProvider>
       </HistoryProvider>
     </>
   );

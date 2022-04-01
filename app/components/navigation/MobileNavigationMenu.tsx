@@ -15,7 +15,7 @@ export default function MobileNavigationMenu() {
           h="100vh"
           w="100vw"
           // bg="secondary.500"
-          backdropFilter="blur(15px)"
+          backdropFilter="blur(40px)"
           position="fixed"
           top={0}
           left={0}
