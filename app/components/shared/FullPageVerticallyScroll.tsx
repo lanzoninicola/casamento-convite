@@ -12,7 +12,13 @@ export default function FullPageVerticallyScroll({
   children: React.ReactNode;
 }) {
   return (
-    <Container scrollSnapType="y mandatory" overflowY="scroll" h="100vh" p={0}>
+    <Container
+      scrollSnapType="y mandatory"
+      overflowY="scroll"
+      h="100vh"
+      p={0}
+      position="relative"
+    >
       {children}
     </Container>
   );
