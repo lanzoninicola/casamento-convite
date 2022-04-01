@@ -1,8 +1,8 @@
-import { Box, Center, keyframes, Stack, Text } from "@chakra-ui/react";
+import { Center, keyframes, Stack, Text } from "@chakra-ui/react";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import EllipseDecorator from "~/components/shared/EllipseDecorator";
 import SafeArea from "~/components/shared/SafeArea";
-import { TextDecorated } from "~/components/shared/TextDecorated";
+
 import useChaptersNavigation from "./hooks/useChaptersNavigation";
 
 export default function HistoryIntro() {

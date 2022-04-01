@@ -6,10 +6,14 @@ export interface HistoryContextData {
   currentChapter: number;
   fragment: ChapterFragment;
   hasRead: boolean;
+  isHistorySkipped: boolean;
+  isAlertHistorySkippedOpen: boolean;
   setIsReadingStories: (isReadingStories: boolean) => void;
   setCurrentChapter: (currentChapter: number) => void;
   setFragment: (fragment: ChapterFragment) => void;
   setHasRead: (hasRead: boolean) => void;
+  setIsHistorySkipped: (isHistorySkipped: boolean) => void;
+  setIsAlertHistorySkippedOpen: (isAlertHistorySkippedOpen: boolean) => void;
 }
 
 export type ChapterFragment = "cover" | "intro" | "content";
@@ -23,6 +27,9 @@ export function HistoryProvider({ children }: { children: React.ReactNode }) {
   const [currentChapter, setCurrentChapter] = useState(0);
   const [fragment, setFragment] = useState<ChapterFragment>("cover");
   const [hasRead, setHasRead] = useState(false);
+  const [isHistorySkipped, setIsHistorySkipped] = useState(false);
+  const [isAlertHistorySkippedOpen, setIsAlertHistorySkippedOpen] =
+    useState(false);
 
   return (
     <HistoryContext.Provider
@@ -31,10 +38,14 @@ export function HistoryProvider({ children }: { children: React.ReactNode }) {
         currentChapter,
         fragment,
         hasRead,
+        isHistorySkipped,
+        isAlertHistorySkippedOpen,
         setIsReadingStories,
         setCurrentChapter,
         setFragment,
         setHasRead,
+        setIsHistorySkipped,
+        setIsAlertHistorySkippedOpen,
       }}
     >
       {children}

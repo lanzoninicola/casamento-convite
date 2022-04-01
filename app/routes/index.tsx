@@ -2,6 +2,7 @@ import { MetaFunction } from "remix";
 import Header from "~/components/header/Header";
 import Gallery from "~/components/index-page/gallery-section/Gallery";
 import HeroSection from "~/components/index-page/hero-section/HeroSection";
+import AlertNoReadStory from "~/components/index-page/hystory-section/components/AlertNoReadStory";
 import HistorySection from "~/components/index-page/hystory-section/HistorySection";
 
 import InvitationSection from "~/components/index-page/invitation-section/InvitationSection";
@@ -41,6 +42,7 @@ export default function Index() {
             <PlaceSection />
             <InvitationSection />
           </FullPageVerticallyScroll>
+          <AlertNoReadStory />
           <WhatsAppWidget />
         </PhotoGalleryProvider>
       </HistoryProvider>

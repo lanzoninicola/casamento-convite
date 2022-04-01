@@ -6,7 +6,7 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import SafeArea from "~/components/shared/SafeArea";
@@ -16,44 +16,79 @@ import useIsPhotoZoomed from "~/context/photo-gallery-context/hooks/useIsPhotoZo
 
 import HorizontalScroll from "../../shared/HorizontalScroll";
 
+import { useInView } from "react-intersection-observer";
+import useSkipHistory from "~/context/history-context/hooks/useSkipHistory";
+import useHasReadContext from "~/context/history-context/hooks/useHasReadContext";
+import useAlertHistorySkipped from "~/context/history-context/hooks/useAlertHistorySkipped";
+
 const MAX_PHOTOS_AVALIABLE = 31;
 
 export default function Gallery() {
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0.8,
+  });
   const { isPhotoZoomed } = useIsPhotoZoomed();
   const { currentPhotoIdxZoomed } = useCurrentPhotoZoomed();
 
+  const { isHistorySkipped, setIsHistorySkipped } = useSkipHistory();
+  const { hasRead } = useHasReadContext();
+  const { isAlertHistorySkippedOpen, setIsAlertHistorySkippedOpen } =
+    useAlertHistorySkipped();
+
+  useEffect(() => {
+    if (inView && !hasRead) {
+      setIsHistorySkipped(true);
+      setIsAlertHistorySkippedOpen(true);
+    }
+
+    if (!isAlertHistorySkippedOpen) {
+      setIsHistorySkipped(false);
+    }
+  }, [inView]);
+
   return (
     <>
-      <Section id="photo-gallery" bg="primary.500">
-        <SafeArea top={75}>
-          {!isPhotoZoomed && (
-            <Flex direction="column" gap="2rem" justify="center" h="100%">
-              <Box paddingInline="1rem">
-                <BaseHeading
-                  as="h2"
-                  fontSize="38px"
-                  fontWeight="400"
-                  mb=".5rem"
-                  letterSpacing="-1px"
-                >
-                  Galeria de fotos
-                </BaseHeading>
-                <Text fontSize="16px" lineHeight={1.1}>
-                  Momentos de lembrança, uma história <br />
-                  de amor e serenidade.
-                </Text>
-              </Box>
-              <Box>
-                <PhotoGallery min={0} max={16} transform="translateX(-20px)" />
-                <PhotoGallery min={17} max={31} transform="translateX(-55px)" />
-              </Box>
-            </Flex>
-          )}
-          {isPhotoZoomed && (
-            <PhotoZoomed currentPhotoIdx={currentPhotoIdxZoomed} />
-          )}
-        </SafeArea>
-      </Section>
+      <div ref={ref}>
+        <Section id="photo-gallery" bg="primary.500">
+          <SafeArea top={75}>
+            {!isPhotoZoomed && (
+              <Flex direction="column" gap="2rem" justify="center" h="100%">
+                <Box paddingInline="1rem">
+                  <BaseHeading
+                    as="h2"
+                    fontSize="38px"
+                    fontWeight="400"
+                    mb=".5rem"
+                    letterSpacing="-1px"
+                  >
+                    Galeria de fotos
+                  </BaseHeading>
+                  <Text fontSize="16px" lineHeight={1.1}>
+                    Momentos de lembrança, uma história <br />
+                    de amor e serenidade.
+                  </Text>
+                </Box>
+                <Box>
+                  <PhotoGallery
+                    min={0}
+                    max={16}
+                    transform="translateX(-20px)"
+                  />
+                  <PhotoGallery
+                    min={17}
+                    max={31}
+                    transform="translateX(-55px)"
+                  />
+                </Box>
+              </Flex>
+            )}
+            {isPhotoZoomed && (
+              <PhotoZoomed currentPhotoIdx={currentPhotoIdxZoomed} />
+            )}
+          </SafeArea>
+        </Section>
+      </div>
     </>
   );
 }
