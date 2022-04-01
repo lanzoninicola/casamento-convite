@@ -5,6 +5,7 @@ import {
   Center,
   Flex,
   Stack,
+  Text,
 } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 import { Form } from "remix";
@@ -20,6 +21,7 @@ import FormInputUID from "./components/FormInputUID";
 import FormSelectGuests from "./components/FormSelectGuests";
 import FormSelectMealPreference from "./components/FormSelectMealPreference";
 import FormSelectWillAttend from "./components/FormSelectWillAttend";
+import settings from "~/modules/settings";
 
 export default function InvitationFormSection({
   formState,
@@ -122,6 +124,13 @@ function FormHeader() {
       <BaseHeading fontSize="38px" fontWeight="700" color="text.500">
         Você vai estar presente em nosso dia especial?
       </BaseHeading>
+      <Text fontSize="14px" textTransform="uppercase" letterSpacing="1px">
+        CASAMENTO EM{" "}
+        <Text as="span" fontWeight={700}>
+          {" "}
+          {settings.eventFullDateHumanReadable}
+        </Text>
+      </Text>
       <Center w="100%" h="30px" gap="1rem">
         <EllipseDecorator
           diameter="8px"
