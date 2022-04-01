@@ -13,7 +13,7 @@ export default function InvitationSection() {
   );
 
   return (
-    <Section backgroundColor="secondary.500">
+    <Section id="invitation-claim" backgroundColor="secondary.500">
       <Center h="100%">
         <Flex direction="column" pl="2rem" pr="2rem" gap="7rem">
           <Flex direction="column" gap="1rem">

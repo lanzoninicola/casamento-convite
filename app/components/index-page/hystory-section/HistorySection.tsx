@@ -12,8 +12,9 @@ import HistoryIntro from "./HistoryIntro";
 import useChapters from "./hooks/useChapters";
 import useChaptersNavigation from "./hooks/useChaptersNavigation";
 import useChapterFragment from "./hooks/useChapterType";
-import NextChapterButton from "./NextChapterButton";
-import PrevChapterButton from "./PrevChapterButton";
+import NextChapterButton from "./components/NextChapterButton";
+import PrevChapterButton from "./components/PrevChapterButton";
+import HistoryNavigation from "./HistoryNavigation";
 
 // Descer para continuar
 
@@ -23,7 +24,7 @@ export default function HistorySection() {
 
   return (
     <>
-      <Section>
+      <Section id="our-story">
         {fragment === "cover" && <HistoryIntro />}
         {fragment === "intro" && <HistoryChapterIntro />}
         {fragment === "content" && <HistoryChapterContent />}
@@ -71,61 +72,5 @@ function ReadAgainHistoryNavigationButton() {
     >
       Leia novamente
     </Button>
-  );
-}
-
-function HistoryNavigation() {
-  const { currentChapter } = useChapterContext();
-
-  return (
-    <Box position="absolute" bottom="4rem" zIndex={999}>
-      <Flex direction="row" justify="center" gap="1rem" mb="3rem">
-        {currentChapter > 0 && <PrevChapterButton />}
-        <NextChapterButton />
-      </Flex>
-      <ChaptersBullets />
-    </Box>
-  );
-}
-
-function ChaptersBullets() {
-  const { chapters } = useChapters();
-
-  return (
-    <Flex gap=".5rem" align="center" justify="center" width="100vw">
-      {chapters.map((_, index) => {
-        return <Bullet key={index} index={index} />;
-      })}
-    </Flex>
-  );
-}
-
-function Bullet({ index, ...props }: { index: number; [x: string]: any }) {
-  const { currentChapter, setCurrentChapter } = useChapterContext();
-
-  function onChapterSelection() {
-    setCurrentChapter(index);
-  }
-
-  return (
-    <Box
-      w={currentChapter !== index ? "14px" : "24px"}
-      h={currentChapter !== index ? "14px" : "24px"}
-      borderRadius="100%"
-      bg="primary.500"
-      {...props}
-      onClick={onChapterSelection}
-      transition="all .1s ease-in-out"
-    >
-      <Center h="100%">
-        <Text
-          as="span"
-          fontSize={currentChapter !== index ? "8px" : "14px"}
-          fontWeight="600"
-        >
-          {index}
-        </Text>
-      </Center>
-    </Box>
   );
 }

@@ -7,7 +7,7 @@ import Section from "../../shared/Section";
 export default function HeroSection() {
   return (
     <>
-      <Section bg="primary.500">
+      <Section id="hero" bg="primary.500">
         <HeroBackgroundPattern />
         <HeroEllipseLayer />
         <HeroImage />

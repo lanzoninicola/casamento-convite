@@ -37,7 +37,7 @@ function Content() {
       <BaseHeading as="h3" fontSize="36px" color="black" fontWeight="700">
         {title}
       </BaseHeading>
-      <Text fontSize="20px" lineHeight="130%" color="black">
+      <Box fontSize="20px" lineHeight="130%" color="black">
         <Typewriter
           onInit={(typewriter) => {
             typewriter.typeString(text).start();
@@ -46,7 +46,7 @@ function Content() {
             delay: 90,
           }}
         />
-      </Text>
+      </Box>
     </Flex>
   );
 }

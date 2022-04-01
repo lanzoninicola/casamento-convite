@@ -1,4 +1,4 @@
-import { Chapter, chapters } from "../chapters";
+import { Chapter, chapters } from "../data/chapters";
 
 export default function useChapters(): {
   chaptersLength: number;

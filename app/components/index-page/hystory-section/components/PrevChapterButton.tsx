@@ -1,7 +1,7 @@
 import { Image } from "@chakra-ui/react";
 
 import BaseChapterButton from "./BaseChapterButton";
-import useChaptersNavigation from "./hooks/useChaptersNavigation";
+import useChaptersNavigation from "../hooks/useChaptersNavigation";
 
 export default function PrevChapterButton() {
   const { prevChapter } = useChaptersNavigation();

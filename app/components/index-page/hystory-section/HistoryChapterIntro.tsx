@@ -1,8 +1,10 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
+import Typewriter from "typewriter-effect";
 import BaseHeading from "~/components/shared/Headings";
 import { TextDecorated } from "~/components/shared/TextDecorated";
 import TopBackgroundPattern from "~/components/shared/TopBackgroundPattern";
-import HistoryCardWrapper from "./HistoryCardWrapper";
+
+import HistoryCardWrapper from "./components/HistoryCardWrapper";
 import useStoryIntro from "./hooks/useStoryIntro";
 
 export default function HistoryChapterIntro() {
@@ -41,7 +43,14 @@ export default function HistoryChapterIntro() {
             </Text>
           </Box>
           <BaseHeading as="h3" textAlign="center" fontWeight="700">
-            {title}
+            <Typewriter
+              onInit={(typewriter) => {
+                typewriter.typeString(title).start();
+              }}
+              options={{
+                delay: 90,
+              }}
+            />
           </BaseHeading>
         </Flex>
       </HistoryCardWrapper>

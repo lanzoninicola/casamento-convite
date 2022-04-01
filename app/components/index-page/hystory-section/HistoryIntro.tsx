@@ -3,7 +3,7 @@ import EllipseDecorator from "~/components/shared/EllipseDecorator";
 import BaseHeading from "~/components/shared/Headings";
 import { TextDecorated } from "~/components/shared/TextDecorated";
 
-import HistoryCardWrapper from "./HistoryCardWrapper";
+import HistoryCardWrapper from "./components/HistoryCardWrapper";
 
 export default function HistoryIntro() {
   return (
