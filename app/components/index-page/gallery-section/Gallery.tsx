@@ -2,6 +2,7 @@ import {
   AspectRatio,
   Box,
   Flex,
+  Grid,
   IconButton,
   Image,
   Text,
@@ -20,6 +21,7 @@ import { useInView } from "react-intersection-observer";
 import useSkipHistory from "~/context/history-context/hooks/useSkipHistory";
 import useHasReadContext from "~/context/history-context/hooks/useHasReadContext";
 import useAlertHistorySkipped from "~/context/history-context/hooks/useAlertHistorySkipped";
+import ArrowRight from "~/components/shared/ArrowRight";
 
 const MAX_PHOTOS_AVALIABLE = 31;
 
@@ -31,7 +33,7 @@ export default function Gallery() {
   const { isPhotoZoomed } = useIsPhotoZoomed();
   const { currentPhotoIdxZoomed } = useCurrentPhotoZoomed();
 
-  const { isHistorySkipped, setIsHistorySkipped } = useSkipHistory();
+  const { setIsHistorySkipped } = useSkipHistory();
   const { hasRead } = useHasReadContext();
   const { isAlertHistorySkippedOpen, setIsAlertHistorySkippedOpen } =
     useAlertHistorySkipped();
@@ -53,7 +55,7 @@ export default function Gallery() {
         <Section id="photo-gallery" bg="primary.500">
           <SafeArea top={75}>
             {!isPhotoZoomed && (
-              <Flex direction="column" gap="2rem" justify="center" h="100%">
+              <Flex direction="column" gap=".5rem" justify="center" h="100%">
                 <Box paddingInline="1rem">
                   <BaseHeading
                     as="h2"
@@ -68,6 +70,21 @@ export default function Gallery() {
                     Momentos de lembrança, uma história <br />
                     de amor e serenidade.
                   </Text>
+                  <Grid
+                    gridTemplateColumns="1fr auto"
+                    alignItems="center"
+                    gap="0.25rem"
+                  >
+                    <Text
+                      fontSize="14px"
+                      lineHeight={1.1}
+                      textAlign="right"
+                      fontStyle="italic"
+                    >
+                      Arrasta para o lado
+                    </Text>
+                    <ArrowRight />
+                  </Grid>
                 </Box>
                 <Box>
                   <PhotoGallery

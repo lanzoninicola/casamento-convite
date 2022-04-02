@@ -20,18 +20,25 @@ export default function PlaceSection() {
 
   return (
     <Section id="lunch-place">
-      <SafeArea p={75}>
-        <Center h="100%">
+      <SafeArea top={75}>
+        <Center h="100%" w="100%">
           <Flex direction="column" gap="1rem">
             <BaseHeading
               as="h2"
               fontSize="38px"
               fontWeight="400"
+              letterSpacing="-1px"
+            >
+              Almoçamos juntos
+            </BaseHeading>
+            <BaseHeading
+              as="h3"
+              fontSize="20px"
+              fontWeight="400"
               mb=".5rem"
               letterSpacing="-1px"
             >
-              Almoçamos <br />
-              juntos
+              a partir das 11 horas da manhã.
             </BaseHeading>
             <Box>
               <Text fontSize="20px" fontWeight="600" color="text.500">
@@ -48,11 +55,13 @@ export default function PlaceSection() {
               <WazeButton address={address} />
             </HStack>
 
-            <MapFrame
-              w={350}
-              h={350}
-              gUrl="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14322.944517383236!2d-52.6759223!3d-26.1727218!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6596c3e5b0170224!2sCh%C3%A1cara%20Zanin!5e0!3m2!1spt-BR!2sbr!4v1648582944658!5m2!1spt-BR!2sbr"
-            />
+            <Center>
+              <MapFrame
+                w={300}
+                h={300}
+                gUrl="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14322.944517383236!2d-52.6759223!3d-26.1727218!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6596c3e5b0170224!2sCh%C3%A1cara%20Zanin!5e0!3m2!1spt-BR!2sbr!4v1648582944658!5m2!1spt-BR!2sbr"
+              />
+            </Center>
           </Flex>
         </Center>
       </SafeArea>

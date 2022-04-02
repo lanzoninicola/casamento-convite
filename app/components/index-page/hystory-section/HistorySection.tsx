@@ -21,6 +21,7 @@ import HistoryNavigation from "./HistoryNavigation";
 export default function HistorySection() {
   const fragment = useChapterFragment();
   const { hasRead } = useHasReadContext();
+  const { currentChapter } = useChapterContext();
 
   return (
     <>

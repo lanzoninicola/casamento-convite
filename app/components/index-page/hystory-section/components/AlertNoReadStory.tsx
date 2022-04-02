@@ -31,13 +31,13 @@ export default function AlertNoReadStory() {
             </Box>
             <Text
               position="absolute"
-              bottom="35px"
+              bottom="28px"
               left="130px"
-              lineHeight={1}
+              lineHeight={1.2}
               fontWeight={700}
               maxWidth="170px"
             >
-              Ei, você passou sem ler nossa história! Volte e leia-o agora!
+              Ei, você passou sem ler nossa história! Volte e leia agora!
             </Text>
           </Box>
         </Fade>

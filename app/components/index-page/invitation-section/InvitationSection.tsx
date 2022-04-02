@@ -22,6 +22,17 @@ export default function InvitationSection() {
               <BaseHeading as="h2" fontSize="38px" fontWeight="700">
                 Confirme sua presença
               </BaseHeading>
+              <BaseHeading
+                as="h3"
+                fontSize="20px"
+                color="text.500"
+                lineHeight={1.2}
+              >
+                Podemos aceitar confirmações <br /> até{" "}
+                <BaseHeading as="span" fontWeight={600} fontSize="20px">
+                  {settings.invitationConfirmationWithinHumanReadable}
+                </BaseHeading>
+              </BaseHeading>
               <Text
                 fontSize="24px"
                 fontWeight="400"
@@ -40,12 +51,6 @@ export default function InvitationSection() {
                   <ButtonInvitation />
                 </Box>
               </Link>
-              <Text color="text.500" lineHeight={1.2} textAlign="center">
-                Podemos aceitar confirmações <br /> até{" "}
-                <Text as="span" fontWeight={600}>
-                  {settings.invitationConfirmationWithin}
-                </Text>
-              </Text>
             </Flex>
             <Text
               fontSize="20px"

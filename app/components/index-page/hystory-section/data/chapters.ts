@@ -24,7 +24,7 @@ export const chapters: Chapter[] = [
   },
   {
     type: "intro",
-    textMonth: "juhlo",
+    textMonth: "julho",
     textYear: "2018",
     title: "Parabéns",
   },
@@ -92,6 +92,6 @@ export const chapters: Chapter[] = [
     type: "content",
     title: `Casamento!!!`,
     image: "history-content-chap5",
-    text: `Nossa cerimonia será diferente do programado a alguns meses, íntimo e discreto, juntos as familhas. Mas queremos compartilhar esse momento tão importante para nós com você no almoço que será servido na Chacara Zanin.`,
+    text: `Nossa cerimonia será diferente do programado a alguns meses atras, íntimo e discreto, juntos as nossas famílias. Mas queremos compartilhar esse momento tão importante para nós com você/s no almoço que será servido na Chacara Zanin.`,
   },
 ];
