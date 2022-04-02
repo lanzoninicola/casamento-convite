@@ -1,10 +1,7 @@
-import { localStorageManager } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createContext } from "use-context-selector";
-import useAlertHistorySkipped, {
-  HistorySkyppedStatus,
-} from "~/components/index-page/hystory-section/hooks/useAlertHistorySkipped";
-import useLocalStorage from "~/components/shared/hooks/useLocalStorage.no.SSR";
+import { HistorySkyppedStatus } from "~/components/index-page/hystory-section/hooks/useAlertHistorySkipped";
+import useLocalStorage from "~/components/shared/hooks/useLocalStorage";
 
 export const HISTORY_SKIPPED_STATUS_KEY = "alertHistorySkipped";
 
