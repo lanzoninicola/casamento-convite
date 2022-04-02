@@ -1,46 +1,39 @@
-import { Box, Fade, Image, Text } from "@chakra-ui/react";
+import { Box, Image, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
-import useAlertHistorySkipped from "~/context/history-context/hooks/useAlertHistorySkipped";
-import useHasReadContext from "~/context/history-context/hooks/useHasReadContext";
+import useAlertHistorySkipped, {
+  HistorySkyppedStatus,
+} from "~/components/index-page/hystory-section/hooks/useAlertHistorySkipped";
 
 export default function AlertNoReadStory() {
-  const { isAlertHistorySkippedOpen, setIsAlertHistorySkippedOpen } =
-    useAlertHistorySkipped();
-
-  const { setHasRead } = useHasReadContext();
+  const { status, setStatus } = useAlertHistorySkipped();
 
   function handleClick() {
-    setIsAlertHistorySkippedOpen(false);
-    setHasRead(true);
+    setStatus(HistorySkyppedStatus.closed);
   }
-
-  useEffect(() => {}, []);
 
   return (
     <>
-      {isAlertHistorySkippedOpen && (
-        <Fade in={isAlertHistorySkippedOpen}>
-          <Box
-            maxHeight="420px"
-            position="fixed"
-            bottom="10rem"
-            onClick={handleClick}
-          >
-            <Box position="relative">
-              <Image src="/images/alert-no-read-story.png" />
-            </Box>
-            <Text
-              position="absolute"
-              bottom="28px"
-              left="130px"
-              lineHeight={1.2}
-              fontWeight={700}
-              maxWidth="170px"
-            >
-              Ei, você passou sem ler nossa história! Volte e leia agora!
-            </Text>
+      {status === HistorySkyppedStatus.visible && (
+        <Box
+          maxHeight="420px"
+          position="fixed"
+          bottom="10rem"
+          onClick={handleClick}
+        >
+          <Box position="relative">
+            <Image src="/images/alert-no-read-story.png" />
           </Box>
-        </Fade>
+          <Text
+            position="absolute"
+            bottom="28px"
+            left="130px"
+            lineHeight={1.2}
+            fontWeight={700}
+            maxWidth="170px"
+          >
+            Ei, você passou sem ler nossa história! Volte e leia agora!
+          </Text>
+        </Box>
       )}
     </>
   );

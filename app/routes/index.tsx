@@ -4,13 +4,10 @@ import Gallery from "~/components/index-page/gallery-section/Gallery";
 import HeroSection from "~/components/index-page/hero-section/HeroSection";
 import AlertNoReadStory from "~/components/index-page/hystory-section/components/AlertNoReadStory";
 import HistorySection from "~/components/index-page/hystory-section/HistorySection";
-
 import InvitationSection from "~/components/index-page/invitation-section/InvitationSection";
 import PlaceSection from "~/components/index-page/place-section/PlaceSection";
 import NavigationMenu from "~/components/navigation/MobileNavigationMenu";
 import FullPageVerticallyScroll from "~/components/shared/FullPageVerticallyScroll";
-import useViewportInfo from "~/components/shared/hooks/UseViewPortInfo";
-import ViewportInfo from "~/components/shared/ViewportInfo";
 import WhatsAppWidget from "~/components/shared/WhatsAppWidget";
 import { HistoryProvider } from "~/context/history-context";
 import { NavigationProvider } from "~/context/navigation-context";
@@ -46,7 +43,7 @@ export default function Index() {
           </FullPageVerticallyScroll>
           <AlertNoReadStory />
           <WhatsAppWidget />
-          <ViewportInfo />
+          {/* <ViewportInfo /> */}
         </PhotoGalleryProvider>
       </HistoryProvider>
     </>

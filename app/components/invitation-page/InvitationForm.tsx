@@ -8,7 +8,7 @@ import FormInputGuestName from "./components/FormInputGuestName";
 import FormInputUID from "./components/FormInputUID";
 import FormSelectGuests from "./components/FormSelectGuests";
 import FormSelectMealPreference from "./components/FormSelectMealPreference";
-import FormSelectWillAttend from "./components/FormSelectWillAttend";
+import FormSelectWillAttend from "./invitation-section/components/FormSelectWillAttend";
 
 export default function InvitationForm({
   formState,

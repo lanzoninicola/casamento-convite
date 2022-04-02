@@ -19,31 +19,23 @@ import HorizontalScroll from "../../shared/HorizontalScroll";
 
 import { useInView } from "react-intersection-observer";
 import useHasReadContext from "~/context/history-context/hooks/useHasReadContext";
-import useAlertHistorySkipped from "~/context/history-context/hooks/useAlertHistorySkipped";
+import useAlertHistorySkipped, {
+  HistorySkyppedStatus,
+} from "~/components/index-page/hystory-section/hooks/useAlertHistorySkipped";
 import ArrowRight from "~/components/shared/ArrowRight";
+import useAlertHistorySkippedContext from "~/context/history-context/hooks/useAlertHistorySkippedContext";
 
 const MAX_PHOTOS_AVALIABLE = 31;
 
 export default function Gallery() {
-  const { ref, inView, entry } = useInView({
-    /* Optional options */
-    threshold: 0.8,
-  });
   const { isPhotoZoomed } = useIsPhotoZoomed();
   const { currentPhotoIdxZoomed } = useCurrentPhotoZoomed();
 
-  const { hasRead } = useHasReadContext();
-  const { setIsAlertHistorySkippedOpen } = useAlertHistorySkipped();
-
-  useEffect(() => {
-    if (inView && !hasRead) {
-      setIsAlertHistorySkippedOpen(true);
-    }
-  }, [inView]);
+  const { targetRef } = useAlertHistorySkipped();
 
   return (
     <>
-      <div ref={ref}>
+      <div ref={targetRef}>
         <Section id="photo-gallery" bg="primary.500">
           <SafeArea>
             {!isPhotoZoomed && (
