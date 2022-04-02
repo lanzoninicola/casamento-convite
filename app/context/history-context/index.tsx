@@ -1,17 +1,24 @@
-import { useState } from "react";
+import { localStorageManager } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { createContext } from "use-context-selector";
+import useAlertHistorySkipped, {
+  HistorySkyppedStatus,
+} from "~/components/index-page/hystory-section/hooks/useAlertHistorySkipped";
+import useLocalStorage from "~/components/shared/hooks/useLocalStorage.no.SSR";
+
+export const HISTORY_SKIPPED_STATUS_KEY = "alertHistorySkipped";
 
 export interface HistoryContextData {
   isReadingStories: boolean;
   currentChapter: number;
   fragment: ChapterFragment;
   hasRead: boolean;
-  isAlertHistorySkippedOpen: boolean;
+  status: HistorySkyppedStatus;
   setIsReadingStories: (isReadingStories: boolean) => void;
   setCurrentChapter: (currentChapter: number) => void;
   setFragment: (fragment: ChapterFragment) => void;
   setHasRead: (hasRead: boolean) => void;
-  setIsAlertHistorySkippedOpen: (isAlertHistorySkippedOpen: boolean) => void;
+  setStatus: (statusAlertHistorySkipped: HistorySkyppedStatus) => void;
 }
 
 export type ChapterFragment = "cover" | "intro" | "content";
@@ -25,8 +32,11 @@ export function HistoryProvider({ children }: { children: React.ReactNode }) {
   const [currentChapter, setCurrentChapter] = useState(0);
   const [fragment, setFragment] = useState<ChapterFragment>("cover");
   const [hasRead, setHasRead] = useState(false);
-  const [isAlertHistorySkippedOpen, setIsAlertHistorySkippedOpen] =
-    useState(false);
+  // const [status, setStatus] = useState(HistorySkyppedStatus.hidden);
+  const [status, setStatus] = useLocalStorage(
+    HISTORY_SKIPPED_STATUS_KEY,
+    HistorySkyppedStatus.hidden
+  );
 
   return (
     <HistoryContext.Provider
@@ -35,12 +45,12 @@ export function HistoryProvider({ children }: { children: React.ReactNode }) {
         currentChapter,
         fragment,
         hasRead,
-        isAlertHistorySkippedOpen,
+        status,
         setIsReadingStories,
         setCurrentChapter,
         setFragment,
         setHasRead,
-        setIsAlertHistorySkippedOpen,
+        setStatus,
       }}
     >
       {children}
