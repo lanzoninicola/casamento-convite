@@ -1,4 +1,4 @@
-import { Center } from "@chakra-ui/react";
+import { Center, Flex } from "@chakra-ui/react";
 import {
   ActionFunction,
   LoaderFunction,
@@ -8,7 +8,10 @@ import {
   useLoaderData,
   useTransition,
 } from "remix";
-import InvitationFormSection from "~/components/invitation-page/invitation-section";
+import FormHeader from "~/components/invitation-page/components/FormHeader";
+import InvitationForm from "~/components/invitation-page/InvitationForm";
+import SafeArea from "~/components/shared/SafeArea";
+import Section from "~/components/shared/Section";
 import ViewportInfo from "~/components/shared/ViewportInfo";
 import { firestoreService } from "~/lib/firebase/db.server";
 import { FirestoreDocumentId } from "~/lib/firebase/firestore.interfaces";
@@ -116,13 +119,19 @@ export default function Invitation() {
   return (
     <>
       <ViewportInfo />
-      <Center bg="gray.50">
-        <InvitationFormSection
-          actionData={actionData}
-          formState={state}
-          uid={uid}
-        />
-      </Center>
+      <Section id="invitation-form" bg="gray.50">
+        <SafeArea ignoreHeader={true}>
+          <Center paddingInline="2rem" h="100%" flexDirection="column">
+            <FormHeader />
+
+            <InvitationForm
+              actionData={actionData}
+              formState={state}
+              uid={uid}
+            />
+          </Center>
+        </SafeArea>
+      </Section>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { Container } from "@chakra-ui/react";
+import { Box, Container } from "@chakra-ui/react";
 import SafeArea from "./SafeArea";
 
 export default function Section({
@@ -13,7 +13,6 @@ export default function Section({
       as="section"
       w="100vw"
       h="100vh"
-      maxHeight="100vh"
       position="relative"
       {...props}
       paddingInline="0"

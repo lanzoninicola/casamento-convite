@@ -38,7 +38,7 @@ export default function HistoryIntro() {
 
   return (
     <>
-      <SafeArea top={75}>
+      <SafeArea>
         <Stack spacing="2rem" h="100%" justify="center">
           {/* <Center>
             <TextDecorated>Nossa Historia</TextDecorated>

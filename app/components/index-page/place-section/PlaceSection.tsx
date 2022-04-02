@@ -20,7 +20,7 @@ export default function PlaceSection() {
 
   return (
     <Section id="lunch-place">
-      <SafeArea top={75}>
+      <SafeArea>
         <Center h="100%" w="100%">
           <Flex direction="column" gap="1rem">
             <BaseHeading

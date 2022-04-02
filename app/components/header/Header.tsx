@@ -4,6 +4,7 @@ import { MdOutlineInsertInvitation } from "react-icons/md";
 import { HiOutlineMenu } from "react-icons/hi";
 import LogoWebsite from "../shared/LogoWebsite";
 import useIsOpen from "~/context/navigation-context/hooks/useIsOpen";
+import settings from "~/modules/settings";
 
 export default function Header() {
   return (
@@ -11,7 +12,7 @@ export default function Header() {
       as="header"
       gridTemplateColumns="1fr 1fr 1fr"
       w="100vw"
-      h="70px"
+      h={settings.app.styles.headerHeight}
       position="fixed"
       top={0}
       alignContent="center"

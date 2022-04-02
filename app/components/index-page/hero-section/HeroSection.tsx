@@ -9,7 +9,7 @@ export default function HeroSection() {
   return (
     <>
       <Section id="hero" bg="gray.200">
-        <SafeArea top={75}>
+        <SafeArea>
           {/* <HeroBackgroundPattern /> */}
           <HeroEllipseLayer />
           <HeroImage />

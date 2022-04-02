@@ -7,7 +7,7 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import { useContext, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { MdOutlineClose } from "react-icons/md";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import SafeArea from "~/components/shared/SafeArea";
@@ -18,7 +18,6 @@ import useIsPhotoZoomed from "~/context/photo-gallery-context/hooks/useIsPhotoZo
 import HorizontalScroll from "../../shared/HorizontalScroll";
 
 import { useInView } from "react-intersection-observer";
-import useSkipHistory from "~/context/history-context/hooks/useSkipHistory";
 import useHasReadContext from "~/context/history-context/hooks/useHasReadContext";
 import useAlertHistorySkipped from "~/context/history-context/hooks/useAlertHistorySkipped";
 import ArrowRight from "~/components/shared/ArrowRight";
@@ -33,19 +32,12 @@ export default function Gallery() {
   const { isPhotoZoomed } = useIsPhotoZoomed();
   const { currentPhotoIdxZoomed } = useCurrentPhotoZoomed();
 
-  const { setIsHistorySkipped } = useSkipHistory();
   const { hasRead } = useHasReadContext();
-  const { isAlertHistorySkippedOpen, setIsAlertHistorySkippedOpen } =
-    useAlertHistorySkipped();
+  const { setIsAlertHistorySkippedOpen } = useAlertHistorySkipped();
 
   useEffect(() => {
     if (inView && !hasRead) {
-      setIsHistorySkipped(true);
       setIsAlertHistorySkippedOpen(true);
-    }
-
-    if (!isAlertHistorySkippedOpen) {
-      setIsHistorySkipped(false);
     }
   }, [inView]);
 
@@ -53,7 +45,7 @@ export default function Gallery() {
     <>
       <div ref={ref}>
         <Section id="photo-gallery" bg="primary.500">
-          <SafeArea top={75}>
+          <SafeArea>
             {!isPhotoZoomed && (
               <Flex direction="column" gap=".5rem" justify="center" h="100%">
                 <Box paddingInline="1rem">
