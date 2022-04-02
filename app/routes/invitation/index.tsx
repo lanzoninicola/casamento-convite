@@ -9,6 +9,7 @@ import {
   useTransition,
 } from "remix";
 import InvitationFormSection from "~/components/invitation-page/invitation-section";
+import ViewportInfo from "~/components/shared/ViewportInfo";
 import { firestoreService } from "~/lib/firebase/db.server";
 import { FirestoreDocumentId } from "~/lib/firebase/firestore.interfaces";
 import { InvitationFormResponse } from "~/modules/invitations/models/invitation.model";
@@ -114,6 +115,7 @@ export default function Invitation() {
 
   return (
     <>
+      <ViewportInfo />
       <Center bg="gray.50">
         <InvitationFormSection
           actionData={actionData}

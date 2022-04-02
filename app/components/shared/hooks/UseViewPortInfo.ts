@@ -11,9 +11,11 @@ export default function useViewportInfo() {
         setHeight(window.innerHeight);
       };
 
+      window.addEventListener("DOMContentLoaded", handleResize);
       window?.addEventListener("resize", handleResize);
 
       return () => {
+        window.removeEventListener("DOMContentLoaded", handleResize);
         window?.removeEventListener("resize", handleResize);
       };
     }
