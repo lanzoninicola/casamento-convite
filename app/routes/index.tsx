@@ -6,6 +6,7 @@ import AlertNoReadStory from "~/components/index-page/hystory-section/components
 import HistorySection from "~/components/index-page/hystory-section/HistorySection";
 import InvitationSection from "~/components/index-page/invitation-section/InvitationSection";
 import PlaceSection from "~/components/index-page/place-section/PlaceSection";
+import RevelationSexBabySection from "~/components/index-page/revelation-sex-baby-section";
 import NavigationMenu from "~/components/navigation/MobileNavigationMenu";
 import FullPageVerticallyScroll from "~/components/shared/FullPageVerticallyScroll";
 import WhatsAppWidget from "~/components/shared/WhatsAppWidget";
@@ -39,6 +40,8 @@ export default function Index() {
             <Gallery />
 
             <PlaceSection />
+
+            <RevelationSexBabySection />
             <InvitationSection />
           </FullPageVerticallyScroll>
           <AlertNoReadStory />

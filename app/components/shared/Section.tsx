@@ -1,5 +1,4 @@
-import { Box, Container } from "@chakra-ui/react";
-import SafeArea from "./SafeArea";
+import { Container } from "@chakra-ui/react";
 
 export default function Section({
   children,
