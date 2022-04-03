@@ -73,19 +73,19 @@ export default function Index() {
               <NavigationMenu />
               <Header />
             </NavigationProvider>
-            <HeroSection />
+            {/* <HeroSection />
             <HistorySection />
 
             <Gallery />
 
             <PlaceSection />
 
-            <InvitationSection />
-
             <RevelationSexBabySection
               actionData={actionData}
               formState={state}
-            />
+            /> */}
+
+            <InvitationSection />
           </FullPageVerticallyScroll>
           <AlertNoReadStory />
           <WhatsAppWidget />

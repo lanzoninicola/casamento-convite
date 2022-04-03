@@ -27,9 +27,10 @@ export default function Response() {
       id="invitation-success"
       maxH="100vh"
       backgroundImage={`url(/images/${bgImage})`}
+      backgroundSize="cover"
     >
       <SafeArea>
-        <Grid h="100%" padding="2rem" gridTemplateRows=".5fr 1fr .25fr">
+        <Grid h="100%" gridTemplateRows="auto 1fr .25fr" gap="1rem">
           <LogoWithBackground />
           <Outlet />
           <Center>
