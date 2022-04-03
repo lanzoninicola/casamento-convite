@@ -77,12 +77,12 @@ export default function RevelationGame({
         <BabyOption
           sex="girl"
           onClick={() => onSexSelection("girl")}
-          opacity={babySex === "boy" ? 0.3 : 1}
+          opacity={formState === "idle" && babySex === "boy" ? 0.3 : 1}
         />
         <BabyOption
           sex="boy"
           onClick={() => onSexSelection("boy")}
-          opacity={babySex === "girl" ? 0.3 : 1}
+          opacity={formState === "idle" && babySex === "girl" ? 0.3 : 1}
         />
       </Flex>
 
