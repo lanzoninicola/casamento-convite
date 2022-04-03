@@ -1,4 +1,4 @@
-import { Center, Flex, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Grid, Text, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import useGuestNameFormData from "~/context/invitation-context/hooks/useGuestNameFormData";
@@ -22,49 +22,41 @@ export default function ThankYou() {
   }, [guestName, guests]);
 
   return (
-    <Center flexDirection="column" p="2rem" justifyContent="space-between">
-      <Flex direction="column" gap=".25rem" justify="center" align="center">
+    <Grid gridTemplateRows="auto 1fr auto">
+      <VStack spacing=".75rem">
         <BaseHeading fontSize="38px" fontWeight="700">
           Obrigado
         </BaseHeading>
         {guestName !== "" && (
-          <BaseHeading fontSize="32px" fontWeight="400" color="text.500">
+          <BaseHeading fontSize="26px" fontWeight="400" color="text.500">
             {guestName}
           </BaseHeading>
         )}
-      </Flex>
-      <Flex direction="column" gap=".25rem" justify="center" align="center">
-        <Text textAlign="center">{certStatement}</Text>
-        <BaseHeading
-          fontSize="24px"
-          fontWeight="700"
-          textDecoration="underline"
-          textTransform="uppercase"
-        >
-          {certRole}
-        </BaseHeading>
-      </Flex>
-      <Flex
-        direction="column"
-        gap="1rem"
-        justify="center"
-        align="center"
-        paddingInline="1rem"
-      >
-        <Text textAlign="center">
-          Será um prazer estar na companhia de{" "}
-          <Text as="span" fontWeight={700}>
-            {guests > 1 ? "vocês" : "você"}
+      </VStack>
+      <Center>
+        <VStack spacing=".75rem" w="65vw">
+          <Text fontWeight={700} textAlign="center">
+            Querido Convidado,
           </Text>
-          {", "}
-          no dia mais feliz de nossas nova vidas.
-        </Text>
-      </Flex>
-      <Flex direction="column" gap="1rem" justify="center" align="center">
+          <Text fontSize="16px" lineHeight="1.2" textAlign="justify">
+            caso queria nos agraciar com um presente, gostariamos que este fosse
+            convertido em diheiro.
+          </Text>
+          <Text fontSize="16px" lineHeight="1.2" textAlign="justify">
+            Pois o nosso cantinho já está mobiliado e arrumadinho mas saiba que
+            nosso maior presente é sua presença
+          </Text>
+          <Text fontSize="14px" lineHeight="1.2" fontStyle="italic">
+            Adicionamos um link para a página PIX na parte inferior do site.
+          </Text>
+        </VStack>
+      </Center>
+
+      <VStack>
         <Text fontSize="14px" textTransform="uppercase" letterSpacing="1px">
           Pato Branco, {settings.eventFullDateHumanReadable}
         </Text>
-      </Flex>
-    </Center>
+      </VStack>
+    </Grid>
   );
 }
