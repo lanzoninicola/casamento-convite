@@ -3,6 +3,7 @@ import {
   Button,
   Center,
   Flex,
+  Grid,
   HStack,
   Link,
   Text,
@@ -22,46 +23,41 @@ export default function PlaceSection() {
   return (
     <Section id="lunch-place">
       <SafeArea>
-        <Center h="100%" w="100%">
-          <Flex direction="column" gap="1rem">
-            <Box>
-              <BaseHeading
-                as="h2"
-                fontSize="38px"
-                fontWeight="400"
-                letterSpacing="-1px"
-              >
-                Almoçamos juntos
-              </BaseHeading>
-              <HighlightedText bg="primary.500">
-                a partir das 11 horas da manhã.
-              </HighlightedText>
-            </Box>
+        <Grid gridTemplateRows="auto" padding="2rem" gap="1rem">
+          <Box>
+            <BaseHeading
+              as="h2"
+              fontSize="38px"
+              fontWeight="400"
+              letterSpacing="-1px"
+            >
+              Almoçamos juntos
+            </BaseHeading>
+            <HighlightedText bg="primary.500">
+              a partir das 11 horas da manhã.
+            </HighlightedText>
+          </Box>
+          <Box>
+            <Text fontSize="20px" fontWeight="600" color="text.500">
+              Chacara Zanin
+            </Text>
+            <Text fontSize="16px" lineHeight={1.1}>
+              Linha São Braz São, <br />
+              Estr. Mun. Lisando São Braz, <br />
+              Pato Branco - PR, 85504-000
+            </Text>
+          </Box>
+          <HStack>
+            <GoogleMapsButton address={address} />
+            <WazeButton address={address} />
+          </HStack>
 
-            <Box>
-              <Text fontSize="20px" fontWeight="600" color="text.500">
-                Chacara Zanin
-              </Text>
-              <Text fontSize="16px" lineHeight={1.1}>
-                Linha São Braz São, <br />
-                Estr. Mun. Lisando São Braz, <br />
-                Pato Branco - PR, 85504-000
-              </Text>
-            </Box>
-            <HStack>
-              <GoogleMapsButton address={address} />
-              <WazeButton address={address} />
-            </HStack>
-
-            <Center>
-              <MapFrame
-                w={300}
-                h={300}
-                gUrl="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14322.944517383236!2d-52.6759223!3d-26.1727218!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6596c3e5b0170224!2sCh%C3%A1cara%20Zanin!5e0!3m2!1spt-BR!2sbr!4v1648582944658!5m2!1spt-BR!2sbr"
-              />
-            </Center>
-          </Flex>
-        </Center>
+          <MapFrame
+            w={300}
+            h={300}
+            gUrl="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14322.944517383236!2d-52.6759223!3d-26.1727218!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6596c3e5b0170224!2sCh%C3%A1cara%20Zanin!5e0!3m2!1spt-BR!2sbr!4v1648582944658!5m2!1spt-BR!2sbr"
+          />
+        </Grid>
       </SafeArea>
     </Section>
   );

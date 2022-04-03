@@ -25,7 +25,7 @@ export default function InvitationSection() {
   return (
     <Section id="invitation-claim" backgroundColor="secondary.500">
       <SafeArea>
-        <Grid templateRows="1fr 1fr .5fr" h="100%" paddingInline="2rem">
+        <Grid templateRows="1fr 1fr .5fr" h="100%" padding="2rem">
           <Flex direction="column" gap="1rem">
             <BaseHeading as="h2" fontSize="38px" fontWeight="700">
               Confirme sua presença

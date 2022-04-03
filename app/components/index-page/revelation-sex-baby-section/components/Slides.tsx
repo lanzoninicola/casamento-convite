@@ -9,7 +9,7 @@ export default function Slides({ onOver }: { onOver: Function }) {
   const content = ["È não é so isso", "Um bebezinho está chegando"];
   const MAX_SLIDE = content.length - 1;
   const TIME_BETWEEN_SLIDES = 2700;
-  const SCALE_DELAY = 500;
+  const SCALE_DELAY = 200;
   const SCALE_TRANSITION_DURATION = 500;
   const DELAY_END_OF_SLIDE = 500;
 
