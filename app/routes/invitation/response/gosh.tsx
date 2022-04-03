@@ -6,7 +6,7 @@ import settings from "~/modules/settings";
 
 export default function Gosh() {
   return (
-    <Center flexDirection="column" p="2rem" justifyContent="space-between">
+    <Center flexDirection="column" justifyContent="space-between">
       <Flex direction="column" gap=".25rem" justify="center" align="center">
         <BaseHeading fontSize="38px" fontWeight="700" textAlign="center">
           Poxa!! <br />
@@ -18,7 +18,7 @@ export default function Gosh() {
         gap="1rem"
         justify="center"
         align="center"
-        paddingInline="1rem"
+        p="2rem"
       >
         <Text textAlign="center">
           Não importa, obrigado de qualquer forma pela resposta e esperamos que

@@ -1,40 +1,18 @@
 import { Center, keyframes, Stack, Text } from "@chakra-ui/react";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import EllipseDecorator from "~/components/shared/EllipseDecorator";
+import usePulseAnimation from "~/components/shared/hooks/usePulseAnimation";
 import SafeArea from "~/components/shared/SafeArea";
 
 import useChaptersNavigation from "./hooks/useChaptersNavigation";
 
 export default function HistoryIntro() {
   const { nextChapter } = useChaptersNavigation();
+  const pulseAnimationCSS = usePulseAnimation(211, 171, 158);
 
   function handleClick() {
     nextChapter();
   }
-
-  const pulse = keyframes`
-  	0% {
-		transform: scale(0.95);
-		box-shadow: 0 0 0 10px rgba(211, 171, 158, 0.7);
-	}
-	
-    70% {
-      transform: scale(1);
-      box-shadow: 0 0 0 30px rgba(211, 171, 158, 0);
-    }
-
-    90% {
-      transform: scale(1);
-      box-shadow: 0 0 0 45px rgba(211, 171, 158, 0);
-    }
-    
-    100% {
-      transform: scale(0.95);
-      box-shadow: 0 0 0 0 rgba(211, 171, 158, 0);
-    }
-  `;
-
-  const pulseAnimation = `${pulse} infinite 2s linear`;
 
   return (
     <>
@@ -47,7 +25,7 @@ export default function HistoryIntro() {
             <EllipseDecorator
               bg="secondary.500"
               diameter="270px"
-              animation={pulseAnimation}
+              animation={pulseAnimationCSS}
             >
               <BaseHeading
                 as="h2"

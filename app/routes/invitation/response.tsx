@@ -2,7 +2,9 @@ import { Button, Center, Grid } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Link, MetaFunction, Outlet } from "remix";
 import ArrowRight from "~/components/shared/ArrowRight";
+import usePulseAnimation from "~/components/shared/hooks/usePulseAnimation";
 import LogoWithBackground from "~/components/shared/LogoWithBackground";
+import SafeArea from "~/components/shared/SafeArea";
 import Section from "~/components/shared/Section";
 import useWillAttendFormData from "~/context/invitation-context/hooks/useWillAttendFormData";
 
@@ -18,7 +20,7 @@ export const meta: MetaFunction = () => {
 export default function Response() {
   const { willAttend } = useWillAttendFormData();
 
-  const bgImage = willAttend ? "thank-you-bg.jpg" : "gosh-bg.png";
+  const bgImage = true ? "thank-you-bg.jpg" : "gosh-bg.png";
 
   return (
     <Section
@@ -26,17 +28,34 @@ export default function Response() {
       maxH="100vh"
       backgroundImage={`url(/images/${bgImage})`}
     >
-      <Grid h="100%" padding="2rem" gridTemplateRows=".5fr 1fr .25fr">
-        <LogoWithBackground />
-        <Outlet />
-        <Center p="1.5rem">
-          <Link to="/">
-            <Button bg="secondary.500" rightIcon={<ArrowRight />}>
-              Voltar à página inicial
-            </Button>
-          </Link>
-        </Center>
-      </Grid>
+      <SafeArea>
+        <Grid h="100%" padding="2rem" gridTemplateRows=".5fr 1fr .25fr">
+          <LogoWithBackground />
+          <Outlet />
+          <Center>
+            <NextButton />
+          </Center>
+        </Grid>
+      </SafeArea>
     </Section>
+  );
+}
+
+function NextButton() {
+  const pulseAnimationCSS = usePulseAnimation(211, 171, 158);
+
+  return (
+    <Link to="/#revelation-sex-baby">
+      <Button
+        bg="secondary.500"
+        rightIcon={<ArrowRight />}
+        animation={pulseAnimationCSS}
+        textTransform="uppercase"
+        letterSpacing="1.2px"
+        marginBlock="1rem"
+      >
+        Prosseguir
+      </Button>
+    </Link>
   );
 }

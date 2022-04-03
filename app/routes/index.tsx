@@ -1,4 +1,10 @@
-import { MetaFunction } from "remix";
+import { useEffect } from "react";
+import {
+  ActionFunction,
+  MetaFunction,
+  useActionData,
+  useTransition,
+} from "remix";
 import Header from "~/components/header/Header";
 import Gallery from "~/components/index-page/gallery-section/Gallery";
 import HeroSection from "~/components/index-page/hero-section/HeroSection";
@@ -13,6 +19,10 @@ import WhatsAppWidget from "~/components/shared/WhatsAppWidget";
 import { HistoryProvider } from "~/context/history-context";
 import { NavigationProvider } from "~/context/navigation-context";
 import { PhotoGalleryProvider } from "~/context/photo-gallery-context";
+import { firestoreService } from "~/lib/firebase/db.server";
+import RevelationGame from "~/modules/revelation-game/services/revelation-game.service";
+import RevelationFormDeserializer from "~/modules/revelation-game/services/revelationFormDeserializer";
+import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";
 
 export const meta: MetaFunction = () => {
   return {
@@ -24,7 +34,36 @@ export const meta: MetaFunction = () => {
   };
 };
 
+export const action: ActionFunction = async ({ request }) => {
+  const formData = await request.formData();
+  console.log(formData);
+
+  const formBabySex = formData.get("baby-sex-selected");
+  const formName = formData.get("name");
+
+  const revelationService = new RevelationGame(firestoreService);
+  const deserializer = new RevelationFormDeserializer();
+
+  const revelationDetails = deserializer.deserialize({ formName, formBabySex });
+
+  const response = await revelationService.add(revelationDetails);
+
+  return {
+    ok: response.ok,
+  };
+};
+
 export default function Index() {
+  const actionData = useActionData();
+  const transition = useTransition();
+  const state: RemixFormState = transition.submission
+    ? "submitting"
+    : !actionData
+    ? "idle"
+    : actionData?.ok
+    ? "success"
+    : "error";
+
   return (
     <>
       <HistoryProvider>
@@ -41,8 +80,12 @@ export default function Index() {
 
             <PlaceSection />
 
-            <RevelationSexBabySection />
             <InvitationSection />
+
+            <RevelationSexBabySection
+              actionData={actionData}
+              formState={state}
+            />
           </FullPageVerticallyScroll>
           <AlertNoReadStory />
           <WhatsAppWidget />
