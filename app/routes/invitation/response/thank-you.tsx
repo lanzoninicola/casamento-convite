@@ -1,4 +1,12 @@
-import { Box, Center, Flex, Grid, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Flex,
+  Grid,
+  HStack,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import useGuestNameFormData from "~/context/invitation-context/hooks/useGuestNameFormData";
@@ -38,15 +46,25 @@ export default function ThankYou() {
           <Text fontWeight={700} textAlign="center">
             Querido Convidado,
           </Text>
-          <Text fontSize="16px" lineHeight="1.2" textAlign="justify">
-            caso queria nos agraciar com um presente, gostariamos que este fosse
-            convertido em diheiro.
+          <Text fontSize="16px" lineHeight="1.2" textAlign="center">
+            caso queria nos agraciar com um presente, saiba que:
           </Text>
-          <Text fontSize="16px" lineHeight="1.2" textAlign="justify">
-            Pois o nosso cantinho já está mobiliado e arrumadinho mas saiba que
-            nosso maior presente é sua presença
+          <Text
+            fontSize="16px"
+            lineHeight="1.3"
+            textAlign="justify"
+            fontStyle="italic"
+            fontWeight={700}
+          >
+            "Nossa casa está prontiha
+            <br />
+            Já não cabe mais nadinha <br /> Mas a gente não é louco <br />
+            De recusar uma ajudinha <br />
+            Afinal quem é que nunca
+            <br /> Precisou de uma graninha?"
           </Text>
-          <Text fontSize="14px" lineHeight="1.2" fontStyle="italic">
+
+          <Text fontSize="14px" lineHeight="1" textAlign={"center"}>
             Adicionamos um link para a página PIX na parte inferior do site.
           </Text>
         </VStack>
