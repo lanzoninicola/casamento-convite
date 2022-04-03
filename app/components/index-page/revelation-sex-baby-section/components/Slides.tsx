@@ -9,7 +9,7 @@ export default function Slides({ onOver }: { onOver: Function }) {
   const content = ["È não é so isso", "Um bebezinho está chegando"];
   const MAX_SLIDE = content.length - 1;
   const TIME_BETWEEN_SLIDES = 2700;
-  const SCALE_DELAY = 200;
+  const SCALE_DELAY = 500;
   const SCALE_TRANSITION_DURATION = 500;
   const DELAY_END_OF_SLIDE = 500;
 
@@ -63,14 +63,17 @@ export default function Slides({ onOver }: { onOver: Function }) {
 
   return (
     <>
-      <Center h="100%" className="slide1" background="transparent" p="1rem">
-        <BaseHeading
-          textAlign="center"
-          transform={`scale(${scale})`}
-          transition={`all ${SCALE_TRANSITION_DURATION}ms ease-in`}
-        >
-          {content[slide]}
-        </BaseHeading>
+      <Center
+        h="100%"
+        className="slide1"
+        background="transparent"
+        p="1rem"
+        transform={`scale(${scale})`}
+        transition={`all ${SCALE_TRANSITION_DURATION}ms ease-in`}
+        bg="primary.500"
+        borderRadius="5px"
+      >
+        <BaseHeading textAlign="center">{content[slide]}</BaseHeading>
       </Center>
     </>
   );
