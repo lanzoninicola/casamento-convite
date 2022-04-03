@@ -8,6 +8,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { SiGooglemaps, SiWaze } from "react-icons/si";
+import HighlightedText from "~/components/shared/HighlightedText";
 import MapFrame from "~/components/shared/MapFrame";
 import SafeArea from "~/components/shared/SafeArea";
 
@@ -23,23 +24,20 @@ export default function PlaceSection() {
       <SafeArea>
         <Center h="100%" w="100%">
           <Flex direction="column" gap="1rem">
-            <BaseHeading
-              as="h2"
-              fontSize="38px"
-              fontWeight="400"
-              letterSpacing="-1px"
-            >
-              Almoçamos juntos
-            </BaseHeading>
-            <BaseHeading
-              as="h3"
-              fontSize="20px"
-              fontWeight="400"
-              mb=".5rem"
-              letterSpacing="-1px"
-            >
-              a partir das 11 horas da manhã.
-            </BaseHeading>
+            <Box>
+              <BaseHeading
+                as="h2"
+                fontSize="38px"
+                fontWeight="400"
+                letterSpacing="-1px"
+              >
+                Almoçamos juntos
+              </BaseHeading>
+              <HighlightedText bg="primary.500">
+                a partir das 11 horas da manhã.
+              </HighlightedText>
+            </Box>
+
             <Box>
               <Text fontSize="20px" fontWeight="600" color="text.500">
                 Chacara Zanin
