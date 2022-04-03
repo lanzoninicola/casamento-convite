@@ -73,7 +73,7 @@ export default function Index() {
               <NavigationMenu />
               <Header />
             </NavigationProvider>
-            {/* <HeroSection />
+            <HeroSection />
             <HistorySection />
 
             <Gallery />
@@ -83,7 +83,7 @@ export default function Index() {
             <RevelationSexBabySection
               actionData={actionData}
               formState={state}
-            /> */}
+            />
 
             <InvitationSection />
           </FullPageVerticallyScroll>
