@@ -31,6 +31,7 @@ export default function RevelationGame({
   actionData: any;
 }) {
   const [babySex, setBabySex] = useState<BabySex | undefined>(undefined);
+  const [inputNameFocused, setInputNameFocused] = useState<boolean>(false);
   const [name, setName] = useState("");
 
   const formRef = useRef<HTMLFormElement>(null);
@@ -41,6 +42,10 @@ export default function RevelationGame({
     }
   }, [formState]);
 
+  function onNameFocus() {
+    setInputNameFocused(true);
+  }
+
   function onNameChange(name: string) {
     setName(name);
   }
@@ -49,10 +54,24 @@ export default function RevelationGame({
     setBabySex(sex);
   }
 
+  function gridTemplateRows(): string {
+    let babyOptionARow = ".5fr 1fr .5fr";
+
+    if (inputNameFocused) {
+      babyOptionARow = "auto 120px 1fr";
+    }
+
+    return babyOptionARow;
+  }
+
+  useEffect(() => {
+    gridTemplateRows();
+  }, [inputNameFocused]);
+
   return (
     <Grid
       h="100%"
-      gridTemplateRows=".5fr 1fr .5fr"
+      gridTemplateRows={gridTemplateRows()}
       gap="1rem"
       paddingInline={"1rem"}
     >
@@ -78,11 +97,15 @@ export default function RevelationGame({
           sex="girl"
           onClick={() => onSexSelection("girl")}
           opacity={formState === "idle" && babySex === "boy" ? 0.3 : 1}
+          transform={inputNameFocused && "scale(0.3)"}
+          h={inputNameFocused && "50px"}
         />
         <BabyOption
           sex="boy"
           onClick={() => onSexSelection("boy")}
           opacity={formState === "idle" && babySex === "girl" ? 0.3 : 1}
+          transform={inputNameFocused && "scale(0.3)"}
+          h={inputNameFocused && "50px"}
         />
       </Flex>
 
@@ -106,6 +129,7 @@ export default function RevelationGame({
               size="md"
               _placeholder={{ color: "text.500" }}
               onChange={(e) => onNameChange(e.target.value)}
+              onFocus={onNameFocus}
             />
             {/* <FormLabel htmlFor="name">Teu nome</FormLabel> */}
           </FormControl>

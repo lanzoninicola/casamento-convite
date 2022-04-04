@@ -28,10 +28,10 @@ export default function RevelationSexBabySection({
     <div ref={ref}>
       <Section id="revelation-sex-baby">
         <SafeArea>
-          {inView && !isIntroductionOver && (
+          {/* {inView && !isIntroductionOver && (
             <Introduction onOver={setIsIntroductionOver} />
-          )}
-          {isIntroductionOver && (
+          )} */}
+          {true && (
             <RevelationGame actionData={actionData} formState={formState} />
           )}
         </SafeArea>

@@ -1,6 +1,6 @@
-import { Box, VStack, Image, FormControl, Input } from "@chakra-ui/react";
-import { useState } from "react";
+import { Box, Image, VStack } from "@chakra-ui/react";
 import BaseHeading from "~/components/shared/BaseHeadings";
+
 import { BabySex } from "./RevelationGame";
 
 export default function BabyOption({
