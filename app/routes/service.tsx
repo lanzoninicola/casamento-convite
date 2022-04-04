@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { ActionFunction, Form, useActionData, useTransition } from "remix";
 import RevelationGame from "~/components/index-page/revelation-sex-baby-section/components/RevelationGame";
 import Section from "~/components/shared/Section";
+import SuccessMessage from "~/components/shared/SuccessMessage";
 import { firestoreService } from "~/lib/firebase/db.server";
 import {
   FirestoreDocument,
@@ -86,6 +87,7 @@ export default function Service() {
             {formState === "submitting" && "REMOVING RECORDS..."}
           </Button>
         </Form>
+        <SuccessMessage />
       </Center>
     </Section>
   );
