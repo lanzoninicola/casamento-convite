@@ -25,7 +25,8 @@ import { HistoryProvider } from "~/context/history-context";
 import { NavigationProvider } from "~/context/navigation-context";
 import { PhotoGalleryProvider } from "~/context/photo-gallery-context";
 import { firestoreService } from "~/lib/firebase/db.server";
-import RevelationGame from "~/modules/revelation-game/services/revelation-game.service";
+import RevelationGameService from "~/modules/revelation-game/services/revelation-game.service";
+
 import RevelationFormDeserializer from "~/modules/revelation-game/services/revelationFormDeserializer";
 import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";
 
@@ -46,7 +47,7 @@ export const action: ActionFunction = async ({ request }) => {
   const formBabySex = formData.get("baby-sex-selected");
   const formName = formData.get("name");
 
-  const revelationService = new RevelationGame(firestoreService);
+  const revelationService = new RevelationGameService(firestoreService);
   const deserializer = new RevelationFormDeserializer();
 
   const revelationDetails = deserializer.deserialize({ formName, formBabySex });

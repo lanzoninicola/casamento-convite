@@ -73,4 +73,10 @@ export default class Invitation {
 
     return response;
   }
+
+  async deleteAll() {
+    const response = await this.firestoreService.deleteAll(this.collectionName);
+
+    return response;
+  }
 }

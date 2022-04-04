@@ -4,7 +4,7 @@ import { RevelationModel } from "../model/revelation.model";
 
 const FIRESTORE_COLLECTION_NAME = "revelations";
 
-export default class RevelationGame {
+export default class RevelationGameService {
   private collectionName = FIRESTORE_COLLECTION_NAME;
 
   constructor(private firestoreService: FirestoreCRUDService) {}
@@ -39,5 +39,20 @@ export default class RevelationGame {
       ok,
       payload: revelationsData,
     };
+  }
+
+  async delete(revelationId: string) {
+    const response = await this.firestoreService.delete(
+      this.collectionName,
+      revelationId
+    );
+
+    return response;
+  }
+
+  async deleteAll() {
+    const response = await this.firestoreService.deleteAll(this.collectionName);
+
+    return response;
   }
 }

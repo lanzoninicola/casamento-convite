@@ -19,6 +19,7 @@ import { useEffect, useRef, useState } from "react";
 import { Form, useNavigate } from "remix";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import HighlightedText from "~/components/shared/HighlightedText";
+import SuccessMessage from "~/components/shared/SuccessMessage";
 import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";
 import AnimalImage from "./AnimalImage";
 import BabyOption from "./BabyOption";
@@ -180,39 +181,6 @@ function NameModal({
           </Form>
         </Box>
       </Center>
-    </>
-  );
-}
-
-function SuccessMessage({
-  message,
-  ...props
-}: {
-  message: string;
-  [key: string]: any;
-}) {
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    setShow(true);
-
-    const timeout = setTimeout(() => {
-      setShow(false);
-    }, 3000);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, []);
-
-  return (
-    <>
-      {show && (
-        <Alert status="success" {...props} mt="1rem">
-          <AlertIcon />
-          {message}
-        </Alert>
-      )}
     </>
   );
 }
