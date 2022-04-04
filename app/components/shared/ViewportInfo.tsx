@@ -13,7 +13,7 @@ export default function ViewportInfo() {
           borderRadius="5px"
           boxShadow="2xl"
           position="fixed"
-          top="50%"
+          top="1rem"
           left="1rem"
           bg="yellow.400"
           padding=".5rem"

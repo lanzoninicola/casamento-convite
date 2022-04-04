@@ -130,6 +130,7 @@ export default function RevelationGame({
               _placeholder={{ color: "text.500" }}
               onChange={(e) => onNameChange(e.target.value)}
               onFocus={onNameFocus}
+              onBlur={onNameFocus}
             />
             {/* <FormLabel htmlFor="name">Teu nome</FormLabel> */}
           </FormControl>
