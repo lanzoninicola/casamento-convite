@@ -11,11 +11,16 @@ export default function ViewportInfo({
   const [showViewportInfo, setShowViewPortInfo] = useState<boolean>(false);
 
   useEffect(() => {
-    if (enableOnProduction) {
+    const nodeEnv = process.env.NODE_ENV;
+
+    if (
+      (enableOnProduction && nodeEnv === "development") ||
+      nodeEnv === "production"
+    ) {
       setShowViewPortInfo(true);
     }
 
-    if (!enableOnProduction && process.env.NODE_ENV === "development") {
+    if (!enableOnProduction && nodeEnv === "development") {
       setShowViewPortInfo(true);
     }
   }, [enableOnProduction]);
