@@ -18,7 +18,7 @@ export default function HighlightedText({
   const _left = left ? `${left}px` : `15px`;
 
   return (
-    <Box position="relative" zIndex={0} width="max-content">
+    <Box as="span" position="relative" zIndex={0} width="max-content">
       <Box
         as="span"
         position="absolute"
@@ -29,7 +29,9 @@ export default function HighlightedText({
         bg={bg}
         zIndex={-1}
       ></Box>
-      <Text {...props}>{children}</Text>
+      <Text as="span" {...props}>
+        {children}
+      </Text>
     </Box>
   );
 }
