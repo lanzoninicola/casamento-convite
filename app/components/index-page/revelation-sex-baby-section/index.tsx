@@ -1,11 +1,15 @@
+import { Box, Center } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import SafeArea from "~/components/shared/SafeArea";
 import Section from "~/components/shared/Section";
 import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";
 
+import Typewriter from "typewriter-effect";
+
 import RevelationGame from "./components/RevelationGame";
 import Slides from "./components/Slides";
+import BaseHeading from "~/components/shared/BaseHeadings";
 
 export default function RevelationSexBabySection({
   formState,
@@ -14,31 +18,49 @@ export default function RevelationSexBabySection({
   formState: RemixFormState;
   actionData: any;
 }) {
-  const [isPresentationFinished, setPresentationFinished] = useState(false);
+  const [isIntroductionOver, setIsIntroductionOver] = useState<boolean>(false);
   const { ref, inView } = useInView({
-    /* Optional options */
-    threshold: 1,
+    threshold: 0.5,
     // delay: 1000,
   });
 
-  function onPresentationOver() {
-    setPresentationFinished(true);
-  }
-
   return (
     <div ref={ref}>
-      <Section id="revelation-sex-baby">
+      <Section id="revelation-sex-baby" bg="gray.50">
         <SafeArea>
-          {inView && !isPresentationFinished && (
-            <>
-              <Slides onOver={onPresentationOver} />
-            </>
+          {inView && !isIntroductionOver && (
+            <Introduction onOver={setIsIntroductionOver} />
           )}
-          {isPresentationFinished && (
+          {isIntroductionOver && (
             <RevelationGame actionData={actionData} formState={formState} />
           )}
         </SafeArea>
       </Section>
     </div>
+  );
+}
+
+function Introduction({ onOver }: { onOver: Function }) {
+  return (
+    <Center h="100%" paddingInline="2rem">
+      <BaseHeading textAlign="center" lineHeight="1.2">
+        <Typewriter
+          onInit={(typewriter) => {
+            typewriter
+              .changeDelay(50)
+              .typeString("È não é so isso!")
+              .pauseFor(200)
+              .deleteAll()
+              .typeString("Um bebezinho está chegando")
+              .pauseFor(500)
+              .deleteAll()
+              .callFunction(() => {
+                onOver(true);
+              })
+              .start();
+          }}
+        />
+      </BaseHeading>
+    </Center>
   );
 }
