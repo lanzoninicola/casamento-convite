@@ -82,16 +82,16 @@ export const chapters: Chapter[] = [
     image: "history-content-chap4",
     text: `Já se passaram quase três anos e alguns kilos desde o nosso primeiro encontro. Muitas coisas mudaram, mas a paixão permaneceu forte além da adversidade e o amor cresce a cada dia. Mas não era suficiente, o nosso amor será eterno. Nós prometemos.`,
   },
-  {
-    type: "intro",
-    textMonth: "21 MAIO",
-    textYear: "2021",
-    title: "Casamento!!!",
-  },
-  {
-    type: "content",
-    title: `Casamento!!!`,
-    image: "history-content-chap5",
-    text: `Nossa cerimonia será diferente do programado a alguns meses atras, íntimo e discreto, juntos as nossas famílias. Mas queremos compartilhar esse momento tão importante para nós com você/s no almoço que será servido na Chacara Zanin.`,
-  },
+  // {
+  //   type: "intro",
+  //   textMonth: "21 MAIO",
+  //   textYear: "2021",
+  //   title: "Casamento!!!",
+  // },
+  // {
+  //   type: "content",
+  //   title: `Casamento!!!`,
+  //   image: "history-content-chap5",
+  //   text: `Nossa cerimonia será diferente do programado a alguns meses atras, íntimo e discreto, juntos as nossas famílias. Mas queremos compartilhar esse momento tão importante para nós com você/s no almoço que será servido na Chacara Zanin.`,
+  // },
 ];

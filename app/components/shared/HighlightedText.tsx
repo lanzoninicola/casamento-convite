@@ -1,31 +1,24 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
 export default function HighlightedText({
   children,
   top,
   left,
   bg,
-  color,
+
   ...props
 }: {
   children: React.ReactNode;
   top?: number;
   left?: number;
   bg: string;
-  color?: string;
   [key: string]: any;
 }) {
   const _top = top ? `${top}px` : `3px`;
   const _left = left ? `${left}px` : `15px`;
 
   return (
-    <Box
-      as="span"
-      position="relative"
-      zIndex={0}
-      color={color}
-      width="max-content"
-    >
+    <Box position="relative" zIndex={0} width="max-content">
       <Box
         as="span"
         position="absolute"
@@ -36,7 +29,7 @@ export default function HighlightedText({
         bg={bg}
         zIndex={-1}
       ></Box>
-      {children}
+      <Text {...props}>{children}</Text>
     </Box>
   );
 }

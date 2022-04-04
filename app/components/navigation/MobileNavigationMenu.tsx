@@ -49,11 +49,13 @@ export default function MobileNavigationMenu() {
           >
             <NavItem to="/#our-story">Nossa Historia</NavItem>
             <Divider borderColor="black" />
-            <NavItem to="/#photo-gallery">Galeria de foto</NavItem>
+            <NavItem to="/#ceremony">Casamento</NavItem>
             <Divider borderColor="black" />
             <NavItem to="/#lunch-place">Almoçamos juntos</NavItem>
             <Divider borderColor="black" />
             <NavItem to="/#invitation-claim">Quero participar</NavItem>
+            <Divider borderColor="black" />
+            <NavItem to="/#photo-gallery">Galeria de foto</NavItem>
             <Divider borderColor="black" />
           </Flex>
           <Center>

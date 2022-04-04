@@ -30,6 +30,7 @@ export default function InvitationSection() {
             <BaseHeading as="h2" fontSize="38px" fontWeight="700">
               Confirme sua presença
             </BaseHeading>
+
             <Text
               fontSize="20px"
               color="text.500"
@@ -42,10 +43,11 @@ export default function InvitationSection() {
               </HighlightedText>
             </Text>
             <Text
-              fontSize="20px"
               fontWeight="400"
               color="text.500"
-              lineHeight="1"
+              fontSize="16px"
+              lineHeight={1.2}
+              letterSpacing="-.5px"
             >
               Por favor, reserve um momento <br /> e responda ao nosso convite
             </Text>

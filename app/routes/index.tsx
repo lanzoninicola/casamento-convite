@@ -7,6 +7,8 @@ import {
 } from "remix";
 import Footer from "~/components/footer";
 import Header from "~/components/header/Header";
+import CeremonySection from "~/components/index-page/ceremony-section";
+import Ceremony from "~/components/index-page/ceremony-section";
 import Gallery from "~/components/index-page/gallery-section";
 import HeroSection from "~/components/index-page/hero-section/HeroSection";
 import AlertNoReadStory from "~/components/index-page/hystory-section/components/AlertNoReadStory";
@@ -77,6 +79,8 @@ export default function Index() {
           </NavigationProvider>
           <HeroSection />
           <HistorySection />
+
+          <CeremonySection />
 
           <PlaceSection />
 

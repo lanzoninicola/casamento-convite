@@ -8,7 +8,7 @@ export default function BaseHeading({
   [x: string]: any;
 }) {
   return (
-    <Heading color="text.500" lineHeight="1" {...props}>
+    <Heading color="text.500" lineHeight="1" mb=".5rem" {...props}>
       {children}
     </Heading>
   );
