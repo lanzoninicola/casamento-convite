@@ -13,12 +13,14 @@ import {
   RadioGroup,
   Stack,
   Text,
+  VStack,
 } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { Form, useNavigate } from "remix";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import HighlightedText from "~/components/shared/HighlightedText";
 import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";
+import AnimalImage from "./AnimalImage";
 import BabyOption from "./BabyOption";
 
 export type BabySex = "boy" | "girl";
@@ -31,61 +33,22 @@ export default function RevelationGame({
   actionData: any;
 }) {
   const [babySex, setBabySex] = useState<BabySex | undefined>(undefined);
-  const [inputNameFocused, setInputNameFocused] = useState<boolean>(false);
-  const [name, setName] = useState("");
+  const [showNameModal, setShowNameModal] = useState(false);
 
-  let navigate = useNavigate();
-
-  const formRef = useRef<HTMLFormElement>(null);
-
-  useEffect(() => {
-    if (formRef.current) {
-      formRef.current.reset();
-    }
-  }, [formState]);
-
-  function onNameFocus() {
-    setInputNameFocused(!inputNameFocused);
-  }
-
-  function onNameBlur() {
-    setInputNameFocused(!inputNameFocused);
-  }
-
-  function onNameChange(name: string) {
-    setName(name);
-  }
-
-  function onSexSelection(sex: BabySex) {
-    setBabySex(sex);
+  function onShowModalName() {
+    setShowNameModal(true);
   }
 
   function gridTemplateRows(): string {
     let babyOptionARow = ".5fr 1fr .5fr";
 
-    if (inputNameFocused) {
-      babyOptionARow = "auto 120px 1fr";
-    }
-
     return babyOptionARow;
   }
 
   useEffect(() => {
-    gridTemplateRows();
-  }, [inputNameFocused]);
-
-  useEffect(() => {
-    let redirectTimeout: NodeJS.Timeout;
-
     if (formState === "success") {
-      redirectTimeout = setTimeout(() => {
-        navigate("/#revelation");
-      }, 800);
+      setShowNameModal(false);
     }
-
-    return () => {
-      clearTimeout(redirectTimeout);
-    };
   }, [formState]);
 
   return (
@@ -116,58 +79,108 @@ export default function RevelationGame({
       <Flex direction="row" gap="2rem" paddingInline="2rem">
         <BabyOption
           sex="girl"
-          onClick={() => onSexSelection("girl")}
+          onClick={() => setBabySex("girl")}
           opacity={babySex === "boy" ? 0.3 : 1}
-          transform={inputNameFocused && "scale(0.3)"}
-          h={inputNameFocused && "50px"}
         />
         <BabyOption
           sex="boy"
-          onClick={() => onSexSelection("boy")}
+          onClick={() => setBabySex("boy")}
           opacity={babySex === "girl" ? 0.3 : 1}
-          transform={inputNameFocused && "scale(0.3)"}
-          h={inputNameFocused && "50px"}
         />
       </Flex>
-
-      <Form method="post" ref={formRef}>
-        <RadioGroup
-          onChange={() => onSexSelection("boy")}
-          value={babySex}
-          hidden={true}
+      <Box w="100%">
+        <Button
+          bg="secondary.500"
+          disabled={babySex === undefined}
+          onClick={onShowModalName}
+          w="100%"
         >
-          <Stack direction="row">
-            <Radio name="baby-sex-selected" value="boy"></Radio>
-            <Radio name="baby-sex-selected" value="girl"></Radio>
-          </Stack>
-        </RadioGroup>
-
-        <HStack spacing={4}>
-          <FormControl isRequired variant="floating">
-            <Input
-              name="name"
-              placeholder="Teu nome"
-              size="md"
-              _placeholder={{ color: "text.500" }}
-              onChange={(e) => onNameChange(e.target.value)}
-              onFocus={onNameFocus}
-              onBlur={onNameBlur}
-            />
-            {/* <FormLabel htmlFor="name">Teu nome</FormLabel> */}
-          </FormControl>
-          <Button
-            type="submit"
-            isLoading={formState === "submitting"}
-            loadingText="Enviando..."
-            bg="secondary.500"
-            disabled={babySex === undefined || name === ""}
-          >
-            Envia
-          </Button>
-        </HStack>
+          Envia
+        </Button>
         {formState === "success" && <SuccessMessage message={"Enviado!"} />}
-      </Form>
+      </Box>
+      {showNameModal && <NameModal formState={formState} babySex={babySex} />}
     </Grid>
+  );
+}
+
+function NameModal({
+  formState,
+  babySex,
+}: {
+  formState: RemixFormState;
+  babySex: BabySex | undefined;
+}) {
+  const [name, setName] = useState("");
+
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    if (formRef.current) {
+      formRef.current.reset();
+    }
+  }, [formState]);
+
+  function onNameChange(name: string) {
+    setName(name);
+  }
+
+  return (
+    <>
+      <Center
+        position="fixed"
+        zIndex={1000}
+        top={0}
+        left={0}
+        right={0}
+        bottom={0}
+        w="100%"
+        h="100%"
+        background="primary.500"
+        paddingInline="2rem"
+      >
+        <Box w="100%">
+          <HStack mb="2rem" spacing="2rem">
+            <Text fontSize="16px" fontWeight={700}>{`Você escolheu:`}</Text>
+            <AnimalImage sex={babySex} hImage="64px" />
+          </HStack>
+          <Form method="post" ref={formRef}>
+            <RadioGroup value={babySex} hidden={true}>
+              <Stack direction="row">
+                <Radio name="baby-sex-selected" value="boy"></Radio>
+                <Radio name="baby-sex-selected" value="girl"></Radio>
+              </Stack>
+            </RadioGroup>
+
+            <FormControl isRequired variant="floating">
+              <Input
+                name="name"
+                placeholder="Teu nome"
+                size="md"
+                _placeholder={{ color: "text.500" }}
+                onChange={(e) => onNameChange(e.target.value)}
+                borderColor="gray.800"
+                w="100%"
+                mb="1rem"
+                // onFocus={onNameFocus}
+                // onBlur={onNameBlur}
+              />
+              {/* <FormLabel htmlFor="name">Teu nome</FormLabel> */}
+            </FormControl>
+            <Button
+              type="submit"
+              isLoading={formState === "submitting"}
+              loadingText="Enviando..."
+              bg="secondary.500"
+              disabled={name === ""}
+              w="100%"
+            >
+              OK
+            </Button>
+          </Form>
+        </Box>
+      </Center>
+    </>
   );
 }
 
