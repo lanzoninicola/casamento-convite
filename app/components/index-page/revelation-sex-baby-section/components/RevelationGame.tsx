@@ -107,11 +107,9 @@ export default function RevelationGame({
         >
           Deixe sua opinião, clicando em <br /> um dos dois ursinhos e concorra{" "}
           <br />
-          <Center>
-            <HighlightedText bg="primary.500">
-              a uma troca de frauda
-            </HighlightedText>
-          </Center>
+          <HighlightedText bg="primary.500">
+            a uma troca de frauda
+          </HighlightedText>
         </Text>
       </Center>
 
