@@ -118,7 +118,7 @@ export default function Invitation() {
 
   return (
     <>
-      <ViewportInfo />
+      {/* <ViewportInfo /> */}
       <Section id="invitation-form" bg="gray.50">
         <SafeArea ignoreHeader={true}>
           <Center paddingInline="2rem" h="100%" flexDirection="column">
