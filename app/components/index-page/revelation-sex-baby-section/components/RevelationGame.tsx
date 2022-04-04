@@ -43,7 +43,7 @@ export default function RevelationGame({
   }, [formState]);
 
   function onNameFocus() {
-    setInputNameFocused(true);
+    setInputNameFocused(!inputNameFocused);
   }
 
   function onNameChange(name: string) {

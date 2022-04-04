@@ -15,6 +15,7 @@ import PlaceSection from "~/components/index-page/place-section/PlaceSection";
 import RevelationSexBabySection from "~/components/index-page/revelation-sex-baby-section";
 import NavigationMenu from "~/components/navigation/MobileNavigationMenu";
 import FullPageVerticallyScroll from "~/components/shared/FullPageVerticallyScroll";
+import ViewportInfo from "~/components/shared/ViewportInfo";
 import WhatsAppWidget from "~/components/shared/WhatsAppWidget";
 import { HistoryProvider } from "~/context/history-context";
 import { NavigationProvider } from "~/context/navigation-context";
@@ -89,7 +90,7 @@ export default function Index() {
           </FullPageVerticallyScroll>
           <AlertNoReadStory />
           <WhatsAppWidget />
-          {/* <ViewportInfo /> */}
+          <ViewportInfo />
         </PhotoGalleryProvider>
       </HistoryProvider>
     </>
