@@ -90,7 +90,7 @@ export default function Index() {
           </FullPageVerticallyScroll>
           <AlertNoReadStory />
           <WhatsAppWidget />
-          <ViewportInfo />
+          <ViewportInfo enableOnProduction={true} />
         </PhotoGalleryProvider>
       </HistoryProvider>
     </>

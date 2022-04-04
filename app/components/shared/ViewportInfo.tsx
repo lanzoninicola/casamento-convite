@@ -1,12 +1,28 @@
 import { Box, HStack, Text, VStack } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import useViewportInfo from "./hooks/UseViewPortInfo";
 
-export default function ViewportInfo() {
+export default function ViewportInfo({
+  enableOnProduction = false,
+}: {
+  enableOnProduction?: boolean;
+}) {
   const { width, height } = useViewportInfo();
+  const [showViewportInfo, setShowViewPortInfo] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (enableOnProduction) {
+      setShowViewPortInfo(true);
+    }
+
+    if (!enableOnProduction && process.env.NODE_ENV === "development") {
+      setShowViewPortInfo(true);
+    }
+  }, [enableOnProduction]);
 
   return (
     <>
-      {process.env.NODE_ENV === "development" && (
+      {showViewportInfo && (
         <Box
           w="150px"
           h="auto"
