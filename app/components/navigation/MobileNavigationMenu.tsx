@@ -4,9 +4,27 @@ import { RiHistoryLine } from "react-icons/ri";
 
 import { Link } from "remix";
 import useIsOpen from "~/context/navigation-context/hooks/useIsOpen";
+import { browserName } from "react-device-detect";
+
+export interface BackgroundStyle {
+  bg?: string;
+  backdropFilter?: string;
+}
 
 export default function MobileNavigationMenu() {
   const { isOpen } = useIsOpen();
+
+  function getBackgroundStyle(): BackgroundStyle {
+    const style: BackgroundStyle = {};
+
+    if (browserName == "Firefox") {
+      style.bg = "primary.500";
+    } else {
+      style.backdropFilter = "blur(40px)";
+    }
+
+    return style;
+  }
 
   return (
     <>
@@ -14,14 +32,13 @@ export default function MobileNavigationMenu() {
         <Flex
           h="100vh"
           w="100vw"
-          // bg="secondary.500"
-          backdropFilter="blur(40px)"
           position="fixed"
           top={0}
           left={0}
           zIndex={999}
           paddingBlock="6rem"
           paddingInline="2rem"
+          {...getBackgroundStyle()}
         >
           <Flex
             h="100%"
