@@ -7,7 +7,7 @@ import {
 } from "remix";
 import Footer from "~/components/footer";
 import Header from "~/components/header/Header";
-import Gallery from "~/components/index-page/gallery-section/Gallery";
+import Gallery from "~/components/index-page/gallery-section";
 import HeroSection from "~/components/index-page/hero-section/HeroSection";
 import AlertNoReadStory from "~/components/index-page/hystory-section/components/AlertNoReadStory";
 import HistorySection from "~/components/index-page/hystory-section/HistorySection";
@@ -78,13 +78,12 @@ export default function Index() {
           <HeroSection />
           <HistorySection />
 
-          <Gallery />
-
           <PlaceSection />
 
           <RevelationSexBabySection actionData={actionData} formState={state} />
 
           <InvitationSection />
+          <Gallery />
           {/* </FullPageVerticallyScroll> */}
           <Footer />
           <AlertNoReadStory />
