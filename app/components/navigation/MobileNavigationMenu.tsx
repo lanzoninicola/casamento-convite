@@ -30,7 +30,7 @@ export default function MobileNavigationMenu() {
     <>
       {isOpen && (
         <Flex
-          h="100vh"
+          h="auto"
           w="100vw"
           position="fixed"
           top={0}
@@ -46,12 +46,15 @@ export default function MobileNavigationMenu() {
             direction="column"
             align="flex-end"
             gap="1rem"
+            mb="3rem"
           >
             <NavItem to="/#our-story">Nossa Historia</NavItem>
             <Divider borderColor="black" />
             <NavItem to="/#ceremony">Casamento</NavItem>
             <Divider borderColor="black" />
             <NavItem to="/#lunch-place">Almoçamos juntos</NavItem>
+            <Divider borderColor="black" />
+            <NavItem to="/#revelation">Revelação</NavItem>
             <Divider borderColor="black" />
             <NavItem to="/#invitation-claim">Quero participar</NavItem>
             <Divider borderColor="black" />
@@ -81,8 +84,14 @@ function NavItem({
 
   [key: string]: any;
 }) {
+  const { setIsOpen } = useIsOpen();
+
+  function onNavItemClicked() {
+    setIsOpen(false);
+  }
+
   return (
-    <Link to={to} {...props}>
+    <Link to={to} {...props} onClick={onNavItemClicked}>
       <Flex direction="row" gap="1rem" alignContent="center">
         {leftIcon}
         <Text
