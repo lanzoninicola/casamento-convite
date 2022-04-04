@@ -36,7 +36,6 @@ export default function Statistics() {
   const totalGuests = getTotalGuests(invitations);
   const totalCarne = getTotalByMealPreference(invitations, "carne");
   const totalVegetariano = getTotalByMealPreference(invitations, "vegetariano");
-  const totalVegano = getTotalByMealPreference(invitations, "vegano");
   const totalIndiferente = getTotalByMealPreference(invitations, "indiferente");
   const totalWillAttend = getWillAttend(invitations).length;
   const totalWillNotAttend = getWillNotAttend(invitations).length;

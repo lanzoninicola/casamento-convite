@@ -11,7 +11,7 @@ export default function PlaceSection() {
     "Chacara Zanin, Linha São Braz São, Estr. Mun. Lisando São Braz, Pato Branco - PR, 85504-000";
 
   return (
-    <Section id="lunch-place" pt="2rem">
+    <Section id="lunch-place" pt="8rem" h="120vh">
       <Grid gridTemplateRows="auto" padding="2rem" gap="1rem">
         <Box>
           <BaseHeading
@@ -33,10 +33,10 @@ export default function PlaceSection() {
         </Box>
         <Box>
           <Text fontSize="20px" fontWeight="600" color="text.500">
-            Chacara Zanin
+            Chácara Zanin
           </Text>
-          <Text fontSize="16px" lineHeight={1.2} letterSpacing="-.5px">
-            Linha São Braz São, <br />
+          <Text fontSize="18px" lineHeight={1.2} letterSpacing="-.5px">
+            Linha São Braz, <br />
             Estr. Mun. Lisando São Braz, <br />
             Pato Branco - PR, 85504-000
           </Text>

@@ -26,26 +26,28 @@ export default function InvitationSection() {
     <Section id="invitation-claim" backgroundColor="secondary.500">
       <SafeArea>
         <Grid templateRows="1fr 1fr .5fr" h="100%" padding="2rem">
-          <Flex direction="column" gap="1rem">
-            <BaseHeading as="h2" fontSize="38px" fontWeight="700">
-              Confirme sua presença
-            </BaseHeading>
+          <Flex direction="column" gap="1.5rem">
+            <Box>
+              <BaseHeading as="h2" fontSize="38px" fontWeight="700" mb=".5rem">
+                Confirme sua presença
+              </BaseHeading>
 
-            <Text
-              fontSize="20px"
-              color="text.500"
-              lineHeight={1.2}
-              fontWeight={700}
-            >
-              Podemos aceitar confirmações <br />{" "}
-              <HighlightedText bg="primary.500" left={5}>
-                até {settings.invitationConfirmationWithinHumanReadable}
-              </HighlightedText>
-            </Text>
+              <Text
+                fontSize="20px"
+                color="text.500"
+                lineHeight={1.2}
+                fontWeight={700}
+              >
+                Podemos aceitar confirmações <br />{" "}
+                <HighlightedText bg="primary.500" left={5}>
+                  até {settings.invitationConfirmationWithinHumanReadable}
+                </HighlightedText>
+              </Text>
+            </Box>
             <Text
               fontWeight="400"
               color="text.500"
-              fontSize="16px"
+              fontSize="18px"
               lineHeight={1.2}
               letterSpacing="-.5px"
             >

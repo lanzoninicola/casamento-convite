@@ -27,15 +27,16 @@ export default function CeremonySection() {
           </HighlightedText>
         </Box>
         <Flex direction="column" gap="1rem">
-          <Text fontSize="16px" lineHeight={1.2} letterSpacing="-.5px">
+          <Text fontSize="18px" lineHeight={1.2} letterSpacing="-.5px">
             Nossa cerimonia será diferente do <br />
-            programado a alguns meses atras.
+            programado à alguns meses atrás.
           </Text>
-          <Text fontSize="16px" lineHeight={1.2} letterSpacing="-.5px">
+          <Text fontSize="18px" lineHeight={1.2} letterSpacing="-.5px">
             Nossa união será celebrada de forma <br />
             íntima e discreta no Cartório Vieira <br />
             <Text
               as="span"
+              fontSize="18px"
               fontWeight={700}
               lineHeight={1.2}
               letterSpacing="-.5px"
@@ -43,9 +44,17 @@ export default function CeremonySection() {
               apenas com os padrinhos e os pais.
             </Text>
           </Text>
+          <Text
+            fontSize="18px"
+            lineHeight={1.2}
+            letterSpacing="-.5px"
+            fontWeight={700}
+          >
+            Mas no almoço estaremos todos juntos, amigos e familiares.
+          </Text>
         </Flex>
       </Grid>
-      <Box mt="-100px">
+      <Box mt="-80px">
         <Image src="/images/wedding-bg.png" alt="Mapa do casamento" />
       </Box>
     </Section>

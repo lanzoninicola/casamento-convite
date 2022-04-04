@@ -86,9 +86,11 @@ export default function RevelationGame({
           letterSpacing="1px"
         >
           Deixe sua opinião e concorra <br />
-          <HighlightedText bg="primary.500">
-            a uma troca de fraude
-          </HighlightedText>
+          <Center>
+            <HighlightedText bg="primary.500">
+              a uma troca de frauda
+            </HighlightedText>
+          </Center>
         </Text>
       </Center>
 

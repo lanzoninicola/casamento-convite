@@ -22,7 +22,6 @@ export default function FormSelectMealPreference() {
           >
             <option value="carne">Carne</option>
             <option value="vegetariano">Vegetariano</option>
-            <option value="vegano">Vegano</option>
             <option value="indiferente">Indiferente</option>
           </Select>
         </FormControl>

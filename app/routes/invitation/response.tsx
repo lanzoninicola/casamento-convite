@@ -46,7 +46,7 @@ function NextButton() {
   const pulseAnimationCSS = usePulseAnimation(211, 171, 158);
 
   return (
-    <Link to="/#revelation-sex-baby">
+    <Link to="/#gallery">
       <Button
         bg="secondary.500"
         rightIcon={<ArrowRight />}

@@ -1,7 +1,7 @@
 import { InvitationModel } from "../models/invitation.model";
 
 export type InvitationId = string;
-export type MealPreference = "carne" | "vegetariano" | "vegano" | "indiferente";
+export type MealPreference = "carne" | "vegetariano" | "indiferente";
 
 export interface InvitationCollectionResponse {
   ok: boolean;
