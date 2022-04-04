@@ -53,8 +53,7 @@ export default function PlaceSection() {
           </HStack>
 
           <MapFrame
-            w={300}
-            h={300}
+            maxH="400px"
             gUrl="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14322.944517383236!2d-52.6759223!3d-26.1727218!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6596c3e5b0170224!2sCh%C3%A1cara%20Zanin!5e0!3m2!1spt-BR!2sbr!4v1648582944658!5m2!1spt-BR!2sbr"
           />
         </Grid>
