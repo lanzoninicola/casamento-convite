@@ -5,6 +5,7 @@ import {
   useActionData,
   useTransition,
 } from "remix";
+import Footer from "~/components/footer";
 import Header from "~/components/header/Header";
 import Gallery from "~/components/index-page/gallery-section/Gallery";
 import HeroSection from "~/components/index-page/hero-section/HeroSection";
@@ -69,25 +70,23 @@ export default function Index() {
     <>
       <HistoryProvider>
         <PhotoGalleryProvider>
-          <FullPageVerticallyScroll>
-            <NavigationProvider>
-              <NavigationMenu />
-              <Header />
-            </NavigationProvider>
-            <HeroSection />
-            <HistorySection />
+          {/* <FullPageVerticallyScroll> */}
+          <NavigationProvider>
+            <NavigationMenu />
+            <Header />
+          </NavigationProvider>
+          <HeroSection />
+          <HistorySection />
 
-            <Gallery />
+          <Gallery />
 
-            <PlaceSection />
+          <PlaceSection />
 
-            <RevelationSexBabySection
-              actionData={actionData}
-              formState={state}
-            />
+          <RevelationSexBabySection actionData={actionData} formState={state} />
 
-            <InvitationSection />
-          </FullPageVerticallyScroll>
+          <InvitationSection />
+          {/* </FullPageVerticallyScroll> */}
+          <Footer />
           <AlertNoReadStory />
           <WhatsAppWidget />
           {/* <ViewportInfo enableOnProduction={false} /> */}
