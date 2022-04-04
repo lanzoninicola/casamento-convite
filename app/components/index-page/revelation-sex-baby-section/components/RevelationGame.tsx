@@ -15,7 +15,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
-import { Form } from "remix";
+import { Form, useNavigate } from "remix";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import HighlightedText from "~/components/shared/HighlightedText";
 import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";
@@ -34,6 +34,8 @@ export default function RevelationGame({
   const [inputNameFocused, setInputNameFocused] = useState<boolean>(false);
   const [name, setName] = useState("");
 
+  let navigate = useNavigate();
+
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
@@ -43,6 +45,10 @@ export default function RevelationGame({
   }, [formState]);
 
   function onNameFocus() {
+    setInputNameFocused(!inputNameFocused);
+  }
+
+  function onNameBlur() {
     setInputNameFocused(!inputNameFocused);
   }
 
@@ -68,11 +74,25 @@ export default function RevelationGame({
     gridTemplateRows();
   }, [inputNameFocused]);
 
+  useEffect(() => {
+    let redirectTimeout: NodeJS.Timeout;
+
+    if (formState === "success") {
+      redirectTimeout = setTimeout(() => {
+        navigate("/#revelation");
+      }, 800);
+    }
+
+    return () => {
+      clearTimeout(redirectTimeout);
+    };
+  }, [formState]);
+
   return (
     <Grid
       h="100%"
       gridTemplateRows={gridTemplateRows()}
-      gap="1rem"
+      gap="1.5rem"
       paddingInline={"1rem"}
     >
       <Center flexDirection="column" gap=".5rem">
@@ -80,7 +100,7 @@ export default function RevelationGame({
           O que você acha que é
         </BaseHeading>
         <Text
-          fontSize="14px"
+          fontSize="18px"
           textAlign="center"
           textTransform="uppercase"
           letterSpacing="1px"
@@ -133,7 +153,7 @@ export default function RevelationGame({
               _placeholder={{ color: "text.500" }}
               onChange={(e) => onNameChange(e.target.value)}
               onFocus={onNameFocus}
-              onBlur={onNameFocus}
+              onBlur={onNameBlur}
             />
             {/* <FormLabel htmlFor="name">Teu nome</FormLabel> */}
           </FormControl>
