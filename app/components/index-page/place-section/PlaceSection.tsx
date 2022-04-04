@@ -27,6 +27,7 @@ export default function PlaceSection() {
             fontWeight={700}
             top={2}
             color="grey.50"
+            fontSize="20px"
           >
             a partir das 11 horas da manhã.
           </HighlightedText>

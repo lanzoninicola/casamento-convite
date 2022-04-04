@@ -22,6 +22,7 @@ export default function CeremonySection() {
             fontWeight={700}
             top={2}
             color="grey.50"
+            fontSize="20px"
           >
             dia 21 Maio 2022 as 10 horas.
           </HighlightedText>
