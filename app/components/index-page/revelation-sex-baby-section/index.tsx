@@ -20,7 +20,7 @@ export default function RevelationSexBabySection({
 }) {
   const [isIntroductionOver, setIsIntroductionOver] = useState<boolean>(false);
   const { ref, inView } = useInView({
-    threshold: 0.2,
+    threshold: 0.5,
     // delay: 1000,
   });
 
