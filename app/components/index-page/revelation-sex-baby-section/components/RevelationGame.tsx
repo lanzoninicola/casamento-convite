@@ -85,7 +85,8 @@ export default function RevelationGame({
           textTransform="uppercase"
           letterSpacing="1px"
         >
-          Deixe sua opinião e concorra <br />
+          Deixe sua opinião, clicando em <br /> um dos dois ursinhos e concorra{" "}
+          <br />
           <Center>
             <HighlightedText bg="primary.500">
               a uma troca de frauda
@@ -98,14 +99,14 @@ export default function RevelationGame({
         <BabyOption
           sex="girl"
           onClick={() => onSexSelection("girl")}
-          opacity={formState === "idle" && babySex === "boy" ? 0.3 : 1}
+          opacity={babySex === "boy" ? 0.3 : 1}
           transform={inputNameFocused && "scale(0.3)"}
           h={inputNameFocused && "50px"}
         />
         <BabyOption
           sex="boy"
           onClick={() => onSexSelection("boy")}
-          opacity={formState === "idle" && babySex === "girl" ? 0.3 : 1}
+          opacity={babySex === "girl" ? 0.3 : 1}
           transform={inputNameFocused && "scale(0.3)"}
           h={inputNameFocused && "50px"}
         />

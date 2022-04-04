@@ -20,11 +20,11 @@ export const meta: MetaFunction = () => {
 export default function Response() {
   const { willAttend } = useWillAttendFormData();
 
-  const bgImage = true ? "thank-you-bg.jpg" : "gosh-bg.png";
+  const bgImage = willAttend ? "thank-you-bg.jpg" : "gosh-bg.png";
 
   return (
     <Section
-      id="invitation-success"
+      id="invitation-response"
       maxH="100vh"
       backgroundImage={`url(/images/${bgImage})`}
       backgroundSize="cover"
@@ -46,7 +46,7 @@ function NextButton() {
   const pulseAnimationCSS = usePulseAnimation(211, 171, 158);
 
   return (
-    <Link to="/#gallery">
+    <Link to="/#photo-gallery">
       <Button
         bg="secondary.500"
         rightIcon={<ArrowRight />}
