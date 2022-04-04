@@ -26,7 +26,7 @@ export default function RevelationSexBabySection({
 
   return (
     <div ref={ref}>
-      <Section id="revelation-sex-baby">
+      <Section id="revelation-sex-baby" bg="gray.50">
         <SafeArea>
           {/* {inView && !isIntroductionOver && (
             <Introduction onOver={setIsIntroductionOver} />
