@@ -4,7 +4,7 @@ import { RevelationModel } from "../model/revelation.model";
 
 const FIRESTORE_COLLECTION_NAME = "revelations";
 
-export default class RevelationStoreService {
+export default class RevelationDatabaseService {
   private collectionName = FIRESTORE_COLLECTION_NAME;
 
   constructor(private firestoreService: FirestoreCRUDService) {}

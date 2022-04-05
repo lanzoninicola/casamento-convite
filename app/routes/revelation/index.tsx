@@ -34,7 +34,7 @@ import RevelationGameService, {
   RevelationCurrentResult,
 } from "~/modules/revelation-game/services/revelation-game.service";
 
-import RevelationStoreService from "~/modules/revelation-game/services/revelation-store.service";
+import RevelationDatabaseService from "~/modules/revelation-game/services/revelation-database.service";
 import RevelationFormDeserializer from "~/modules/revelation-game/services/revelationFormDeserializer";
 import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";
 
@@ -69,7 +69,7 @@ export const action: ActionFunction = async ({ request }) => {
   const formBabyGender = formData.get("baby-gender-selected") as BabySex;
   const formName = formData.get("name");
 
-  const revelationService = new RevelationStoreService(firestoreService);
+  const revelationService = new RevelationDatabaseService(firestoreService);
   const deserializer = new RevelationFormDeserializer();
 
   const revelationDetails = deserializer.deserialize({
@@ -230,7 +230,7 @@ function PartialResult({
 }
 
 async function getCurrentResults() {
-  const revelationStore = new RevelationStoreService(firestoreService);
+  const revelationStore = new RevelationDatabaseService(firestoreService);
   const revelationGame = new RevelationGameService(revelationStore);
 
   const result = await revelationGame.currentResults();

@@ -1,4 +1,4 @@
-import RevelationStoreService from "./revelation-store.service";
+import RevelationDatabaseService from "./revelation-database.service";
 
 export interface RevelationCurrentResult {
   boys: number;
@@ -11,7 +11,7 @@ export interface RevelationCurrentResultResponse {
 }
 
 export default class RevelationGameService {
-  constructor(private revelationStoreService: RevelationStoreService) {}
+  constructor(private revelationStoreService: RevelationDatabaseService) {}
 
   async currentResults(): Promise<RevelationCurrentResultResponse> {
     if (process.env.NODE_ENV === "development") {

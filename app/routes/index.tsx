@@ -25,7 +25,7 @@ import { HistoryProvider } from "~/context/history-context";
 import { NavigationProvider } from "~/context/navigation-context";
 import { PhotoGalleryProvider } from "~/context/photo-gallery-context";
 import { firestoreService } from "~/lib/firebase/db.server";
-import RevelationStoreService from "~/modules/revelation-game/services/revelation-store.service";
+import RevelationDatabaseService from "~/modules/revelation-game/services/revelation-database.service";
 
 import RevelationFormDeserializer from "~/modules/revelation-game/services/revelationFormDeserializer";
 import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";
