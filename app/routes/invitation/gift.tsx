@@ -4,12 +4,13 @@ import ArrowRight from "~/components/shared/ArrowRight";
 import { BackToHomeButton } from "~/components/shared/BackToHomeButton";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import usePulseAnimation from "~/components/shared/hooks/usePulseAnimation";
+import SafeArea from "~/components/shared/SafeArea";
 import Section from "~/components/shared/Section";
 
 export default function Gift() {
   return (
     <Section
-      padding="1rem"
+      padding="2rem"
       bg="primary.500"
       objectFit="cover"
       position="relative"
