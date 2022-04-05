@@ -74,7 +74,7 @@ export const action: ActionFunction = async ({ request }) => {
   return response;
 };
 
-export default function Me() {
+export default function Slim() {
   const actionData: ActionData | undefined = useActionData();
   const transition = useTransition();
   const remixFormState: RemixFormState = transition.submission

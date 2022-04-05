@@ -1,10 +1,9 @@
 import { Grid } from "@chakra-ui/react";
-import React from "react";
 import { Link } from "remix";
 import LargeCard from "~/components/shared/LargeCard";
 import Section from "~/components/shared/Section";
 
-export default function ServiceIndex() {
+export default function MeIndex() {
   return (
     <Section>
       <Grid
@@ -15,14 +14,14 @@ export default function ServiceIndex() {
         alignItems="center"
         bg="gray.100"
       >
-        <Link to="/service/me">
+        <Link to="/service/me/errors">
           <LargeCard bg="linear-gradient(86deg, rgba(197,172,206,1) 43%, rgba(211,171,158,1) 100%);">
-            Utilities
+            Errors
           </LargeCard>
         </Link>
-        <Link to="/service/statistics">
+        <Link to="/service/me/slim">
           <LargeCard bg="linear-gradient(69deg, rgba(211,171,158,1) 43%, rgba(197,172,206,1) 100%);">
-            Fiscalização
+            Slim Down
           </LargeCard>
         </Link>
       </Grid>
