@@ -61,7 +61,7 @@ function HistoryContentWrapper({ children }: { children: React.ReactNode }) {
 
 function ResumeWebsiteNavigationButton() {
   return (
-    <Link to="#photo-gallery">
+    <Link to="#ceremony">
       <Button
         bg="primary.500"
         variant="solid"
