@@ -36,7 +36,6 @@ async function createUserSession(idToken: string, redirectTo: string) {
 }
 
 async function getUserSession(request: any) {
-  console.log("getUserSession", typeof request);
   const cookieSession = await storage.getSession(request.headers.get("Cookie"));
   const token = cookieSession.get("token");
   if (!token) return null;
@@ -50,7 +49,6 @@ async function getUserSession(request: any) {
 }
 
 async function destroySession(request: any) {
-  console.log("destroySession", typeof request);
   const session = await storage.getSession(request.headers.get("Cookie"));
   const newCookie = await storage.destroySession(session);
 
@@ -58,7 +56,6 @@ async function destroySession(request: any) {
 }
 
 async function signOut(request: any) {
-  console.log("destroySession", typeof request);
   await signOutFirebase();
   return await destroySession(request);
 }

@@ -113,8 +113,6 @@ export default function RevelationIndex() {
     setName(name);
   }
 
-  console.log(loaderData?.currentRevelationResult);
-
   return (
     <Section>
       <Center w="100%" h="100%" background="primary.500" paddingInline="2rem">

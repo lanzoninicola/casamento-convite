@@ -42,8 +42,6 @@ export const action: ActionFunction = async ({ request }) => {
 
   const formCollection = formData.get("collection") as Collections;
 
-  console.log(formCollection);
-
   const revelationService = new RevelationDatabaseService(firestoreService);
   const invitationService = new Invitation(firestoreService);
   const sessionService = new SessionService(firestoreService);
@@ -75,7 +73,7 @@ export const action: ActionFunction = async ({ request }) => {
   return response;
 };
 
-export default function Service() {
+export default function Me() {
   const actionData: ActionData | undefined = useActionData();
   const transition = useTransition();
   const remixFormState: RemixFormState = transition.submission

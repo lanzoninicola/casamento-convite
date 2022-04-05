@@ -4,8 +4,6 @@ const useMountTransition = (unmountDelay: number) => {
   const [isMounted, setIsMounted] = useState(false);
   const [hasTransitionedIn, setHasTransitionedIn] = useState(false);
 
-  console.log("useMountTransition", { isMounted, hasTransitionedIn });
-
   function unmountTarget() {
     setIsMounted(false);
   }
