@@ -7,3 +7,7 @@ export function PixIcon() {
 export function EnvelopeIcon() {
   return <Image src="/images/envelope-icon.svg" alt="Envelope" />;
 }
+
+export function HeartIcon() {
+  return <Image src="/images/heart-icon.svg" />;
+}
