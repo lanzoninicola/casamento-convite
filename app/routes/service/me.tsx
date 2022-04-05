@@ -19,6 +19,7 @@ import {
 } from "~/lib/firebase/firestore.interfaces";
 import ErrorDatabaseService from "~/modules/errors/services/error-database.service";
 import GiftDatabaseService from "~/modules/gifts/services/gift-database.service";
+import InvitationStatsService from "~/modules/invitations/services/invitation-stats.service";
 import Invitation from "~/modules/invitations/services/invitation.service";
 import RevelationDatabaseService from "~/modules/revelation-game/services/revelation-database.service";
 import SessionService from "~/modules/sessions/services/SessionService";

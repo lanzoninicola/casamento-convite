@@ -17,32 +17,43 @@ import { firestoreService } from "~/lib/firebase/db.server";
 import { FirestoreCollectionResponse } from "~/lib/firebase/firestore.interfaces";
 import { MealPreference } from "~/modules/invitations/interfaces/invitation.interface";
 import { InvitationModel } from "~/modules/invitations/models/invitation.model";
+import InvitationStatsService from "~/modules/invitations/services/invitation-stats.service";
+import Invitation from "~/modules/invitations/services/invitation.service";
 import InvitationService from "~/modules/invitations/services/invitation.service";
 import InvitationMockService from "~/modules/invitations/services/invitation.service.mock";
 
-export let loader: LoaderFunction = async (): Promise<InvitationModel[]> => {
-  const invitation = new InvitationMockService();
+export const loader: LoaderFunction = async () => {
+  const invitation = new Invitation(firestoreService);
+  const invitationStats = new InvitationStatsService();
   const invitations = await invitation.getAll();
-  //   console.log(invitations);
 
-  return invitations?.payload ? invitations.payload : [];
+  let totalInvitationsReceived = 0;
+  let totalRevelations = 0;
+  let totalSessions = 0;
+  let totalGifts = 0;
+
+  if (invitations.ok && invitations.payload) {
+    totalInvitationsReceived = invitationStats.getTotalsInvitations(
+      invitations.payload
+    );
+  }
+
+  return null;
 };
 
 export default function Statistics() {
   const invitations: InvitationModel[] = useLoaderData();
   console.log(invitations);
 
-  const totalInvitationsReceived = invitations.length;
-  const totalGuests = getTotalGuests(invitations);
-  const totalCarne = getTotalByMealPreference(invitations, "carne");
-  const totalVegetariano = getTotalByMealPreference(invitations, "vegetariano");
-  const totalIndiferente = getTotalByMealPreference(invitations, "indiferente");
-  const totalWillAttend = getWillAttend(invitations).length;
-  const totalWillNotAttend = getWillNotAttend(invitations).length;
-  const listWillAttend = getWillAttend(invitations);
-  const listWillNotAttend = getWillNotAttend(invitations);
-
-  console.log(totalGuests, totalInvitationsReceived);
+  // const totalInvitationsReceived = invitations.length;
+  // const totalGuests = getTotalGuests(invitations);
+  // const totalCarne = getTotalByMealPreference(invitations, "carne");
+  // const totalVegetariano = getTotalByMealPreference(invitations, "vegetariano");
+  // const totalIndiferente = getTotalByMealPreference(invitations, "indiferente");
+  // const totalWillAttend = getWillAttend(invitations).length;
+  // const totalWillNotAttend = getWillNotAttend(invitations).length;
+  // const listWillAttend = getWillAttend(invitations);
+  // const listWillNotAttend = getWillNotAttend(invitations);
 
   return (
     <Container padding="1rem" bg="gray.50" gap="1rem">
@@ -56,7 +67,7 @@ export default function Statistics() {
           Estatisticas
         </Text>
       </Center>
-      <Box mb="1rem">
+      {/* <Box mb="1rem">
         <Box mb="1rem">
           <NumberStat
             label="Convidados"
@@ -81,7 +92,7 @@ export default function Statistics() {
             helpText="Total de respostas negativas"
           />
         </HStack>
-      </Box>
+      </Box> */}
       <Box>
         <Text mb="1rem" fontSize="14px" textTransform="uppercase">
           Preferência comida
@@ -155,45 +166,4 @@ function StatHelpText({ children }: { children: React.ReactNode }) {
       {children}
     </Text>
   );
-}
-
-function getTotalGuests(invitations: InvitationModel[]) {
-  const totalGuests = invitations.reduce((acc, curr: InvitationModel) => {
-    if (curr.willAttend) {
-      if (curr.guests) {
-        return acc + curr.guests;
-      }
-    }
-    return acc;
-  }, 0);
-
-  return totalGuests;
-}
-
-function getTotalByMealPreference(
-  invitations: InvitationModel[],
-  mealPreference: MealPreference
-) {
-  const totalCarne = invitations
-    .filter((invitation) => invitation.willAttend)
-    .reduce((acc, curr: InvitationModel) => {
-      if (curr.mealPreference === mealPreference) {
-        return acc + 1;
-      }
-      return acc;
-    }, 0);
-
-  return totalCarne;
-}
-
-function getWillAttend(invitations: InvitationModel[]) {
-  const willAttend = invitations.filter((invitation) => invitation.willAttend);
-  return willAttend;
-}
-
-function getWillNotAttend(invitations: InvitationModel[]) {
-  const willNotAttend = invitations.filter(
-    (invitation) => !invitation.willAttend
-  );
-  return willNotAttend;
 }

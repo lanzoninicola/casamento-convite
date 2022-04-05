@@ -4,6 +4,7 @@ import {
   InvitationModel,
   InvitationModelOnUpdate,
 } from "../models/invitation.model";
+import InvitationMockService from "./invitation.service.mock";
 
 const FIRESTORE_COLLECTION_NAME = "invitations";
 
@@ -22,6 +23,12 @@ export default class Invitation {
   }
 
   async getAll(): Promise<InvitationCollectionResponse> {
+    if (process.env.NODE_ENV === "development") {
+      const mockService = new InvitationMockService();
+      const mockResult = await mockService.getAll();
+      return mockResult;
+    }
+
     const response = await this.firestoreService.getAll(this.collectionName);
 
     const { ok, payload } = response;
