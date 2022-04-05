@@ -1,11 +1,11 @@
-import { Alert, AlertIcon, Button, Stack } from "@chakra-ui/react";
+import { Button, Stack } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 import { Form } from "remix";
 import { InvitationFormResponse } from "~/modules/invitations/models/invitation.model";
 import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";
-import useLocalStorage from "../shared/hooks/useLocalStorage";
-import FormInputGuestName from "./components/FormInputGuestName";
 
+import ErrorMessage from "../shared/ErrorMessage";
+import FormInputGuestName from "./components/FormInputGuestName";
 import FormInputUID from "./components/FormInputUID";
 import FormSelectGuests from "./components/FormSelectGuests";
 import FormSelectMealPreference from "./components/FormSelectMealPreference";
@@ -57,35 +57,5 @@ export default function InvitationForm({
         <ErrorMessage message={"Erro! Por favor, tente novamente mais tarde"} />
       )}
     </>
-  );
-}
-
-function ErrorMessage({
-  message,
-  ...props
-}: {
-  message: string;
-  [key: string]: any;
-}) {
-  return (
-    <Alert status="error" {...props} mt="1.5rem">
-      <AlertIcon />
-      {message}
-    </Alert>
-  );
-}
-
-function SuccessMessage({
-  message,
-  ...props
-}: {
-  message: string;
-  [key: string]: any;
-}) {
-  return (
-    <Alert status="success" {...props} mt="1.5rem">
-      <AlertIcon />
-      {message}
-    </Alert>
   );
 }

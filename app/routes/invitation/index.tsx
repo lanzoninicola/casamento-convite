@@ -15,6 +15,7 @@ import Section from "~/components/shared/Section";
 import ViewportInfo from "~/components/shared/ViewportInfo";
 import { firestoreService } from "~/lib/firebase/db.server";
 import { FirestoreDocumentId } from "~/lib/firebase/firestore.interfaces";
+import ErrorDatabaseService from "~/modules/errors/services/error-database.service";
 import { InvitationFormResponse } from "~/modules/invitations/models/invitation.model";
 import InvitationService from "~/modules/invitations/services/invitation.service";
 import InvitationFormDeserializer from "~/modules/invitations/services/InvitationFormDeserializer";
@@ -56,6 +57,8 @@ export let action: ActionFunction = async ({
   await session.delete(formUID);
 
   const invitation = new InvitationService(firestoreService);
+  const deserializer = new InvitationFormDeserializer();
+  const errorService = new ErrorDatabaseService(firestoreService);
 
   const formGuestName = formData.get("guestName");
   const formWillAttend = formData.get("willAttend");
@@ -69,7 +72,6 @@ export let action: ActionFunction = async ({
     };
   }
 
-  const deserializer = new InvitationFormDeserializer();
   const invitationDetails = deserializer.deserialize({
     formGuestName,
     formWillAttend,
@@ -80,6 +82,11 @@ export let action: ActionFunction = async ({
   const invitationResponse = await invitation.add(invitationDetails);
 
   if (invitationResponse.ok === false) {
+    errorService.add({
+      message: invitationResponse.error,
+      module: "invitations-form",
+    });
+
     return {
       ok: false,
       error: "Oops! Ocorreu um erro",

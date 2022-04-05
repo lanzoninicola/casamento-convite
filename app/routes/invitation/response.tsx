@@ -1,8 +1,6 @@
-import { Button, Center, Grid } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { Link, MetaFunction, Outlet } from "remix";
-import ArrowRight from "~/components/shared/ArrowRight";
-import usePulseAnimation from "~/components/shared/hooks/usePulseAnimation";
+import { MetaFunction, Outlet } from "remix";
 import LogoWithBackground from "~/components/shared/LogoWithBackground";
 import SafeArea from "~/components/shared/SafeArea";
 import Section from "~/components/shared/Section";
@@ -20,7 +18,7 @@ export const meta: MetaFunction = () => {
 export default function Response() {
   const { willAttend } = useWillAttendFormData();
 
-  const bgImage = true ? "thank-you-bg.jpg" : "gosh-bg.png";
+  const bgImage = willAttend ? "thank-you-bg.jpg" : "gosh-bg.png";
 
   return (
     <Section
