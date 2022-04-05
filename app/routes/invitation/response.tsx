@@ -20,7 +20,7 @@ export const meta: MetaFunction = () => {
 export default function Response() {
   const { willAttend } = useWillAttendFormData();
 
-  const bgImage = willAttend ? "thank-you-bg.jpg" : "gosh-bg.png";
+  const bgImage = true ? "thank-you-bg.jpg" : "gosh-bg.png";
 
   return (
     <Section
@@ -30,33 +30,11 @@ export default function Response() {
       backgroundSize="cover"
     >
       <SafeArea>
-        <Grid h="100%" gridTemplateRows="auto 1fr .25fr" gap="1rem">
+        <Grid h="100%" gridTemplateRows="auto 1fr" gap="1rem">
           <LogoWithBackground />
           <Outlet />
-          <Center>
-            <NextButton />
-          </Center>
         </Grid>
       </SafeArea>
     </Section>
-  );
-}
-
-function NextButton() {
-  const pulseAnimationCSS = usePulseAnimation(211, 171, 158);
-
-  return (
-    <Link to="/#photo-gallery">
-      <Button
-        bg="secondary.500"
-        rightIcon={<ArrowRight />}
-        animation={pulseAnimationCSS}
-        textTransform="uppercase"
-        letterSpacing="1.2px"
-        marginBlock="1rem"
-      >
-        Prosseguir
-      </Button>
-    </Link>
   );
 }

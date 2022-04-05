@@ -70,7 +70,6 @@ export let action: ActionFunction = async ({
   }
 
   const deserializer = new InvitationFormDeserializer();
-
   const invitationDetails = deserializer.deserialize({
     formGuestName,
     formWillAttend,

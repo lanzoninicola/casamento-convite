@@ -1,5 +1,8 @@
-import { Center, Flex, Text } from "@chakra-ui/react";
+import { Button, Center, Flex, Text } from "@chakra-ui/react";
+import { Link } from "remix";
+import ArrowRight from "~/components/shared/ArrowRight";
 import BaseHeading from "~/components/shared/BaseHeadings";
+import usePulseAnimation from "~/components/shared/hooks/usePulseAnimation";
 import settings from "~/modules/settings";
 
 // TODO: if miss the id param in the url, redirect to the home page
@@ -36,6 +39,28 @@ export default function Gosh() {
           Casamento em {settings.eventFullDateHumanReadable}
         </Text>
       </Flex>
+      <Center>
+        <NextButton />
+      </Center>
     </Center>
+  );
+}
+
+function NextButton() {
+  const pulseAnimationCSS = usePulseAnimation(211, 171, 158);
+
+  return (
+    <Link to="/#photo-gallery">
+      <Button
+        bg="secondary.500"
+        rightIcon={<ArrowRight />}
+        animation={pulseAnimationCSS}
+        textTransform="uppercase"
+        letterSpacing="1.2px"
+        marginBlock="1rem"
+      >
+        Prosseguir
+      </Button>
+    </Link>
   );
 }

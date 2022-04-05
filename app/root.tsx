@@ -28,6 +28,7 @@ export default function App() {
   );
 }
 
+// TODO: register errors to firestore
 export function ErrorBoundary({ error }: { error: Error }) {
   console.error(error);
   return (

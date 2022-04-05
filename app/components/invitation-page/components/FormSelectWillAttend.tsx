@@ -1,15 +1,15 @@
-import { FormControl, FormLabel, Select } from "@chakra-ui/react";
+import { FormControl, Select } from "@chakra-ui/react";
 import useWillAttendFormData from "~/context/invitation-context/hooks/useWillAttendFormData";
 
 export default function FormSelectWillAttend() {
   const { setWillAttend } = useWillAttendFormData();
 
-  function onWillAttendChange(e: React.ChangeEvent<HTMLSelectElement>) {
-    if (e.target.value === "true") {
+  function onFormChange(value: FormDataEntryValue) {
+    if (value === "true") {
       setWillAttend(true);
     }
 
-    if (e.target.value === "false") {
+    if (value === "false") {
       setWillAttend(false);
     }
   }
@@ -24,7 +24,7 @@ export default function FormSelectWillAttend() {
         title="Confirma sua presença"
         data-title="Confirma sua presença"
         size="lg"
-        onChange={onWillAttendChange}
+        onChange={(e) => onFormChange(e.target.value)}
         minW="300px"
       >
         <option value="true">Eu estarei lá</option>

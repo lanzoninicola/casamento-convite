@@ -4,13 +4,13 @@ import { createContext } from "use-context-selector";
 export interface InvitationFormContextData {
   guestName: string;
   willAttend: boolean;
-  guests: number;
-  mealPreference: string;
+  guests: number | null;
+  mealPreference: string | null;
   successResponse: boolean;
   setGuestName: (guestName: string) => void;
   setWillAttend: (willAttend: boolean) => void;
-  setGuests: (guests: number) => void;
-  setMealPreference: (mealPreference: string) => void;
+  setGuests: (guests: number | null) => void;
+  setMealPreference: (mealPreference: string | null) => void;
   setSuccessResponse: (successResponse: boolean) => void;
 }
 
@@ -24,8 +24,8 @@ export function InvitationFormProvider({
 }) {
   const [guestName, setGuestName] = useState("");
   const [willAttend, setWillAttend] = useState(false);
-  const [guests, setGuests] = useState(0);
-  const [mealPreference, setMealPreference] = useState("");
+  const [guests, setGuests] = useState<number | null>(null);
+  const [mealPreference, setMealPreference] = useState<string | null>(null);
   const [successResponse, setSuccessResponse] = useState(false);
 
   return (

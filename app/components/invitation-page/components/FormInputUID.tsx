@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { FormControl, Input } from "@chakra-ui/react";
 
 export default function FormInputUID({ uid }: { uid: string }) {
   return (
