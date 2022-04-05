@@ -10,7 +10,7 @@ import {
   FirestoreDocumentResponse,
 } from "~/lib/firebase/firestore.interfaces";
 import Invitation from "~/modules/invitations/services/invitation.service";
-import RevelationGameService from "~/modules/revelation-game/services/revelation-game.service";
+import RevelationStoreService from "~/modules/revelation-game/services/revelation-store.service";
 import SessionService from "~/modules/sessions/services/SessionService";
 import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";
 
@@ -23,7 +23,7 @@ export const action: ActionFunction = async ({ request }) => {
 
   console.log(formCollection);
 
-  const revelationService = new RevelationGameService(firestoreService);
+  const revelationService = new RevelationStoreService(firestoreService);
   const invitationService = new Invitation(firestoreService);
   const sessionService = new SessionService(firestoreService);
 

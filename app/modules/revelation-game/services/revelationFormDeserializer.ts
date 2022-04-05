@@ -3,11 +3,11 @@ import { RevelationModel } from "../model/revelation.model";
 
 export default class RevelationFormDeserializer {
   deserialize(formData: RevelationFormData): RevelationModel {
-    const { formName, formBabySex } = formData;
+    const { formName, formBabyGender } = formData;
 
     return {
       name: this._name(formName),
-      babySex: this._babySex(formBabySex),
+      babySex: this._babySex(formBabyGender),
     };
   }
 
@@ -21,12 +21,12 @@ export default class RevelationFormDeserializer {
     return _formName;
   }
 
-  private _babySex(formBabySex: FormDataEntryValue | null): string {
-    if (formBabySex === null) {
+  private _babySex(formBabyGender: FormDataEntryValue | null): string {
+    if (formBabyGender === null) {
       return "";
     }
 
-    const _formBabySex = String(formBabySex).trim();
+    const _formBabySex = String(formBabyGender).trim();
 
     return _formBabySex;
   }

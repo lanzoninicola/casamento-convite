@@ -1,58 +1,55 @@
-import { FirestoreCRUDService } from "~/lib/firebase/firestore.interfaces";
-import { RevelationCollectionResponse } from "../interfaces/revelation.interface";
-import { RevelationModel } from "../model/revelation.model";
+import RevelationStoreService from "./revelation-store.service";
 
-const FIRESTORE_COLLECTION_NAME = "revelations";
+export interface RevelationCurrentResult {
+  boys: number;
+  girls: number;
+}
+
+export interface RevelationCurrentResultResponse {
+  ok: boolean;
+  payload?: RevelationCurrentResult;
+}
 
 export default class RevelationGameService {
-  private collectionName = FIRESTORE_COLLECTION_NAME;
+  constructor(private revelationStoreService: RevelationStoreService) {}
 
-  constructor(private firestoreService: FirestoreCRUDService) {}
+  async currentResults(): Promise<RevelationCurrentResultResponse> {
+    if (process.env.NODE_ENV === "development") {
+      const mockResult = await this.mockCurrentResults();
+      return mockResult;
+    }
 
-  async add(revelation: RevelationModel) {
-    const response = await this.firestoreService.add(
-      this.collectionName,
-      revelation
-    );
+    const result = await this.revelationStoreService.getAll();
 
-    return response;
-  }
+    if (result?.payload) {
+      const { payload } = result;
 
-  async getAll(): Promise<RevelationCollectionResponse> {
-    const response = await this.firestoreService.getAll(this.collectionName);
+      const boys = payload.filter((item) => item.babySex === "boy");
+      const girls = payload.filter((item) => item.babySex === "girls");
 
-    const { ok, payload } = response;
-
-    let revelationsData: RevelationModel[] = [];
-
-    if (payload)
-      revelationsData = payload.map((revelation) => {
-        const { name, babySex } = revelation;
-
-        return {
-          name,
-          babySex,
-        };
-      });
+      return {
+        ok: true,
+        payload: {
+          boys: boys.length,
+          girls: girls.length,
+        },
+      };
+    }
 
     return {
-      ok,
-      payload: revelationsData,
+      ok: false,
     };
   }
 
-  async delete(revelationId: string) {
-    const response = await this.firestoreService.delete(
-      this.collectionName,
-      revelationId
-    );
-
-    return response;
-  }
-
-  async deleteAll() {
-    const response = await this.firestoreService.deleteAll(this.collectionName);
-
-    return response;
+  async mockCurrentResults(): Promise<RevelationCurrentResultResponse> {
+    return new Promise((resolve) => {
+      resolve({
+        ok: true,
+        payload: {
+          boys: 10,
+          girls: 20,
+        },
+      });
+    });
   }
 }

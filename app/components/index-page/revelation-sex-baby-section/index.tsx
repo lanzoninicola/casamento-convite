@@ -7,13 +7,7 @@ import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";
 import RevelationGame from "./components/RevelationGame";
 import RevelationHeading from "./components/RevelationHeading";
 
-export default function RevelationSexBabySection({
-  formState,
-  actionData,
-}: {
-  formState: RemixFormState;
-  actionData: any;
-}) {
+export default function RevelationSexBabySection() {
   const [isTypingAnimationOver, setIsTypingAnimationOver] =
     useState<boolean>(false);
   const { ref, inView } = useInView({
@@ -25,12 +19,10 @@ export default function RevelationSexBabySection({
     <div ref={ref}>
       <Section id="revelation" bg="gray.50" pt="2rem">
         <Center h="100%">
-          {inView && !isTypingAnimationOver && (
+          {/* {inView && !isTypingAnimationOver && (
             <RevelationHeading onOver={setIsTypingAnimationOver} />
-          )}
-          {isTypingAnimationOver && (
-            <RevelationGame actionData={actionData} formState={formState} />
-          )}
+          )} */}
+          {true && <RevelationGame />}
         </Center>
       </Section>
     </div>

@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 export default function SuccessMessage({
   message = "Operação realizada com sucesso!",
   delayHide = 3000,
+  children,
   ...props
 }: {
   message?: string;
   delayHide?: number;
+  children?: React.ReactNode;
   [key: string]: any;
 }) {
   const [show, setShow] = useState(false);
@@ -30,6 +32,7 @@ export default function SuccessMessage({
         <Alert status="success" {...props} mt="1rem">
           <AlertIcon />
           {message}
+          {children}
         </Alert>
       )}
     </>
