@@ -5,6 +5,7 @@ import { RiHistoryLine } from "react-icons/ri";
 import { Link } from "remix";
 import useIsOpen from "~/context/navigation-context/hooks/useIsOpen";
 import { browserName } from "react-device-detect";
+import NavItem from "./components/NavItem";
 
 export interface BackgroundStyle {
   bg?: string;
@@ -67,45 +68,6 @@ export default function MobileNavigationMenu() {
         </Flex>
       )}
     </>
-  );
-}
-
-function NavItem({
-  children,
-  to,
-  leftIcon,
-  rightIcon,
-  ...props
-}: {
-  children: React.ReactNode;
-  to: string;
-  leftIcon?: React.ReactElement;
-  rightIcon?: React.ReactElement;
-
-  [key: string]: any;
-}) {
-  const { setIsOpen } = useIsOpen();
-
-  function onNavItemClicked() {
-    setIsOpen(false);
-  }
-
-  return (
-    <Link to={to} {...props} onClick={onNavItemClicked}>
-      <Flex direction="row" gap="1rem" alignContent="center">
-        {leftIcon}
-        <Text
-          fontSize="22px"
-          color="black"
-          letterSpacing="2px"
-          fontWeight="400"
-          {...props}
-        >
-          {children}
-        </Text>
-        {rightIcon}
-      </Flex>
-    </Link>
   );
 }
 
