@@ -1,13 +1,26 @@
 import { useEffect, useState } from "react";
 
 // https://remix.run/docs/en/v1/guides/constraints#rendering-with-browser-only-apis
-export default function useRemixLocalStorage<T>(key: string, initialValue: T) {
-  const [state, setState] = useState<T>(initialValue);
+export default function useRemixLocalStorage<T>(
+  key: string,
+  initialValue: T | null = null
+) {
+  const [state, setState] = useState<T | null>(initialValue);
 
   // You can fix this by moving the code into useEffect, which only runs in the browser.
   useEffect(() => {
-    setWithLocalStorage(getWithLocalStorage(key));
-  }, [key]);
+    // First: check if the key exists in localStorage
+    const itemFromLocalStorage = getWithLocalStorage(key);
+
+    // Second: if the key exists, set the state to the value and return
+    if (itemFromLocalStorage) {
+      setWithLocalStorage(itemFromLocalStorage);
+      return;
+    }
+
+    // Third: if the key doesn't exist, set the state to the initial value
+    setWithLocalStorage(initialValue);
+  }, [key, state]);
 
   function getWithLocalStorage(key: string) {
     if (typeof window === "undefined") {
@@ -22,7 +35,7 @@ export default function useRemixLocalStorage<T>(key: string, initialValue: T) {
     }
   }
 
-  function setWithLocalStorage(nextState: T) {
+  function setWithLocalStorage(nextState: T | null) {
     try {
       setState(nextState);
 

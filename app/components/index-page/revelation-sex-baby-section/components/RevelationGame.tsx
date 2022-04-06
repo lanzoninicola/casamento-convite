@@ -11,8 +11,7 @@ export type BabySex = "boy" | "girl";
 
 export default function RevelationGame() {
   const [babySex, setBabySex] = useRemixLocalStorage<BabySex | null>(
-    REVELATION_GAME_LOCAL_STORAGE_KEY,
-    null
+    REVELATION_GAME_LOCAL_STORAGE_KEY
   );
 
   return (

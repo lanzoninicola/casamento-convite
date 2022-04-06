@@ -46,9 +46,7 @@ export interface ActionResponse {
   };
 }
 
-export const loader: LoaderFunction = async ({
-  request,
-}): Promise<LoaderResponse> => {
+export const loader: LoaderFunction = async (): Promise<LoaderResponse> => {
   // get current results
   const results = await getCurrentResults();
 
@@ -80,9 +78,8 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 export default function RevelationIndex() {
-  const [babySex] = useRemixLocalStorage<BabySex | null>(
-    REVELATION_GAME_LOCAL_STORAGE_KEY,
-    null
+  const [babySex, setBabySex] = useRemixLocalStorage<BabySex | null>(
+    REVELATION_GAME_LOCAL_STORAGE_KEY
   );
   const loaderData: LoaderResponse = useLoaderData();
   const actionData: ActionResponse | undefined = useActionData();
@@ -107,6 +104,10 @@ export default function RevelationIndex() {
 
   function onNameChange(name: string) {
     setName(name);
+  }
+
+  function onGoingBackToHomePage() {
+    setBabySex(null);
   }
 
   return (
@@ -167,7 +168,12 @@ export default function RevelationIndex() {
           {state === "success" && (
             <Box w="100%">
               <Link to="/#revelation">
-                <Button bg="secondary.500" w="100%" mb="1rem">
+                <Button
+                  bg="secondary.500"
+                  w="100%"
+                  mb="1rem"
+                  onClick={onGoingBackToHomePage}
+                >
                   VOLTAR
                 </Button>
               </Link>
