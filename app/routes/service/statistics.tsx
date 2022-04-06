@@ -10,7 +10,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React from "react";
-import { LoaderFunction, useLoaderData } from "remix";
+import { LoaderFunction, MetaFunction, useLoaderData } from "remix";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import Section from "~/components/shared/Section";
 import { firestoreService } from "~/lib/firebase/db.server";
@@ -21,6 +21,13 @@ import InvitationStatsService from "~/modules/invitations/services/invitation-st
 import Invitation from "~/modules/invitations/services/invitation.service";
 import InvitationService from "~/modules/invitations/services/invitation.service";
 import InvitationMockService from "~/modules/invitations/services/invitation.service.mock";
+
+// <meta name="robots" content="noindex,nofollow">
+export const meta: MetaFunction = () => {
+  return {
+    robots: "noindex,nofollow",
+  };
+};
 
 export const loader: LoaderFunction = async () => {
   const invitation = new Invitation(firestoreService);

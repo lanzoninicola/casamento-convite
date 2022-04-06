@@ -1,8 +1,15 @@
 import { Grid } from "@chakra-ui/react";
 import React from "react";
-import { Link } from "remix";
+import { Link, MetaFunction } from "remix";
 import LargeCard from "~/components/shared/LargeCard";
 import Section from "~/components/shared/Section";
+
+// <meta name="robots" content="noindex,nofollow">
+export const meta: MetaFunction = () => {
+  return {
+    robots: "noindex,nofollow",
+  };
+};
 
 export default function ServiceIndex() {
   return (

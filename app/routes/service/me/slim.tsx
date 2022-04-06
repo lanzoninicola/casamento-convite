@@ -7,7 +7,13 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { ActionFunction, Form, useActionData, useTransition } from "remix";
+import {
+  ActionFunction,
+  Form,
+  MetaFunction,
+  useActionData,
+  useTransition,
+} from "remix";
 import RevelationGame from "~/components/index-page/revelation-sex-baby-section/components/RevelationGame";
 import ErrorMessage from "~/components/shared/ErrorMessage";
 import Section from "~/components/shared/Section";
@@ -37,6 +43,13 @@ export interface ActionData {
   payload?: FirestoreDocument | null;
   error?: any;
 }
+
+// <meta name="robots" content="noindex,nofollow">
+export const meta: MetaFunction = () => {
+  return {
+    robots: "noindex,nofollow",
+  };
+};
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
