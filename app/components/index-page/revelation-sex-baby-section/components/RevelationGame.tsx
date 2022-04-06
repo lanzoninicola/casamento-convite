@@ -48,7 +48,21 @@ export default function RevelationGame() {
           opacity={babySex === "girl" ? 0.3 : 1}
         />
       </Flex>
+
       <Box w="100%">
+        {babySex && (
+          <Text
+            textAlign="center"
+            lineHeight="1"
+            fontWeight={700}
+            fontSize="14px"
+            mb="0.5rem"
+          >
+            Ahhh... Então você acha que é{" "}
+            {(babySex === "boy" && `um menino...`) ||
+              (babySex === "girl" && `uma menina...`)}
+          </Text>
+        )}
         <Link to={`/revelation?answer=${babySex}`}>
           <Button bg="secondary.500" disabled={babySex === undefined} w="100%">
             Envia

@@ -15,7 +15,13 @@ export default function BabyOption({
 }) {
   return (
     <VStack spacing="2rem" {...props}>
-      <BaseHeading fontSize="20px" color="text.500" textAlign="center">
+      <BaseHeading
+        fontSize="20px"
+        color="text.500"
+        textAlign="center"
+        lineHeight="1"
+        mb={0}
+      >
         {sex === "girl" ? "menina?" : "menino?"}
       </BaseHeading>
       <AnimalImage sex={sex} />
