@@ -25,7 +25,7 @@ export default class RevelationGameService {
       const { payload } = result;
 
       const boys = payload.filter((item) => item.babySex === "boy");
-      const girls = payload.filter((item) => item.babySex === "girls");
+      const girls = payload.filter((item) => item.babySex === "girl");
 
       return {
         ok: true,
