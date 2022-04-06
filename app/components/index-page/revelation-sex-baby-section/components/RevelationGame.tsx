@@ -1,15 +1,19 @@
 import { Box, Button, Center, Flex, Grid, Text } from "@chakra-ui/react";
-import { useState } from "react";
-import { Link, redirect } from "remix";
+import { Link } from "remix";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import HighlightedText from "~/components/shared/HighlightedText";
+import useRemixLocalStorage from "~/components/shared/hooks/useRemixLocalStorage";
+import { REVELATION_GAME_LOCAL_STORAGE_KEY } from "~/modules/invitations/constants";
 
 import BabyOption from "./BabyOption";
 
 export type BabySex = "boy" | "girl";
 
 export default function RevelationGame() {
-  const [babySex, setBabySex] = useState<BabySex | undefined>(undefined);
+  const [babySex, setBabySex] = useRemixLocalStorage<BabySex | null>(
+    REVELATION_GAME_LOCAL_STORAGE_KEY,
+    null
+  );
 
   return (
     <Grid
@@ -63,7 +67,7 @@ export default function RevelationGame() {
               (babySex === "girl" && `uma menina...`)}
           </Text>
         )}
-        <Link to={`/revelation?answer=${babySex}`}>
+        <Link to={`/revelation`}>
           <Button bg="secondary.500" disabled={babySex === undefined} w="100%">
             Envia
           </Button>

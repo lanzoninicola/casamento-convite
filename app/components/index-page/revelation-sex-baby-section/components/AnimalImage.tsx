@@ -7,7 +7,7 @@ export default function AnimalImage({
   hImage,
   ...props
 }: {
-  sex: BabySex | undefined;
+  sex: BabySex | null;
   hImage?: string;
   [key: string]: any;
 }) {

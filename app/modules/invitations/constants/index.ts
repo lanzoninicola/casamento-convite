@@ -2,3 +2,5 @@ import { InvitationFormDataLocalStorageKey } from "../interfaces/InvitationFormD
 
 export const INVITATION_FORM_DATA_LOCAL_STORAGE_KEY: InvitationFormDataLocalStorageKey =
   "INVITATION_FORM_DATA";
+
+export const REVELATION_GAME_LOCAL_STORAGE_KEY: string = "REVELATION_GAME";

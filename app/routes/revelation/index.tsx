@@ -1,16 +1,15 @@
 import {
-  Center,
   Box,
+  Button,
+  Center,
+  Flex,
+  FormControl,
   HStack,
+  Input,
+  Radio,
   RadioGroup,
   Stack,
-  Radio,
-  FormControl,
-  Input,
-  Button,
   Text,
-  VStack,
-  Flex,
 } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -18,28 +17,25 @@ import {
   Form,
   Link,
   LoaderFunction,
-  redirect,
   useActionData,
   useLoaderData,
-  useParams,
-  useSearchParams,
   useTransition,
 } from "remix";
 import AnimalImage from "~/components/index-page/revelation-sex-baby-section/components/AnimalImage";
 import { BabySex } from "~/components/index-page/revelation-sex-baby-section/components/RevelationGame";
+import useRemixLocalStorage from "~/components/shared/hooks/useRemixLocalStorage";
 import Section from "~/components/shared/Section";
 import SuccessMessage from "~/components/shared/SuccessMessage";
 import { firestoreService } from "~/lib/firebase/db.server";
+import { REVELATION_GAME_LOCAL_STORAGE_KEY } from "~/modules/invitations/constants";
+import RevelationDatabaseService from "~/modules/revelation-game/services/revelation-database.service";
 import RevelationGameService, {
   RevelationCurrentResult,
 } from "~/modules/revelation-game/services/revelation-game.service";
-
-import RevelationDatabaseService from "~/modules/revelation-game/services/revelation-database.service";
 import RevelationFormDeserializer from "~/modules/revelation-game/services/revelationFormDeserializer";
 import { RemixFormState } from "~/modules/shared/interfaces/RemixRun";
 
 export interface LoaderResponse {
-  answer: BabySex | null;
   currentRevelationResult: RevelationCurrentResult | undefined;
 }
 
@@ -53,14 +49,10 @@ export interface ActionResponse {
 export const loader: LoaderFunction = async ({
   request,
 }): Promise<LoaderResponse> => {
-  // get the answer when a user select the gender
-  const url = new URL(request.url);
-  const answer = url.searchParams.get("answer") as BabySex | null;
-
   // get current results
   const results = await getCurrentResults();
 
-  return { answer, currentRevelationResult: results?.payload };
+  return { currentRevelationResult: results?.payload };
 };
 
 export const action: ActionFunction = async ({ request }) => {
@@ -88,6 +80,10 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 export default function RevelationIndex() {
+  const [babySex] = useRemixLocalStorage<BabySex | null>(
+    REVELATION_GAME_LOCAL_STORAGE_KEY,
+    null
+  );
   const loaderData: LoaderResponse = useLoaderData();
   const actionData: ActionResponse | undefined = useActionData();
   const transition = useTransition();
@@ -130,19 +126,13 @@ export default function RevelationIndex() {
               mb="2rem"
             >
               <Center h="100%">
-                <AnimalImage
-                  sex={loaderData?.answer || actionData?.payload?.gender}
-                  hImage="64px"
-                />
+                <AnimalImage sex={babySex} hImage="64px" />
               </Center>
             </Box>
           </Center>
 
           <Form method="post" ref={formRef}>
-            <RadioGroup
-              value={loaderData?.answer || actionData?.payload?.gender}
-              hidden={true}
-            >
+            <RadioGroup value={babySex ? babySex : undefined} hidden={true}>
               <Stack direction="row">
                 <Radio name="baby-gender-selected" value="boy"></Radio>
                 <Radio name="baby-gender-selected" value="girl"></Radio>
