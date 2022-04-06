@@ -14,7 +14,7 @@ export default function RevelationGame() {
   return (
     <Grid
       h="100%"
-      gridTemplateRows=".5fr 1fr .5fr"
+      gridTemplateRows="1fr 1fr 1fr"
       gap="1.5rem"
       paddingInline={"1rem"}
     >
