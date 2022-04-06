@@ -58,7 +58,7 @@ export default function MobileNavigationMenu() {
             <Divider borderColor="black" />
             <NavItem to="/#invitation-claim">Quero participar</NavItem>
             <Divider borderColor="black" />
-            <NavItem to="/#photo-gallery">Galeria de foto</NavItem>
+            <NavItem to="/#photo-gallery">Galeria de fotos</NavItem>
             <Divider borderColor="black" />
           </Flex>
           <Center>
