@@ -1,8 +1,12 @@
-import { Center, HStack, Text, VStack } from "@chakra-ui/react";
+import { Box, Divider, Grid } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "remix";
 
-import { HeartIcon } from "../shared/Icons";
+import LogoWebsite from "../shared/LogoWebsite";
+import DeveloperAuthor from "./components/DeveloperAuthor";
+import FooterCashGift from "./components/FooterCashGift";
+import FooterMenu from "./components/FooterMenu";
+import FooterRightColumn from "./components/FooterRightColumn";
 
 export default function Footer() {
   let navigate = useNavigate();
@@ -19,30 +23,27 @@ export default function Footer() {
   }, [clickCounter]);
 
   return (
-    <Center bg="secondary.500" paddingBlock="1rem" onClick={handleClicks}>
-      <VStack spacing={0}>
-        <HStack>
-          <FooterText>Made with</FooterText>
-          <HeartIcon />
-          <FooterText>by Nicola Lanzoni</FooterText>
-        </HStack>
-
-        <FooterText>lanzoni.nicola@gmail.com</FooterText>
-      </VStack>
-    </Center>
-  );
-}
-
-function FooterText({ children }: { children: React.ReactNode }) {
-  return (
-    <Text
-      as="span"
-      fontSize="14px"
-      color="text.500"
-      letterSpacing="-1px"
-      fontWeight={700}
+    <Box
+      as="footer"
+      mt="4rem"
+      onClick={handleClicks}
+      bg="secondary.500"
+      padding="4rem 2rem"
     >
-      {children}
-    </Text>
+      <Grid gridTemplateRows="repeat(7, auto)" gap="1rem">
+        <LogoWebsite mb="2rem" />
+        <Divider color="gray.200" />
+        <Grid gridTemplateColumns="1fr 1fr" marginBlock="2rem">
+          <FooterMenu />
+          <FooterRightColumn />
+        </Grid>
+        <Divider color="gray.200" />
+        <Grid gridTemplateColumns="1fr 1fr" gap="1rem" marginBlock="2rem">
+          <FooterCashGift />
+        </Grid>
+        <Divider color="gray.200" />
+        <DeveloperAuthor />
+      </Grid>
+    </Box>
   );
 }

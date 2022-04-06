@@ -1,12 +1,20 @@
-import { Box, Image } from "@chakra-ui/react";
+import { Box, Center, HStack, Image, Text, VStack } from "@chakra-ui/react";
 import { Link } from "remix";
 
-export default function LogoWebsite() {
+export default function LogoWebsite({ ...props }: { [key: string]: any }) {
   return (
-    <Box>
+    <VStack spacing={1} {...props}>
       <Link to="/#hero">
-        <Image src={`/images/logo-website.png`} alt="logo" />
+        <Image src={`/images/logo-50.png`} alt="logo" />
       </Link>
-    </Box>
+      <Text
+        fontSize="10px"
+        fontWeight={700}
+        textTransform="uppercase"
+        letterSpacing="5%"
+      >
+        Gustavo & Kelly
+      </Text>
+    </VStack>
   );
 }
