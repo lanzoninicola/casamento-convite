@@ -1,6 +1,7 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import settings from "~/modules/settings";
 import BaseHeading from "../../shared/BaseHeadings";
+import HeroEllipseLayer from "./HeroEllipseLayer";
 
 export default function HeroHeadline() {
   return (
@@ -8,10 +9,11 @@ export default function HeroHeadline() {
       <Flex id="hero-headline" w="100%" direction="column" justify="center">
         <BaseHeading
           as="h1"
-          fontSize="80px"
+          fontSize="clamp(3rem, -10.8462rem + 61.5385vw, 5rem)"
           letterSpacing="-0.05em"
           textAlign="center"
           fontWeight="400"
+          mb={0}
         >
           É hora!
         </BaseHeading>

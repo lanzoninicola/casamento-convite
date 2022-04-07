@@ -8,19 +8,18 @@ import FooterHeading from "./FooterHeading";
 
 export default function FooterRightColumn() {
   return (
-    <Flex direction="column" alignItems="flex-end" gap="2rem">
-      <Flex direction="column" alignItems="flex-end" gap=".5rem">
+    <Flex direction="column" alignItems="flex-end" gap="2rem" w="100%">
+      <Flex direction="column" alignItems="flex-end" gap=".5rem" w="100%">
         <FooterHeading>Confirme presença</FooterHeading>
         <FooterButton
           leftIcon={<OkCircleIcon size={16} />}
           text="EU QUERO"
           to="/invitation"
-          spacing="2rem"
         />
       </Flex>
-      <Flex direction="column" alignItems="flex-end" gap=".5rem">
+      <Flex direction="column" alignItems="flex-end" gap=".5rem" w="100%">
         <FooterHeading>Chácara Zanin</FooterHeading>
-        <Flex direction="column" alignItems="flex-end" gap=".5rem">
+        <Flex direction="column" alignItems="flex-end" gap=".5rem" w="100%">
           <GoogleMapsButton address={settings.lunchPlaceAddress} />
           <WazeButton address={settings.lunchPlaceAddress} />
         </Flex>

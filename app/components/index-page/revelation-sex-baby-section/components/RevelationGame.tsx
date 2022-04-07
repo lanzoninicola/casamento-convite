@@ -31,7 +31,7 @@ export default function RevelationGame() {
           textTransform="uppercase"
           letterSpacing="1px"
         >
-          Deixe sua opinião, clicando em <br /> um dos dois ursinhos e concorra{" "}
+          Deixe sua opinião, clicando em um dos dois ursinhos e concorra
           <br />
           <HighlightedText bg="primary.500">
             a uma troca de frauda

@@ -1,4 +1,4 @@
-import { Flex, HStack, Text } from "@chakra-ui/react";
+import { Flex, Grid, HStack, Text } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "remix";
 import ArrowRight from "~/components/shared/ArrowRight";
@@ -17,21 +17,22 @@ export default function FooterButton({
   spacing?: string;
 }) {
   return (
-    <Link to={to}>
-      <Flex
+    <Link to={to} style={{ width: "100%", maxWidth: "150px" }}>
+      <Grid
         bg={bg}
-        justifyContent="space-between"
+        gridTemplateColumns="1fr auto"
         borderRadius="5px"
-        p=".25rem .5rem"
+        p=".5rem .75rem"
         gap={spacing}
         shadow="md"
+        alignItems="center"
       >
         <HStack>
           {leftIcon}
           <Text fontSize="14px">{text}</Text>
         </HStack>
         <ArrowRight size={16} />
-      </Flex>
+      </Grid>
     </Link>
   );
 }

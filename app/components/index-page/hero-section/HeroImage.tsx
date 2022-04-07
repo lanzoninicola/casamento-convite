@@ -1,20 +1,18 @@
-import { Center, Flex, Image } from "@chakra-ui/react";
-import useViewportInfo from "~/components/shared/hooks/UseViewPortInfo";
+import { Box, Center, Flex, Image, Img } from "@chakra-ui/react";
 
 export default function HeroImage() {
   return (
-    <Flex
-      w="100%"
+    <Box
+      flexGrow={1}
       h="100%"
-      align="flex-end"
-      justify="center"
-      position="absolute"
-      top="0"
-      left="0"
+      w="100%"
+      background={'url("/images/hero-bg.png")'}
+      backgroundRepeat="no-repeat"
+      backgroundPosition={"top center"}
     >
-      <Center>
-        <Image src="/images/hero-bg.png" alt="Hero background" h="70vh" />
-      </Center>
-    </Flex>
+      {/* <Center>
+        <Image src={`/images/hero-bg.png`} alt="Hero background" />
+      </Center> */}
+    </Box>
   );
 }

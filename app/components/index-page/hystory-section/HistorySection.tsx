@@ -25,7 +25,7 @@ export default function HistorySection() {
 
   return (
     <>
-      <Section id="our-story">
+      <Section id="our-story" p={0}>
         <HistoryContentWrapper>
           <Box className="row" position="relative">
             {fragment === "cover" && <HistoryIntro />}
@@ -53,7 +53,7 @@ export default function HistorySection() {
 
 function HistoryContentWrapper({ children }: { children: React.ReactNode }) {
   return (
-    <Grid className="history-wrapper" h="100%" gridTemplateRows="1fr auto">
+    <Grid className="history-wrapper" minH="100vh" gridTemplateRows="1fr auto">
       {children}
     </Grid>
   );

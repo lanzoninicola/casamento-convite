@@ -1,4 +1,4 @@
-import { Center, keyframes, Stack, Text } from "@chakra-ui/react";
+import { Center, keyframes, Stack, Text, VStack } from "@chakra-ui/react";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import EllipseDecorator from "~/components/shared/EllipseDecorator";
 import usePulseAnimation from "~/components/shared/hooks/usePulseAnimation";
@@ -16,20 +16,21 @@ export default function HistoryIntro() {
 
   return (
     <>
-      <SafeArea>
-        <Stack spacing="2rem" h="100%" justify="center">
+      <Center h="100%">
+        <Stack spacing="2rem" h="100%" justify="center" className="ck-stack">
           {/* <Center>
             <TextDecorated>Nossa Historia</TextDecorated>
           </Center> */}
-          <Center onClick={handleClick}>
-            <EllipseDecorator
-              bg="secondary.500"
-              diameter="270px"
-              animation={pulseAnimationCSS}
-            >
+
+          <EllipseDecorator
+            bg="secondary.500"
+            animation={pulseAnimationCSS}
+            onClick={handleClick}
+          >
+            <VStack justify="center" h="100%">
               <BaseHeading
                 as="h2"
-                fontSize="24px"
+                fontSize="1.5rem"
                 letterSpacing="1px"
                 textAlign="center"
                 fontWeight="400"
@@ -49,10 +50,10 @@ export default function HistoryIntro() {
               >
                 CLIQUE AQUI
               </Text>
-            </EllipseDecorator>
-          </Center>
+            </VStack>
+          </EllipseDecorator>
         </Stack>
-      </SafeArea>
+      </Center>
     </>
   );
 }

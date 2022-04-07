@@ -13,7 +13,7 @@ const settings = {
           maxHeight: "729px", // Google Chrome - Samsung Galaxy A51
         },
       },
-      headerHeight: "85px",
+      headerHeight: "95px",
     },
   },
 };

@@ -15,6 +15,8 @@ export default function Header() {
       h={settings.app.styles.headerHeight}
       position="fixed"
       top={0}
+      left={0}
+      right={0}
       alignContent="center"
       borderColor="red.500"
       paddingInline="1.5rem"

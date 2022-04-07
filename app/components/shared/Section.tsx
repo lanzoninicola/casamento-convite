@@ -13,11 +13,10 @@ export default function Section({
     <Container
       as="section"
       w="100vw"
-      h={h || "100vh"}
+      minH={h || "100vh"}
       position="relative"
-      {...props}
-      paddingInline="0"
       scrollSnapAlign="start"
+      {...props}
     >
       {children}
     </Container>

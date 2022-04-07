@@ -6,8 +6,8 @@ import Section from "~/components/shared/Section";
 
 export default function CeremonySection() {
   return (
-    <Section id="ceremony" pt="2rem" bg="primary.500">
-      <Grid gridTemplateRows="auto" padding="2rem" gap="1.5rem">
+    <Section id="ceremony" pt="2rem" bg="primary.500" h="auto">
+      <Grid gridTemplateRows="auto" padding="1rem" gap="1.5rem">
         <Box>
           <BaseHeading
             as="h2"

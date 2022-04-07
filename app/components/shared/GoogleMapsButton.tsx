@@ -12,14 +12,8 @@ export default function GoogleMapsButton({
   const baseUrl = "https://www.google.com/maps/dir/?api=1&destination=";
 
   return (
-    <Link href={`${baseUrl}${address}`} isExternal>
-      <HStack
-        bg={bg}
-        spacing={8}
-        borderRadius="5px"
-        p=".25rem .5rem"
-        shadow={"lg"}
-      >
+    <Link href={`${baseUrl}${address}`} isExternal w="100%" maxW="150px">
+      <HStack bg={bg} borderRadius="5px" p=".25rem .5rem" shadow={"lg"}>
         <HStack>
           <SiGooglemaps />
           <Text fontSize="16px">IR AGORA</Text>

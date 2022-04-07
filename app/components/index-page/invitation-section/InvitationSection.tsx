@@ -25,7 +25,7 @@ export default function InvitationSection() {
   return (
     <Section id="invitation-claim" backgroundColor="secondary.500">
       <SafeArea>
-        <Grid templateRows="1fr 1fr .5fr" h="100%" padding="2rem">
+        <Grid templateRows="1fr 1fr .5fr" h="100%" padding="1rem">
           <Flex direction="column" gap="1.5rem">
             <Box>
               <BaseHeading as="h2" fontSize="38px" fontWeight="700" mb=".5rem">

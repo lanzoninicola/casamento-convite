@@ -111,8 +111,8 @@ export default function RevelationIndex() {
   }
 
   return (
-    <Section>
-      <Center w="100%" h="100%" background="primary.500" paddingInline="2rem">
+    <Section h="100vh" p="0">
+      <Center w="100%" h="100vh" background="primary.500" paddingInline="2rem">
         <Flex w="100%" direction="column" gap="1rem">
           <Center mb="2rem">
             <PartialResult data={loaderData?.currentRevelationResult} />

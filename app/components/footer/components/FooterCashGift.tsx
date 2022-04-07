@@ -11,7 +11,7 @@ export default function FooterCashGift() {
           <GiftIcon />
           <FooterHeading>Presente</FooterHeading>
         </HStack>
-        <Grid gridTemplateColumns="1fr 1fr" gap="1rem">
+        <Grid gridTemplateColumns="1fr 1fr" gap="1rem" justifyItems="center">
           <FooterButton
             leftIcon={<EnvelopeIcon size={24} />}
             text="ENVELOPE"

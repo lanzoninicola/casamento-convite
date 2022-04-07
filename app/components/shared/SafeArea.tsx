@@ -19,11 +19,11 @@ export default function SafeArea({
   return (
     <Box
       className="safe-area"
-      h="100%"
-      maxH={settings.app.styles.viewport.mobile.maxHeight}
+      h="100vh"
       pt={paddingTop}
       pb={bottom}
       {...props}
+      position="relative"
     >
       {children}
     </Box>
