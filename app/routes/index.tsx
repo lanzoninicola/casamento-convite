@@ -65,7 +65,7 @@ export default function Index() {
           <Footer />
           <AlertNoReadStory />
           <WhatsAppWidget />
-          {/* <ViewportInfo enableOnProduction={false} /> */}
+          <ViewportInfo enableOnProduction={true} />
         </PhotoGalleryProvider>
       </HistoryProvider>
     </>
