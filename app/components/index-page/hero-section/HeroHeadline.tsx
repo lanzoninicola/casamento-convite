@@ -13,7 +13,7 @@ export default function HeroHeadline() {
           textAlign="center"
           fontWeight="400"
         >
-          È hora!
+          É hora!
         </BaseHeading>
 
         <Text
