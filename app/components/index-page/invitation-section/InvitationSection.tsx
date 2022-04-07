@@ -45,6 +45,16 @@ export default function InvitationSection() {
               </Text>
             </Box>
             <Text
+              fontSize="20px"
+              color="text.500"
+              lineHeight={1.2}
+              fontWeight={700}
+            >
+              <HighlightedText bg="primary.500" left={5}>
+                Traje livre
+              </HighlightedText>
+            </Text>
+            <Text
               fontWeight="400"
               color="text.500"
               fontSize="18px"
