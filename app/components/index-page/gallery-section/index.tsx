@@ -24,6 +24,7 @@ export default function Gallery() {
           h="auto"
           bg="primary.500"
           paddingBlock="4rem"
+          overflow="hidden"
         >
           {!isPhotoZoomed && (
             <Flex direction="column" gap=".5rem" justify="center" h="100%">
