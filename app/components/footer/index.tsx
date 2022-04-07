@@ -16,9 +16,9 @@ export default function Footer() {
           <FooterRightColumn />
         </Grid>
         <Divider color="gray.200" />
-        <Grid gridTemplateColumns="1fr 1fr" gap="1rem" marginBlock="2rem">
-          <FooterCashGift />
-        </Grid>
+
+        <FooterCashGift />
+
         <Divider color="gray.200" />
         <DeveloperAuthor />
       </Grid>
