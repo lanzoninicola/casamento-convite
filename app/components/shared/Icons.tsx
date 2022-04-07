@@ -15,3 +15,7 @@ export function HeartIcon() {
 export function OkCircleIcon({ size = 24 }: { size?: number }) {
   return <Image src={`/images/ok-circle-icon-${size}.svg`} />;
 }
+
+export function GiftIcon({ size = 24 }: { size?: number }) {
+  return <Image src={`/images/gift-icon-${size}.svg`} />;
+}
