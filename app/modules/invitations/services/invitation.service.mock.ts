@@ -22,7 +22,7 @@ const MOCK_INVITATIONS: InvitationModel[] = [
     mealPreference: "carne",
   },
   {
-    guestName: "Nicola",
+    guestName: "Pele Josue do Santos",
     willAttend: true,
     guests: 2,
     mealPreference: "carne",

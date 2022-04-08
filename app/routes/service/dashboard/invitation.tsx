@@ -1,4 +1,4 @@
-import { Box, Flex, HStack, Text, VStack } from "@chakra-ui/react";
+import { Box, Divider, Flex, HStack, Text, VStack } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { LoaderFunction, MetaFunction, useLoaderData } from "remix";
 import FilterPartecipationBadges from "~/components/dashboard/components/FilterPartecipationBadges";
@@ -7,19 +7,27 @@ import Toolbar from "~/components/dashboard/components/Toolbar";
 import ToolbarButton from "~/components/dashboard/components/ToolbarButton";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import {
+  EnvelopeIcon,
   FilterIcon,
   HumanIcon,
   MeatAndVegetableIcon,
   MeatIcon,
+  PixIcon,
   SearchIcon,
   VegetableIcon,
 } from "~/components/shared/Icons";
 import { firestoreService } from "~/lib/firebase/db.server";
+import { GiftCashType } from "~/modules/gifts/interface/gift.interface";
+import GiftDatabaseService from "~/modules/gifts/services/gift-database.service";
 import { InvitationModel } from "~/modules/invitations/models/invitation.model";
 import Invitation from "~/modules/invitations/services/invitation.service";
 
+export interface InvitationModelWithGift extends InvitationModel {
+  giftType: GiftCashType;
+}
+
 export interface LoaderData {
-  invitations: InvitationModel[];
+  invitations: InvitationModelWithGift[];
 }
 
 // <meta name="robots" content="noindex,nofollow">
@@ -33,10 +41,30 @@ export const loader: LoaderFunction = async () => {
   const invitation = new Invitation(firestoreService);
   const invitationResponse = await invitation.getAll();
 
+  const giftService = new GiftDatabaseService(firestoreService);
+  const giftResponse = await giftService.getAll();
+
   let invitations: InvitationModel[] = [];
 
   if (invitationResponse.ok && invitationResponse.payload) {
     invitations = invitationResponse.payload;
+  }
+
+  if (giftResponse.ok && giftResponse.payload) {
+    invitations = invitations.map((invitation) => {
+      const gift = giftResponse.payload.find(
+        (gift) => gift.guestName === invitation.guestName
+      );
+
+      if (gift) {
+        return {
+          ...invitation,
+          giftType: gift.type,
+        };
+      }
+
+      return invitation;
+    });
   }
 
   return {
@@ -117,13 +145,17 @@ export default function InvitationPage() {
             <SearchInput onSearch={(term) => onSearchRecord(term)} />
           )}
         </VStack>
-        <ListOfGuests guests={filteredInvitations} />
+        <InvitationResponseList invitations={filteredInvitations} />
       </VStack>
     </>
   );
 }
 
-function ListOfGuests({ guests }: { guests: InvitationModel[] }) {
+function InvitationResponseList({
+  invitations,
+}: {
+  invitations: InvitationModelWithGift[];
+}) {
   return (
     <Flex
       className="guest-list"
@@ -132,8 +164,8 @@ function ListOfGuests({ guests }: { guests: InvitationModel[] }) {
       width={"100%"}
       justify="space-between"
     >
-      {guests.map((guest, index) => (
-        <GuestRow key={index} guest={guest} />
+      {invitations.map((invitation, index) => (
+        <InvitationRow key={index} invitationData={invitation} />
       ))}
     </Flex>
   );
@@ -145,8 +177,12 @@ function ListOfGuests({ guests }: { guests: InvitationModel[] }) {
   guests?: number;
   mealPreference?: string;
  */
-function GuestRow({ guest }: { guest: InvitationModel }) {
-  const guestsArray = Array.from({ length: guest.guests || 0 });
+function InvitationRow({
+  invitationData,
+}: {
+  invitationData: InvitationModelWithGift;
+}) {
+  const guestsArray = Array.from({ length: invitationData.guests || 0 });
 
   return (
     <Box
@@ -159,26 +195,30 @@ function GuestRow({ guest }: { guest: InvitationModel }) {
     >
       <Flex direction="row" align="center" gap="1rem" justify={"space-between"}>
         <VStack align={"flex-start"} spacing={1} w="100%">
-          <HStack w="100%">
-            <Text fontSize="14px" fontWeight={700} letterSpacing={"-.5px"}>
+          <VStack w="100%" spacing={0} alignItems="flex-start">
+            <Text fontSize="14px" fontWeight={700} letterSpacing={"-1px"}>
               Nome:
             </Text>
             <Text fontSize="16px" letterSpacing={"-.5px"}>
-              {guest.guestName}
+              {invitationData.guestName}
             </Text>
-          </HStack>
+          </VStack>
           <HStack>
-            <Text fontSize="14px" fontWeight={700}>
+            <Text fontSize="14px" fontWeight={700} letterSpacing={"-1px"}>
               Participo:
             </Text>
-            <Text fontSize="14px">{guest.willAttend ? "Sim" : "Não"}</Text>
+            <Text fontSize="14px">
+              {invitationData.willAttend ? "Sim" : "Não"}
+            </Text>
           </HStack>
         </VStack>
 
         <HStack spacing={4} w="100%" justify={"flex-end"}>
-          {guest.mealPreference === "carne" && <MeatIcon />}
-          {guest.mealPreference === "vegetariano" && <VegetableIcon />}
-          {guest.mealPreference === "indiferente" && <MeatAndVegetableIcon />}
+          {invitationData.mealPreference === "carne" && <MeatIcon />}
+          {invitationData.mealPreference === "vegetariano" && <VegetableIcon />}
+          {invitationData.mealPreference === "indiferente" && (
+            <MeatAndVegetableIcon />
+          )}
           <HStack>
             {guestsArray.map((_, index) => {
               return <HumanIcon size={40} key={index} />;
@@ -186,6 +226,14 @@ function GuestRow({ guest }: { guest: InvitationModel }) {
           </HStack>
         </HStack>
       </Flex>
+      <Divider marginBlock={".75rem"} />
+      <HStack justify={"space-between"}>
+        <Text fontSize="14px" fontWeight={700} letterSpacing={"-1px"}>
+          Presente:
+        </Text>
+        {invitationData.giftType === "pix" && <PixIcon />}
+        {invitationData.giftType === "envelope" && <EnvelopeIcon />}
+      </HStack>
     </Box>
   );
 }

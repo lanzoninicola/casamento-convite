@@ -247,6 +247,7 @@ function GiftSection({
                 variant="filled"
                 name="average-value"
                 type="number"
+                inputMode="numeric"
                 pattern="[0-9]"
                 value={averagePaxAmount || ""}
                 fontSize="18px"
@@ -271,6 +272,7 @@ function GiftSection({
                 variant="filled"
                 name="average-value"
                 type="number"
+                inputMode="numeric"
                 pattern="[0-9]"
                 value={weddingCostAmount || ""}
                 fontSize="18px"
