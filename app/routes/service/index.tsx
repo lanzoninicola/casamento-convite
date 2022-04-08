@@ -22,7 +22,7 @@ export default function ServiceIndex() {
         alignItems="center"
         bg="gray.100"
       >
-        <Link to="/service/statistics">
+        <Link to="/service/dashboard">
           <LargeCard bg="linear-gradient(69deg, rgba(211,171,158,1) 43%, rgba(197,172,206,1) 100%);">
             Fiscalização
           </LargeCard>

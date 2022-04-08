@@ -25,7 +25,7 @@ export default class InvitationStatsService {
     invitations: InvitationModel[],
     mealPreference: MealPreference
   ) {
-    const totalCarne = invitations
+    const totalMealPreference = invitations
       .filter((invitation) => invitation.willAttend)
       .reduce((acc, curr: InvitationModel) => {
         if (curr.mealPreference === mealPreference) {
@@ -34,7 +34,7 @@ export default class InvitationStatsService {
         return acc;
       }, 0);
 
-    return totalCarne;
+    return totalMealPreference;
   }
 
   getWillAttend(invitations: InvitationModel[]) {
