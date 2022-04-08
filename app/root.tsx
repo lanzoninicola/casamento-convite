@@ -25,7 +25,7 @@ import {
 
 import { ClientStyleContext, ServerStyleContext } from "./chackra-ui/context";
 import { theme } from "./chackra-ui/theme/theme";
-import { BackToHomeButton } from "./components/shared/BackToHomeButton";
+import { BackToHomeButton } from "./components/shared/buttons/BackToHomeButton";
 import { InvitationFormProvider } from "./context/invitation-context";
 import { firestoreService } from "./lib/firebase/db.server";
 import ErrorDatabaseService from "./modules/errors/services/error-database.service";

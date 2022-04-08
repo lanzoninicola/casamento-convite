@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import { ActionFunction, Form, MetaFunction, Outlet, redirect } from "remix";
 import useRemixLocalStorage from "~/components/shared/hooks/useRemixLocalStorage";
 import LogoWithBackground from "~/components/shared/LogoWithBackground";
-import { EnvelopeButton, PixButton } from "~/components/shared/PaymentButtons";
+import {
+  EnvelopeButton,
+  PixButton,
+} from "~/components/shared/buttons/PaymentButtons";
 import SafeArea from "~/components/shared/SafeArea";
 import Section from "~/components/shared/Section";
 import Pegadinha from "~/components/thank-you-page/components/Pegadinha";

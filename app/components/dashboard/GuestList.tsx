@@ -67,12 +67,12 @@ export default function GuestList({
         <VStack align={"flex-start"} spacing={1} mb="1rem" w="100%">
           <HStack w="100%" mb="1rem" className="toolbar">
             <ToolbarButton
-              icon={<FilterIcon />}
+              icon={<FilterIcon size={16} />}
               label={"Filtrar"}
               onClick={onFilterRecord}
             />
             <ToolbarButton
-              icon={<SearchIcon />}
+              icon={<SearchIcon size={16} />}
               label={"Buscar"}
               onClick={onSearchRecord}
             />

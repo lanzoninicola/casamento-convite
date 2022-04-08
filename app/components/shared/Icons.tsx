@@ -43,3 +43,27 @@ export function SearchIcon({ size = 24 }: { size?: number }) {
 export function FilterIcon({ size = 24 }: { size?: number }) {
   return <Image src={`/images/filter-icon-${size}.svg`} />;
 }
+
+export function HomeIcon({ size = 24 }: { size?: number }) {
+  return <Image src={`/images/home-icon-${size}.svg`} />;
+}
+
+export function InvitationIcon({ size = 24 }: { size?: number }) {
+  return <Image src={`/images/invitation-icon-${size}.svg`} />;
+}
+
+export function PaymentIcon({ size = 24 }: { size?: number }) {
+  return <Image src={`/images/payment-icon-${size}.svg`} />;
+}
+
+export function BabyIcon({ size = 24 }: { size?: number }) {
+  return <Image src={`/images/baby-icon-${size}.svg`} />;
+}
+
+export function BoyIcon({ size = 24 }: { size?: number }) {
+  return <Image src={`/images/boy-icon-${size}.svg`} />;
+}
+
+export function GirlIcon({ size = 24 }: { size?: number }) {
+  return <Image src={`/images/girl-icon-${size}.svg`} />;
+}

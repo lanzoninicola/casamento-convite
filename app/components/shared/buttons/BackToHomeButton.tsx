@@ -1,6 +1,6 @@
 import { Button } from "@chakra-ui/react";
 import { Link } from "remix";
-import ArrowRight from "./ArrowRight";
+import ArrowRight from "../ArrowRight";
 
 export function BackToHomeButton({
   url,

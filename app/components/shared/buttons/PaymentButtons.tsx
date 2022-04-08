@@ -1,6 +1,6 @@
 import { Button } from "@chakra-ui/react";
-import ArrowRight from "./ArrowRight";
-import { PixIcon, EnvelopeIcon } from "./Icons";
+import ArrowRight from "../ArrowRight";
+import { PixIcon, EnvelopeIcon } from "../Icons";
 
 function PaymentButton({
   children,

@@ -1,6 +1,7 @@
-import { Box, Button, Flex, HStack, Link, Text } from "@chakra-ui/react";
+import { HStack, Link, Text } from "@chakra-ui/react";
 import { SiGooglemaps } from "react-icons/si";
-import ArrowRight from "./ArrowRight";
+
+import ArrowRight from "../ArrowRight";
 
 export default function GoogleMapsButton({
   address,

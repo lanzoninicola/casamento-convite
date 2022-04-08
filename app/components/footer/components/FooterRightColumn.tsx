@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react";
-import GoogleMapsButton from "~/components/shared/GoogleMapsButton";
+import GoogleMapsButton from "~/components/shared/buttons/GoogleMapsButton";
 import { OkCircleIcon } from "~/components/shared/Icons";
-import WazeButton from "~/components/shared/WazeButton";
+import WazeButton from "~/components/shared/buttons/WazeButton";
 import settings from "~/modules/settings";
 import FooterButton from "./FooterButton";
 import FooterHeading from "./FooterHeading";

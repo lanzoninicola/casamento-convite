@@ -4,10 +4,12 @@ export default function ToolbarButton({
   icon,
   label,
   onClick,
+  ...props
 }: {
   icon: React.ReactElement;
   label: string;
   onClick: () => void;
+  [key: string]: any;
 }) {
   return (
     <VStack
@@ -18,6 +20,7 @@ export default function ToolbarButton({
       p=".5rem"
       boxShadow={"sm"}
       onClick={onClick}
+      {...props}
     >
       {icon}
       <Text

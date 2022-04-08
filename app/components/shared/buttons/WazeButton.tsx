@@ -1,7 +1,7 @@
 import { HStack, Link, Text } from "@chakra-ui/react";
 import { SiWaze } from "react-icons/si";
 
-import ArrowRight from "./ArrowRight";
+import ArrowRight from "../ArrowRight";
 
 export default function WazeButton({
   address,

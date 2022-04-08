@@ -18,7 +18,7 @@ export default function DashboardMealPreference({
 }) {
   return (
     <Box>
-      <BaseHeading mb="1rem" fontSize="22px">
+      <BaseHeading mb="1rem" fontSize="18px">
         Preferência comida
       </BaseHeading>
       <Grid gridTemplateColumns={"repeat(3, 1fr)"} gap="0.5rem">

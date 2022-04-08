@@ -11,7 +11,7 @@ export default function IconStat({
   [key: string]: any;
 }) {
   return (
-    <StatBox bg="white" {...props}>
+    <StatBox bg="gray.200" {...props}>
       <Flex direction={"row"} justify="space-between">
         {icon}
         <StatNumber fontSize="24px">{number}</StatNumber>

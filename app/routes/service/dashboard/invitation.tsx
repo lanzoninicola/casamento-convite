@@ -1,31 +1,26 @@
-import {
-  Box,
-  Center,
-  Container,
-  Divider,
-  Flex,
-  Grid,
-  HStack,
-  Stat,
-  Text,
-} from "@chakra-ui/react";
-import React from "react";
+import { Box, Flex, HStack, Text, VStack } from "@chakra-ui/react";
+import React, { useEffect } from "react";
 import { LoaderFunction, MetaFunction, useLoaderData } from "remix";
-import IconStat from "~/components/dashboard/components/IconStat";
-import NumberStat from "~/components/dashboard/components/NumberStat";
-import NumberStatFullWidth from "~/components/dashboard/components/NumberStatFullWidth";
-import DashboardMealPreference from "~/components/dashboard/DashboardMealPreference";
-import GuestList from "~/components/dashboard/GuestList";
+import FilterPartecipationBadges from "~/components/dashboard/components/FilterPartecipationBadges";
+import SearchInput from "~/components/dashboard/components/SearchInput";
+import Toolbar from "~/components/dashboard/components/Toolbar";
+import ToolbarButton from "~/components/dashboard/components/ToolbarButton";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import {
+  FilterIcon,
+  HumanIcon,
   MeatAndVegetableIcon,
   MeatIcon,
+  SearchIcon,
   VegetableIcon,
 } from "~/components/shared/Icons";
 import { firestoreService } from "~/lib/firebase/db.server";
 import { InvitationModel } from "~/modules/invitations/models/invitation.model";
-import InvitationStatsService from "~/modules/invitations/services/invitation-stats.service";
 import Invitation from "~/modules/invitations/services/invitation.service";
+
+export interface LoaderData {
+  invitations: InvitationModel[];
+}
 
 // <meta name="robots" content="noindex,nofollow">
 export const meta: MetaFunction = () => {
@@ -36,108 +31,161 @@ export const meta: MetaFunction = () => {
 
 export const loader: LoaderFunction = async () => {
   const invitation = new Invitation(firestoreService);
-  const invitationStats = new InvitationStatsService();
   const invitationResponse = await invitation.getAll();
 
   let invitations: InvitationModel[] = [];
-  let totalInvitationsReceived = 0;
-  let totalGuests = 0;
-  let totalCarne = 0;
-  let totalVegetariano = 0;
-  let totalIndiferente = 0;
-  let totalWillAttend = 0;
-  let totalWillNotAttend = 0;
 
   if (invitationResponse.ok && invitationResponse.payload) {
     invitations = invitationResponse.payload;
-
-    totalInvitationsReceived =
-      invitationStats.getTotalsInvitations(invitations);
-    totalGuests = invitationStats.getTotalGuests(invitations);
-    totalCarne = invitationStats.getTotalByMealPreference(invitations, "carne");
-    totalVegetariano = invitationStats.getTotalByMealPreference(
-      invitations,
-      "vegetariano"
-    );
-    totalIndiferente = invitationStats.getTotalByMealPreference(
-      invitations,
-      "indiferente"
-    );
-    totalWillAttend = invitationStats.getWillAttend(invitations).length;
-    totalWillNotAttend = invitationStats.getWillNotAttend(invitations).length;
   }
 
   return {
     invitations,
-    totalInvitationsReceived,
-    totalGuests,
-    totalCarne,
-    totalVegetariano,
-    totalIndiferente,
-    totalWillAttend,
-    totalWillNotAttend,
   };
 };
 
-export default function InvitationDashboard() {
-  const statistics = useLoaderData();
+export default function InvitationPage() {
+  const { invitations }: LoaderData = useLoaderData();
+  const [filteredInvitations, setFilteredInvitations] =
+    React.useState(invitations);
+  const [showFilterOptions, setShowFilterOption] = React.useState(false);
+  const [showSearch, setShowSearch] = React.useState(false);
 
-  const {
-    invitations,
-    totalInvitationsReceived,
-    totalGuests,
-    totalCarne,
-    totalVegetariano,
-    totalIndiferente,
-    totalWillAttend,
-    totalWillNotAttend,
-  } = statistics;
+  function filterAll() {
+    setFilteredInvitations(invitations);
+  }
+
+  function filterAttending() {
+    setFilteredInvitations(
+      invitations.filter((invitation) => invitation.willAttend)
+    );
+  }
+
+  function filterNotAttending() {
+    setFilteredInvitations(
+      invitations.filter((invitation) => !invitation.willAttend)
+    );
+  }
+
+  function onShowFilters() {
+    setShowFilterOption(!showFilterOptions);
+    setShowSearch(false);
+  }
+
+  function onShowSearchInput() {
+    setShowSearch(!showSearch);
+    setShowFilterOption(false);
+  }
+
+  function onSearchRecord(term: string) {
+    const nextInvitations = invitations.filter((invitation) => {
+      if (invitation.guestName.toLowerCase().includes(term.toLowerCase())) {
+        return invitation;
+      }
+    });
+
+    setFilteredInvitations(nextInvitations);
+  }
 
   return (
     <>
-      <Flex direction="column">
-        <BaseHeading mb="1rem" fontSize="22px">
-          Convites
-        </BaseHeading>
-        <Box mb="1rem">
-          <Box mb="1rem">
-            <NumberStatFullWidth
-              label="Convidados"
-              number={totalGuests}
-              helpText="Numero total de convidados"
-              bg="green.100"
+      <BaseHeading mb="1rem" fontSize="22px">
+        Lista de convidados
+      </BaseHeading>
+      <VStack align={"flex-start"} spacing={1}>
+        <VStack align={"flex-start"} spacing={1} mb="1rem" w="100%">
+          <Toolbar>
+            <ToolbarButton
+              icon={<FilterIcon size={16} />}
+              label={"Filtrar"}
+              onClick={onShowFilters}
             />
-          </Box>
-          <HStack>
-            <NumberStat
-              label="Recebidos"
-              number={totalInvitationsReceived}
-              helpText="Total de respostas recebidas"
+            <ToolbarButton
+              icon={<SearchIcon size={16} />}
+              label={"Buscar"}
+              onClick={onShowSearchInput}
             />
-            <NumberStat
-              label="Participantes"
-              number={totalWillAttend}
-              helpText="Total de respostas positivas"
+          </Toolbar>
+          {showFilterOptions && (
+            <FilterPartecipationBadges
+              filterAll={filterAll}
+              filterAttending={filterAttending}
+              filterNotAttending={filterNotAttending}
             />
-            <NumberStat
-              label="Ausentes"
-              number={totalWillNotAttend}
-              helpText="Total de respostas negativas"
-              bg="red.100"
-            />
-          </HStack>
-        </Box>
-      </Flex>
-      <Divider borderColor={"transparent"} marginBlock={"1rem"} />
-      <DashboardMealPreference
-        totalCarne={totalCarne}
-        totalVegetariano={totalVegetariano}
-        totalIndiferente={totalIndiferente}
-      />
-      <Divider borderColor={"transparent"} marginBlock={"1rem"} />
-      <GuestList invitations={invitations} />
+          )}
+          {showSearch && (
+            <SearchInput onSearch={(term) => onSearchRecord(term)} />
+          )}
+        </VStack>
+        <ListOfGuests guests={filteredInvitations} />
+      </VStack>
     </>
   );
 }
 
-function ListRow() {}
+function ListOfGuests({ guests }: { guests: InvitationModel[] }) {
+  return (
+    <Flex
+      className="guest-list"
+      direction="column"
+      gap=".75rem"
+      width={"100%"}
+      justify="space-between"
+    >
+      {guests.map((guest, index) => (
+        <GuestRow key={index} guest={guest} />
+      ))}
+    </Flex>
+  );
+}
+
+/**
+ *  guestName: string;
+  willAttend: boolean;
+  guests?: number;
+  mealPreference?: string;
+ */
+function GuestRow({ guest }: { guest: InvitationModel }) {
+  const guestsArray = Array.from({ length: guest.guests || 0 });
+
+  return (
+    <Box
+      borderRadius={"10px"}
+      boxShadow="sm"
+      paddingBlock=".75rem"
+      paddingInline={".5rem"}
+      bg="white"
+      w="100%"
+    >
+      <Flex direction="row" align="center" gap="1rem" justify={"space-between"}>
+        <VStack align={"flex-start"} spacing={1} w="100%">
+          <HStack w="100%">
+            <Text fontSize="14px" fontWeight={700} letterSpacing={"-.5px"}>
+              Nome:
+            </Text>
+            <Text fontSize="16px" letterSpacing={"-.5px"}>
+              {guest.guestName}
+            </Text>
+          </HStack>
+          <HStack>
+            <Text fontSize="14px" fontWeight={700}>
+              Participo:
+            </Text>
+            <Text fontSize="14px">{guest.willAttend ? "Sim" : "Não"}</Text>
+          </HStack>
+        </VStack>
+
+        <HStack spacing={4} w="100%" justify={"flex-end"}>
+          {guest.mealPreference === "carne" && <MeatIcon />}
+          {guest.mealPreference === "vegetariano" && <VegetableIcon />}
+          {guest.mealPreference === "indiferente" && <MeatAndVegetableIcon />}
+          <HStack>
+            {guestsArray.map((_, index) => {
+              return <HumanIcon size={40} key={index} />;
+            })}
+          </HStack>
+        </HStack>
+      </Flex>
+    </Box>
+  );
+}

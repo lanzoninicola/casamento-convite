@@ -1,7 +1,7 @@
 import { Box, Button, Grid, Image, Center } from "@chakra-ui/react";
 import { Link, Outlet } from "remix";
 import ArrowRight from "~/components/shared/ArrowRight";
-import { BackToHomeButton } from "~/components/shared/BackToHomeButton";
+import { BackToHomeButton } from "~/components/shared/buttons/BackToHomeButton";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import usePulseAnimation from "~/components/shared/hooks/usePulseAnimation";
 import SafeArea from "~/components/shared/SafeArea";
