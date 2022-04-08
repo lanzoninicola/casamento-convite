@@ -246,9 +246,9 @@ function GiftSection({
               <Input
                 variant="filled"
                 name="average-value"
-                type="number"
+                type="text"
                 inputMode="numeric"
-                pattern="[0-9]"
+                pattern="[0-9]*"
                 value={averagePaxAmount || ""}
                 fontSize="18px"
                 textAlign={"right"}
@@ -270,10 +270,10 @@ function GiftSection({
               <StatLabel>R$</StatLabel>
               <Input
                 variant="filled"
-                name="average-value"
-                type="number"
+                type="text"
+                name="wedding-cost"
                 inputMode="numeric"
-                pattern="[0-9]"
+                pattern="[0-9*]"
                 value={weddingCostAmount || ""}
                 fontSize="18px"
                 textAlign={"right"}
