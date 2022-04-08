@@ -12,11 +12,11 @@ export default function GiftPreference({
   totalEnvelope: number;
 }) {
   return (
-    <Box>
+    <Box w="100%">
       <BaseHeading mb="1rem" fontSize="18px">
         Preferência presente
       </BaseHeading>
-      <Grid gridTemplateColumns={"repeat(3, 1fr)"} gap="0.5rem">
+      <Grid gridTemplateColumns={"repeat(2, 1fr)"} gap="0.5rem">
         <IconStat icon={<PixIcon />} number={totalPix} />
         <IconStat icon={<EnvelopeIcon />} number={totalEnvelope} />
       </Grid>

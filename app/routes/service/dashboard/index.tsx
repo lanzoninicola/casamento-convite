@@ -1,30 +1,15 @@
-import {
-  Box,
-  Center,
-  Container,
-  Divider,
-  Flex,
-  Grid,
-  HStack,
-  Stat,
-  Text,
-} from "@chakra-ui/react";
-import React from "react";
+import { Box, Flex, Grid, HStack, Input, VStack } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import { LoaderFunction, MetaFunction, useLoaderData } from "remix";
-import IconStat from "~/components/dashboard/components/IconStat";
 import NumberStat from "~/components/dashboard/components/NumberStat";
 import NumberStatFullWidth from "~/components/dashboard/components/NumberStatFullWidth";
 import StatBox from "~/components/dashboard/components/StatBox";
+import StatLabel from "~/components/dashboard/components/StatLabel";
+import StatNumber from "~/components/dashboard/components/StatNumber";
 import DashboardMealPreference from "~/components/dashboard/DashboardMealPreference";
 import GiftPreference from "~/components/dashboard/GiftPreference";
-import GuestList from "~/components/dashboard/GuestList";
 import RevelationPreference from "~/components/dashboard/RevelationPreference";
 import BaseHeading from "~/components/shared/BaseHeadings";
-import {
-  MeatAndVegetableIcon,
-  MeatIcon,
-  VegetableIcon,
-} from "~/components/shared/Icons";
 import { firestoreService } from "~/lib/firebase/db.server";
 import GiftDatabaseService from "~/modules/gifts/services/gift-database.service";
 import GiftStatService from "~/modules/gifts/services/gift-stat.service";
@@ -185,12 +170,132 @@ export default function InvitationDashboard() {
           totalIndiferente={totalIndiferente}
         />
       </StatBox>
-      <StatBox bg="white" p="1rem" boxShadow="sm" mb="1rem">
-        <GiftPreference totalPix={totalPix} totalEnvelope={totalEnvelope} />
-      </StatBox>
+      <GiftSection
+        totalPix={totalPix}
+        totalEnvelope={totalEnvelope}
+        totalGuests={totalGuests}
+      />
       <StatBox bg="white" p="1rem" boxShadow="sm" mb="1rem">
         <RevelationPreference totalBoy={totalBoy} totalGirl={totalGirl} />
       </StatBox>
     </>
+  );
+}
+
+function GiftSection({
+  totalPix,
+  totalEnvelope,
+  totalGuests,
+}: {
+  totalPix: number;
+  totalEnvelope: number;
+  totalGuests: number;
+}) {
+  const [totalIncomeEstimation, setTotalIncomeEstimation] = useState(
+    totalGuests * 100
+  );
+  const [averagePaxAmount, setAveragePaxAmount] = useState(100);
+  const [weddingCostAmount, setWeddingCostAmount] = useState(5000);
+  const [result, setResult] = useState(0);
+
+  function onChangeAverageValue(value: number) {
+    if (isNaN(value)) {
+      setAveragePaxAmount(0);
+    } else {
+      setAveragePaxAmount(value);
+    }
+  }
+
+  function calculateIncomeEstimation() {
+    setTotalIncomeEstimation(totalGuests * averagePaxAmount);
+  }
+
+  function onChangeWeddingCost(value: number) {
+    if (isNaN(value)) {
+      setWeddingCostAmount(0);
+    } else {
+      setWeddingCostAmount(value);
+    }
+  }
+
+  function calculateResult() {
+    const result = totalIncomeEstimation - weddingCostAmount;
+    setResult(result);
+  }
+
+  useEffect(() => {
+    calculateIncomeEstimation();
+  }, [averagePaxAmount]);
+
+  useEffect(() => {
+    calculateResult();
+  }, [totalIncomeEstimation, weddingCostAmount]);
+
+  return (
+    <StatBox bg="white" p="1rem" boxShadow="sm" mb="1rem">
+      <VStack align={"flex-start"} spacing={8} w="100%">
+        <GiftPreference totalPix={totalPix} totalEnvelope={totalEnvelope} />
+        <VStack align={"flex-start"} spacing={0} w="100%">
+          <BaseHeading mb="1rem" fontSize="16px">
+            Balanço Casamento
+          </BaseHeading>
+          <Grid gridTemplateColumns={"1fr 1fr"} w="100%" gap="1rem">
+            {/* First Row */}
+            <HStack>
+              <StatLabel>Media R$</StatLabel>
+              <Input
+                variant="filled"
+                name="average-value"
+                type="number"
+                pattern="[0-9]"
+                value={averagePaxAmount || ""}
+                fontSize="18px"
+                textAlign={"right"}
+                onChange={(e) =>
+                  onChangeAverageValue(parseInt(e.target.value, 10))
+                }
+              />
+              <StatLabel>por pessoa</StatLabel>
+            </HStack>
+            <HStack justify="space-between">
+              <StatLabel>R$</StatLabel>
+              <StatNumber textAlign="right">{`${totalIncomeEstimation}`}</StatNumber>
+            </HStack>
+            {/* Second Row */}
+            <HStack>
+              <StatLabel>Custo Casamento</StatLabel>
+            </HStack>
+            <HStack>
+              <StatLabel>R$</StatLabel>
+              <Input
+                variant="filled"
+                name="average-value"
+                type="number"
+                pattern="[0-9]"
+                value={weddingCostAmount || ""}
+                fontSize="18px"
+                textAlign={"right"}
+                onChange={(e) =>
+                  onChangeWeddingCost(parseInt(e.target.value, 10))
+                }
+              />
+            </HStack>
+            {/* Third Row */}
+            <HStack>
+              <StatLabel>{`Resultado (+/-)`}</StatLabel>
+            </HStack>
+            <HStack justify="space-between">
+              <StatLabel>R$</StatLabel>
+              <StatNumber
+                textAlign="right"
+                color={result > 0 ? "green.300" : "red.300"}
+              >
+                {result}
+              </StatNumber>
+            </HStack>
+          </Grid>
+        </VStack>
+      </VStack>
+    </StatBox>
   );
 }

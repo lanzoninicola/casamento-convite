@@ -29,7 +29,8 @@ export default class InvitationStatsService {
       .filter((invitation) => invitation.willAttend)
       .reduce((acc, curr: InvitationModel) => {
         if (curr.mealPreference === mealPreference) {
-          return acc + 1;
+          const guests = curr.guests ? curr.guests : 0;
+          return acc + guests;
         }
         return acc;
       }, 0);
