@@ -67,3 +67,7 @@ export function BoyIcon({ size = 24 }: { size?: number }) {
 export function GirlIcon({ size = 24 }: { size?: number }) {
   return <Image src={`/images/girl-icon-${size}.svg`} />;
 }
+
+export function RedCrossIcon({ size = 24 }: { size?: number }) {
+  return <Image src={`/images/red-cross-icon-${size}.svg`} />;
+}

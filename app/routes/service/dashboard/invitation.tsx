@@ -13,6 +13,7 @@ import {
   MeatAndVegetableIcon,
   MeatIcon,
   PixIcon,
+  RedCrossIcon,
   SearchIcon,
   VegetableIcon,
 } from "~/components/shared/Icons";
@@ -223,6 +224,7 @@ function InvitationRow({
             {guestsArray.map((_, index) => {
               return <HumanIcon size={40} key={index} />;
             })}
+            {guestsArray.length === 0 && <RedCrossIcon size={40} />}
           </HStack>
         </HStack>
       </Flex>
