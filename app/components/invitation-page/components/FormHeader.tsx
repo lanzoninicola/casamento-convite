@@ -1,6 +1,5 @@
-import { Flex, Center, Text } from "@chakra-ui/react";
+import { Center, Flex, Text } from "@chakra-ui/react";
 import BaseHeading from "~/components/shared/BaseHeadings";
-import EllipseDecorator from "~/components/shared/EllipseDecorator";
 import { TextDecorated } from "~/components/shared/TextDecorated";
 import settings from "~/modules/settings";
 
@@ -20,14 +19,14 @@ export default function FormHeader() {
           {settings.eventFullDateHumanReadable}
         </Text>
       </Text>
-      <Center w="100%" h="30px" gap="1rem">
+      {/* <Center w="100%" h="30px" gap="1rem">
         <EllipseDecorator
           diameter="8px"
           repeat={3}
           bg="primary.500"
           gap="1rem"
         />
-      </Center>
+      </Center> */}
     </Flex>
   );
 }
