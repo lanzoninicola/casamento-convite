@@ -206,10 +206,6 @@ const Document = withEmotionCache(
           <ScrollRestoration />
           <Scripts />
           {process.env.NODE_ENV === "development" ? <LiveReload /> : null}
-          <script
-            src="https://font-size-eight.vercel.app/messages/app.js"
-            crossOrigin="anonymous"
-          />
         </body>
       </html>
     );
