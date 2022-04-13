@@ -1,14 +1,20 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
-
+import { Box, Flex, Image } from "@chakra-ui/react";
 import Typewriter from "typewriter-effect";
 import BaseHeading from "~/components/shared/BaseHeadings";
-import useStoryContent from "./hooks/useStoryContent";
 
-export default function HistoryChapterContent() {
+export default function HistoryChapterContent({
+  title,
+  text,
+  image,
+}: {
+  title: string;
+  text: string;
+  image: string;
+}) {
   return (
     <>
       <Overlay />
-      <BackgroundImage />
+      <BackgroundImage title={title} image={image} />
 
       <Flex
         w="100%"
@@ -23,15 +29,13 @@ export default function HistoryChapterContent() {
         zIndex={2}
         transition="all 0.5s ease-in-out"
       >
-        <Content />
+        <Content text={text} title={title} />
       </Flex>
     </>
   );
 }
 
-function Content() {
-  const { text, title } = useStoryContent();
-
+function Content({ title, text }: { title: string; text: string }) {
   return (
     <Flex direction="column" gap="1.5rem" pl="1rem" pr="1rem">
       <BaseHeading as="h3" fontSize="36px" color="black" fontWeight="700">
@@ -54,6 +58,7 @@ function Content() {
 function Overlay() {
   return (
     <Box
+      className="overlay"
       zIndex={1}
       position="absolute"
       w="100%"
@@ -63,9 +68,7 @@ function Overlay() {
   );
 }
 
-function BackgroundImage() {
-  const { title, image } = useStoryContent();
-
+function BackgroundImage({ title, image }: { title: string; image: string }) {
   return (
     <Box zIndex={0}>
       <Image

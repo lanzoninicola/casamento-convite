@@ -1,17 +1,20 @@
-import { Box, Center, Flex, Grid, Text, VStack } from "@chakra-ui/react";
+import { Center, Grid, Text, VStack } from "@chakra-ui/react";
 import Typewriter from "typewriter-effect";
 import BaseHeading from "~/components/shared/BaseHeadings";
 import { TextDecorated } from "~/components/shared/TextDecorated";
-import TopBackgroundPattern from "~/components/shared/TopBackgroundPattern";
 
-import useStoryIntro from "./hooks/useStoryIntro";
-
-export default function HistoryChapterIntro() {
-  const { textMonth, textYear, title } = useStoryIntro();
-
+export default function HistoryChapterIntro({
+  textMonth,
+  textYear,
+  title,
+}: {
+  textMonth: string;
+  textYear: string;
+  title: string;
+}) {
   return (
     <>
-      <TopBackgroundPattern />
+      {/* <TopBackgroundPattern /> */}
       <Grid h="100%" gridTemplateRows="auto auto auto" pb="2rem">
         <Center>
           <TextDecorated>Nossa Historia</TextDecorated>

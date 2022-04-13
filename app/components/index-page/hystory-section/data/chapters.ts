@@ -74,13 +74,19 @@ export const chapters: Chapter[] = [
     type: "intro",
     textMonth: "novembro",
     textYear: "2021",
-    title: "È hora!!!",
+    title: "É hora!!!",
   },
   {
     type: "content",
-    title: `È hora!!!`,
+    title: `É hora!!!`,
     image: "history-content-chap4",
     text: `Já se passaram quase três anos e alguns kilos desde o nosso primeiro encontro. Muitas coisas mudaram, mas a paixão permaneceu forte além da adversidade e o amor cresce a cada dia. Mas não era suficiente, o nosso amor será eterno. Nós prometemos.`,
+  },
+  {
+    type: "intro",
+    textMonth: new Date().toLocaleString("default", { month: "long" }),
+    textYear: new Date().toLocaleString("default", { year: "numeric" }),
+    title: "E agora...",
   },
   // {
   //   type: "intro",

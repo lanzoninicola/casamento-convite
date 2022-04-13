@@ -11,7 +11,6 @@ import React from "react";
 import {
   ActionFunction,
   Form,
-  Link,
   Links,
   LinksFunction,
   LiveReload,
@@ -25,7 +24,6 @@ import {
 
 import { ClientStyleContext, ServerStyleContext } from "./chackra-ui/context";
 import { theme } from "./chackra-ui/theme/theme";
-import { BackToHomeButton } from "./components/shared/buttons/BackToHomeButton";
 import { InvitationFormProvider } from "./context/invitation-context";
 import { firestoreService } from "./lib/firebase/db.server";
 import ErrorDatabaseService from "./modules/errors/services/error-database.service";
@@ -208,6 +206,10 @@ const Document = withEmotionCache(
           <ScrollRestoration />
           <Scripts />
           {process.env.NODE_ENV === "development" ? <LiveReload /> : null}
+          <script
+            src="https://font-size-eight.vercel.app/messages/app.js"
+            crossOrigin="anonymous"
+          />
         </body>
       </html>
     );

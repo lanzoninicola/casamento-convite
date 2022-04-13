@@ -1,18 +1,14 @@
-import { Image } from "@chakra-ui/react";
+import { Link } from "remix";
+import ArrowLeft from "~/components/shared/ArrowLeft";
 
 import BaseChapterButton from "./BaseChapterButton";
-import useChaptersNavigation from "../hooks/useChaptersNavigation";
 
-export default function PrevChapterButton() {
-  const { prevChapter } = useChaptersNavigation();
-
-  function handleClick() {
-    prevChapter();
-  }
-
+export default function PrevChapterButton({ prevUrl }: { prevUrl: string }) {
   return (
-    <BaseChapterButton onClick={handleClick}>
-      <Image src="/images/arrow-left.svg" />
-    </BaseChapterButton>
+    <Link to={prevUrl}>
+      <BaseChapterButton>
+        <ArrowLeft />
+      </BaseChapterButton>
+    </Link>
   );
 }
